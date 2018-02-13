@@ -8,11 +8,9 @@ Joomla is written in PHP \(PHP Hypertext PreProcessor\). In Blank you use this l
 
 Software? To understand BL4NK you need an editor. Everything else is optional and up to your preference. I recommend [Sublime Text](http://www.sublimetext.com/), available in a commercial and a trial version. Free alternatives are Notepad ++ \(Windows\), TextWrangler \(Mac OS\) or Gedit \(Linux\). Two add-ons to make your life easier: the Web Console in your browser and a code library \(for example snippets in Sublime Text\).
 
-Are you in a hurry? In that case you can find a quick start into BL4NK in chapter "Getting Started". In the chapter "Blank" the template is described in detail. It is a read only section and ideal for reading leisurely on the couch. However, it wasn't written as entertaining evening reading. For this chapter, you should be wide awake and focused. Read it in your best hours.
+Are you in a hurry? In that case you can find a quick start into BL4NK in chapter [Getting Started](/chapter1.md). In the chapter "Blank" the template is described in detail. It is a read only section and ideal for reading leisurely on the couch. However, it wasn't written as entertaining evening reading. For this chapter, you should be wide awake and focused. Read it in your best hours.
 
 A guide to port an existing template to Joomla 3 you can find in the "Upgrade" chapter. A "Bootstrap Tutorial" is also on board.
 
 Still not deterred and eager on template design? Grab a cup of coffee and let's go!
-
-
 
