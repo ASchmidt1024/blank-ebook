@@ -4,5 +4,5 @@
 * [Introduction](bl4nk.md)
 * [Preface](preface.md)
 * [Author](author.md)
-* [First Chapter](chapter1.md)
+* [Getting Started](chapter1.md)
 
