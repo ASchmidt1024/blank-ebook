@@ -1,8 +1,10 @@
 # Summary
 
-* [BL4NK](README.md)
-* [Preface](preface.md)
-* [Author](author.md)
-* [Introduction](bl4nk.md)
-* [Getting Started](chapter1.md)
+* BL4NK
+* [Preface](/preface.md)
+* [Author](/author.md)
+* [Introduction](/README.md)
+* [Getting Started](/chapter1.md)
+
+
 
