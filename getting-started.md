@@ -12,8 +12,8 @@ or to customize it
  Fill out all information
 
 * Replace the following images \(optional\):  
- `template\_preview.png`  
- `template\_thumbnail.png`  
+ `template_preview.png`  
+ `template_thumbnail.png`  
  `favicon.ico`
 
 * Pack the template folder
