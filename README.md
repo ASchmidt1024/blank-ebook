@@ -1,43 +1,4 @@
-# BL4NK
-
-Light, powerful and free template for Joomla!  
-for faster and easier web development.
-
-[blank.rocks](http://blank.rocks) or [GitHub](https://github.com/Bloggerschmidt/Blank)
-
-for Joomla!
-
-from Alexander Schmidt
-
-translated by Stefan Bienwald and Jos Flachs
-
-Copyright © 2018
-
-Blank is opensource software released under the GPL.
-
-Feel free to use it for your own commercial projects.
-
-For free software
-
-## Preface
-
-When I published Blank end of 2011, I could not guess that it would be so often and quickly adopted. Within the next eighteen months it was downloaded about 100,000 times in 185 countries from the project page [http://blank.vc](http://blank.vc). What a success!
-
-The BL4NK template project gives me an idea of what the Internet is and what it means to be in the community. Thanks to that community BL4NK is developing into something better than I originally planned for. At this point I would like to thank everybody for all the good tips and suggestions you gave me.
-
-Thank you also for the many e-mails. I try to answer them all in the little spare time I have. However, you have to accept that my family do have priority.
-
-BL4NK gives me the opportunity to give something back to the community.
-
-Many thanks! Alex
-
-## Author
-
-Alexander Schmidt was born 1978. In 2000 during his studies in Heidelberg / Germany he found a program named 'FrontPage', which was supposed to create websites \(for aesthetic reasons we refrain from giving the company name here\). It was a very popular WYSIWYG editor. The program was quite successful, but Alexander realized very quickly that the real action happens behind the WYSIWYG editor.
-
-At the time of writing Alexander is a lecturer at the Cooperative State University of Mannheim. For Franzis Verlag he wrote some books about Joomla templates, but he discovered that working alone is a much more better way for him to write and publish books.
-
-## Introduction
+# Introduction
 
 This book is the advanced manual for BL4NK, the free template for Joomla! you can [download in current version at GitHub](https://github.com/Bloggerschmidt/Blank). This book describes in detail how the template works, from the very basic beginning up to advanced usage. Every single line will be discussed. It's the reference work to use on your own template projects.
 
