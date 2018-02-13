@@ -8,15 +8,14 @@ or to customize it
 
 * Unpack BL4NK
 
-* Edit the templateDetails.xml  
+* Edit the `templateDetails.xml`  
  Fill out all information
 
 * Replace the following images \(optional\):  
- template\_preview.png  
- template\_thumbnail.png  
- favicon.ico
+ `template\_preview.png`  
+ `template\_thumbnail.png`  
+ `favicon.ico`
 
 * Pack the template folder
 
 READY FOR INSTALLATION!
-
