@@ -11,7 +11,8 @@ This template is for local developing under [Node.js®](http://nodejs.org/) and 
 * [Node.js®](http://nodejs.org/)
 
 * [Gulp](https://gulpjs.com/)  
-  Open your favorite command prompt (e.g. console or terminal).
+
+If Node.js® is installed, install Gulp via command prompt (e.g. console or terminal).
 
     npm install -g gulp
 
