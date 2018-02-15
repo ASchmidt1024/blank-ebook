@@ -1,21 +1,45 @@
 # Getting Started
 
-After downloading the latest version:
+This template is for local developing under [Node.js®](http://nodejs.org/) and [Gulp](https://gulpjs.com/). A good workflow is to code your template on localhost and if it is ready to deploy it on the live server (e.g. copy via sftp). And for shure, you should have a [Joomla!](https://www.joomla.org/) installation ready for this.
 
-* Install it in the backend of Joomla! as an extension
+## Requirements
 
-or to customize it
+* [XAMPP](https://www.apachefriends.org/) or [MAMP](https://www.mamp.info) (or any local web server)
 
-* Unpack BL4NK
+* [Joomla!](https://www.joomla.org/)
 
-* Edit the `templateDetails.xml`  
+* [Node.js®](http://nodejs.org/)
+
+* [Gulp](https://gulpjs.com/)
+  Open your favorite command prompt (e.g. console or terminal).
+  ```npm install -g gulp```
+
+* [BL4NK](https://github.com/Bloggerschmidt/Blank/releases/latest)
+
+## Customization
+
+You can customize your template with your information doing the following steps.
+
+* Unzip BL4NK
+
+* Edit the `templateDetails.xml`
  Fill out all information
 
-* Replace the following images \(optional\):  
- `template_preview.png`  
- `template_thumbnail.png`  
+* Replace the following images \(optional\)
+ `template_preview.png`
+ `template_thumbnail.png`
  `favicon.ico`
 
-* Pack the template folder
+* Zip the template folder again
 
-READY FOR INSTALLATION!
+## Installation
+
+Install BL4NK like a normal template in Joomla! Open your command prompt and go to the template directory and install all dependencies.
+
+```npm install```
+
+Run Gulp to compile, compress and build.
+
+```gulp```
+
+The building files are stored in folder `/build` in your template directory.
