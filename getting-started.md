@@ -12,7 +12,8 @@ This template is for local developing under [Node.js®](http://nodejs.org/) and 
 
 * [Gulp](https://gulpjs.com/)
   Open your favorite command prompt (e.g. console or terminal).
-  ```npm install -g gulp```
+
+    npm install -g gulp
 
 * [BL4NK](https://github.com/Bloggerschmidt/Blank/releases/latest)
 
@@ -36,10 +37,10 @@ You can customize your template with your information doing the following steps.
 
 Install BL4NK like a normal template in Joomla! Open your command prompt and go to the template directory and install all dependencies.
 
-```npm install```
+    npm install
 
 Run Gulp to compile, compress and build.
 
-```gulp```
+    gulp
 
 The building files are stored in folder `/build` in your template directory.
