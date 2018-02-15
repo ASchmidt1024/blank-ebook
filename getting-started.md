@@ -46,6 +46,6 @@ Let's start the work by coding in the following files.
 
 * index.php (html)
 * js/script.js (javascript)
-* template.scss or .less (css)
+* css/template.scss or .less (css)
 
 The building files are stored in folder `/build` in your template directory.
