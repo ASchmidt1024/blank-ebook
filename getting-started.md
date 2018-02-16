@@ -49,3 +49,7 @@ Let's start the work by coding in the following files.
 * css/template.scss or .less (css)
 
 The building files are stored in folder `/build` in your template directory.
+
+## Snippets
+
+There exits a [gist with usefull template snippets](https://gist.github.com/Bloggerschmidt/2360208).
