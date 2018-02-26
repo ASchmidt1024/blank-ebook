@@ -19,7 +19,7 @@ Then there is a [BL4NK Bootstrap Edition](https://github.com/Bloggerschmidt/Blan
 
 ## PSD 
 
-Download [psd.zip](http://itr.im/psd) (12 MB) to create icons and preview images faster. The ZIP package contains the following files: 
+Download [psd.zip](http://itr.im/psd) (10.8 MB) to create icons and preview images faster. The ZIP package contains the following files: 
 
 - App Icon Template [2.0] .psd 
 - template_preview.psd 
@@ -192,6 +192,94 @@ The Cascading Style Sheets of Blank are located in folder css. If you open this 
 The files template.less and template.sass are not css files. For what are these files?
 
 ### template.less
+
+LESS is a preprocessor of CSS. Or to say it with the official words: [It's CSS, with just a little more.](http://lesscss.org/). So, you can write simple CSS in every LESS-file. Maybe for someone is CSS enough, but to build more complex templates imports, variables, functions, advanced selectors, mixins and a lot more could be usefull. 
+
+#### Imports
+
+It is a good idea to put the styles of an object into a separate file and then import it to you main file. For example, if you want to design the navigation of a website, create a file called navigation.less. If it is created, you can import it to your template.less. The following statements can be used.
+
+    @import "navigation";
+    @import "navigation.less";
+
+There are also [more options for @import At-Rules](http://lesscss.org/features/#import-atrules-feature), which you can read in the official manual of LESS.
+
+#### Variables
+
+Often you need the same value some times in your CSS. Variables make it easier to controll those values from a single location.
+
+    @link-color: #B22222;
+    
+    a {
+      color: @link-color;
+    }
+
+
+#### Functions
+
+You find a [list of all built-in functions supported by LESS](http://lesscss.org/functions/) on the main manual. Here is a short example of the function to darken a color.
+
+    @link-color: #B22222;
+    @link-color-hover: darken(@link-color, 10%);
+    
+    a {
+      color: @link-color;
+    }
+    
+    a:hover {
+      color: @link-color-hover;
+    }
+
+#### Advanced selectors
+
+With the ampersand `&` you can reference parent selectors the following way.
+
+    a {
+      color: @link-color;
+      &:hover {
+        color: @link-color-hover;
+      }
+    }
+
+Compiling this LESS results in
+
+    a {
+      color: #B22222;
+    }
+    
+    a:hover {
+      color: #B22222;
+    }
+
+You can [take use of multiple `&` and change selector order](http://lesscss.org/features/#parent-selectors-feature) (follow the link).
+
+#### Mixins
+
+You can mix-in class and id selectors.
+
+    .class, #id {
+      color: red;
+    }
+    .mixin-class {
+      .class();
+    }
+    .mixin-id {
+      #id();
+    }
+
+Results in
+
+    .class, #id {
+      color: red;
+    }
+    .mixin-class {
+      color: red;
+    }
+    .mixin-id {
+      color: red;
+    }
+
+There is [a lot more what you can do with mixins](http://lesscss.org/features/#mixins-feature).
 
 ### template.sass
 
