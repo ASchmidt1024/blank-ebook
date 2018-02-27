@@ -646,3 +646,377 @@ In Blank the reset style sheet normalize.css is imported into the print.css file
 ### template.css
 
 In this file, CSS is written which is created by the LESS or SASS compiler generated with the help of your style sheet file template.less or template.scss. You don't need to edit the template.css file.
+
+## index.php (Blank)
+
+It is and remains the core of every template: the file index.php. This is where all the files come together. The articles and modules created by you on the backend show up here. All on the right place of the page.
+
+### defined( '_JEXEC' ) or die;
+
+This is my favorite command and should be on every Joomla T-shirt! This is a direct call to prevent manipulation by others. Only Joomla is allowed to execute the file containing this script. 
+
+    <?php defined( '_JEXEC' ) or die;
+
+The PHP script remains open. Normally it would be closed with ?> but there there is more to follow.
+
+### logic.php
+
+The logic.php file is not only explained separately (after the index.php file described here), but also included.
+
+    include_once JPATH_THEMES.'/'.$this->template.'/logic.php';
+
+The logic.php file is included exactly once with the command `include_once` and integrated and executed as PHP script. Joomla specifies the path to the templates into `JPATH_THEMES`. Then it goes on with a slash (/) and the folder of the actual templates in `$this->template` inserted in the variable. Another slash and the file name logic.php form the end. Perhaps it would be easier to write the path directly.
+
+    include_once 'templates/frontend/logic.php';
+
+However, this notation is error-prone. Just remember, if you renaming the template to mytemplate from frontend. In this case, you should know that you have to change the path in index.php. That's it. We close the area of PHP with `?>`.
+
+### Document type
+
+Now we leave the PHP part behind us and have a look at the HTML area. Starting with the document type. Old fogies like myself still remember the complexity of this tag in days gone by. Depending on which "dialect" was spoken, whether HTML 4 or XHTML 1.1, whether or strict standard, you had set a correct lengthy and complicated line of code. That's fortunately over in HTML5:
+
+    <!doctype html>
+
+Cool!
+
+### html
+
+We open the Hyper Text Markup Language document with the `<html>` tag and it is closed with `</html>`. Therein is the header `<head>` part and the body `<body>` part.
+
+### head
+
+In your head, in your head
+Zombie, zombie, zombie
+Hey, hey
+What's in your head, in your head
+Zombie, zombie, zombie
+Hey, hey, hey
+Oh, do, do, dou, do, do, dou, do, do
+Dou, do, do, dou, dou, do, do, dou
+
+(Part of the songtext: The Cranberries - Zombie)
+
+Everything within `<head>` and `</head>` are part of the header of the HTML document.
+
+### Header information
+
+Through the interface of Joomla!™, called the API (Application Programming Interface), we can use the header information:
+
+    <jdoc:include type="head" />
+
+This will load the page title, all CSS files and JavaScripts and extensions are loaded (and more, but we'll not worry about that). Yes, you read it right. JavaScript ... In head ... Head shot. And every good frontend developer know: JavaScript should be at the end of the index before the closing body-tag `</body>`. But anyway, we do not use this way, hehe.
+
+### Viewport
+
+The mobile view of your site is supported so that  view (viewport) of your browser shows the correct viewport.
+
+    <!-- mobile viewport -->
+    <meta name="viewport" 
+          content="width=device-width, 
+                   initial-scale=1.0, 
+                   maximum-scale=1.0, 
+                   user-scalable=0" />
+
+The above code sets the correct width.
+
+### body
+
+All that stands between the `<body>` and `</body>` is shown to the visitors of your site. This is the place for your layout structure. This is where the actual content of your website takes shape. In BL4NK this area relatively empty. For the start there are two includings. One type component to display the articles for example and the debug module. And yes, before the closing body-tag `</body>` we put our awesome uglified and full compressed javascript file to rule all our javascript. This is the best case we can have.
+
+### page class
+
+The body tag gets two classes added so that you later can define your CSS more precisely.
+
+    <body class="<?php echo $active->alias . ' ' . $pageclass; ?>">
+
+Yikes! What is this? That doesn't look overly clear. Quite confusing, actually. But it does make sense. Let's start from the end: The variable `$pageclass`, which in the file is declared in logic.php (more on that later), the page class is generated. The page class is in the backend of Joomla!™, in each menu item to be specified in options and is quite handy for your own layouts. The variable `$active->alias` is the alias of each menu item displayed.
+
+### Debug module
+
+The debug module is necessary for troubleshooting. If you turn the debug mode on in Joomla!™ (in the global configuration), this module outputs the database query that many developers - you, amongst others - find helpful. The debug module is the only module included in Blank. Just as any other module the position must be defined in templateDetails.xml. The name debug is compulsory. I usually place it as the last item in the `<positions>` section of templateDetails.xml:
+
+    <positions>
+       <position>debug</position>
+    </positions>
+
+Now the position is available, and the module can be used by the index.php. This is done by Joomla!™ API with the jdoc:include command. At the end of index.php, before the closing body tag, you find the following line:
+
+    <jdoc:include type="modules" name="debug" />
+
+This line causes the debug mode to be switched on and the output of it to be shown (when required) in the browser window. You need to do the same with all your module positions. For example, if you want to create the module positions header, navigation, breadcrumbs, you write in the templateDetails.xml:
+
+    <positions>
+      <position>header</position>
+      <position>navigation</position>
+      <position>breadcrumbs</position>
+    </positions>
+
+And in the index.php on the places where you want them to appear:
+
+    <jdoc:include type="modules" name="header" />
+    <jdoc:include type="modules" name="navigation" />
+    <jdoc:include type="modules" name="breadcrumbs" />
+
+That finished the module positions. From now on, all modules are assigned the the correct position. In the backend (Extensions> Modules> Site) - thanks templateDetails.xml. And in the frontend - thanks to index.php.
+
+### Module Chrome
+
+Module chrome belongs, together with overrides, to Joomla!™'s special features. It makes the system very flexible for web developers. Module chrome and overrides are some of the reasons why Joomla!™ is so powerful. In addition to the type and name the jdoc:include command gives you also the attribute style. This allows to control the output of a module. We have the following values available:
+
+- none
+- xhtml
+- outline
+- rounded
+- table
+- horz
+
+With these values, you can significantly influence the output. This chrome value (please do not confuse with the likewise named browser from Google) lets the system know how the  module should be rendered. Joomla!™ also enables you to define your own chrome variables. The above values in detail:
+
+#### none
+
+Command:
+
+    <jdoc:include type="modules" name="menu" style="none" />
+
+Output:
+
+    <ul class="menu">
+       <li><!-- menu items --></li>
+    </ul>
+
+#### xhtml
+
+Command:
+
+    <jdoc:include type="modules" name="menu" style="xhtml" />
+
+Output:
+
+    <div class="moduletable">
+       <h3>Main Menu</h3>
+       <ul class="menu">
+          <li><!-- menu items --></li>
+       </ul>
+    </div>
+
+#### outline
+
+Command:
+
+    <jdoc:include type="modules" name="menu" style="outline" />
+
+Output:
+
+    <div class="mod-preview">
+       <div class="mod-preview-info">left[outline]</div>
+       <div class="mod-preview-wrapper">
+          <ul class="menu">
+             <li><!-- menu items --></li>
+          </ul>
+       </div>
+    </div>
+
+#### rounded
+
+Command:
+
+    <jdoc:include type="modules" name="menu" style="rounded" />
+
+Output:
+
+    <div class="module">
+       <div>
+          <div>
+             <div>
+                <h3>Main Menu</h3>
+                <ul class="menu">
+                   <li><!-- menu items --></li>
+                </ul>
+             </div>
+          </div>
+       </div>
+    </div>
+
+#### table
+
+Command:
+
+    <jdoc:include type="modules" name="menu" style="table" />
+
+Output:
+
+    <table cellpadding="0" cellspacing="0" class="moduletable">
+       <tr>
+          <th valign="top">Main Menu</th>
+       </tr>
+       <tr>
+          <td>
+             <ul class="menu">
+                <li><!-- menu items --></li>
+             </ul>
+          </td>
+       </tr>
+    </table>
+
+#### horz
+
+Command:
+
+    <jdoc:include type="modules" name="menu" style="horz" />
+
+Output:
+
+    <table cellpadding="0" cellspacing="0" class="moduletable">
+       <tr>
+          <th valign="top">Main Menu</th>
+       </tr>
+       <tr>
+          <td>
+             <ul class="menu">
+                <li><!-- menu items --></li>
+             </ul>
+          </td>
+       </tr>
+    </table>
+
+#### custom chrome
+
+As already mentioned, it is possible to define your own output, thus own chrome variables for the style attribute. The Blank contains the file modules.php found in the html folder of the template directory. As you may have noticed, in Blank there is neither the said folder (html), nor the said file (modules.php). Have you installed the template, you can safely create the folder and create the file inside this folder. If you stand before the installation, then the reference to the newly created folder belongs to the templateDetails.xml, so that the installation routine of Joomla!™ knows that this folder exists. Otherwise the folder wouldn't be installed. For details see the chapter templateDetails.xml.
+
+If you create the modules.php file in also new created folder called html, the content could look like this:
+
+    <?php defined('_JEXEC') or die;
+     
+    function modChrome_mystyle($module, &$params, &$attribs) { ?>
+       <div class="moduletable 
+          <?php echo htmlspecialchars($params->get('moduleclass_sfx')); ?>">
+          <div class="bghelper">
+             <h3><?php echo JText::_( $module->title ); ?></h3>
+             <div class="modulcontent">
+                <?php echo $module->content; ?>
+             </div>
+          </div>
+       </div><?php
+    }
+     
+    ?>
+ 
+This chrome can be controlled throught the value mystyle. Important in creating your own chrome features is the transfer of $module, &$params and &$attribs to bring the settings, parameters and attributes to each module, e.g. title, content, module class suffix and so on.
+
+Chrome and overrides are the reasons why Joomla!™ is the right system for your web project.
+
+## logic.php
+
+The logic.php file is included in the index.php. While the index.php stands for the HTML output, the logic.php represents the programming logic. During template development, it is not unusual that the file is further programmed.
+
+### defined( '_JEXEC' ) or die;
+
+To make sure that this file is called only in Joomla!™, this line is written.
+
+    <?php defined( '_JEXEC' ) or die;
+
+This code prevents that the file can not be accessed from the address bar of your browser.
+
+### Declaring variables
+
+Some variables for the proper use of the template are required. [The basics of PHP variables](http://de2.php.net/manual/en/language.variables.basics.php) can be found in PHP manual (for beginners: [A simple tutorial in PHP](http://php.net/manual/en/tutorial.php)).
+
+In a nutshell:
+
+- The first character of each PHP variables is the dollar sign $. This is followed by the variable name.
+- Distinction is made between uppercase and lowercase.
+- $My\_variable is not the same as $my\_variable or $My\_Variable.
+- The dollar sign must be followed by a letter or an underscore (_).
+- Spaces are not allowed. $\_my\_variable is okay, $ my\_variable is not.
+
+    // variables
+    $app = JFactory::getApplication();
+    $doc = JFactory::getDocument();
+    $menu = $app->getMenu();
+    $active = $app->getMenu()->getActive();
+    $params = $app->getParams();
+    $pageclass = $params->get('pageclass_sfx');
+    $tpath = $this->baseurl.'/templates/'.$this->template;
+
+Most of the variable names are quite self-explanatory.  Not so for the contents of the variables, a little explanation is in order. Let's go line by line:
+
+    $app = JFactory::getApplication();
+
+Here the variable $app is first created, the content in the Joomla framework is called for by the JFactory. The application to which it refers to is Joomla itself, the CMS. The variable $app we will also need for the parameters.
+
+    $doc = JFactory::getDocument();
+
+Similarly, the variable $doc. Again, we put about the Joomla framework to work with the JFactory class. This variable will take care of the RSS feeds within the page, site information, such as the title and description, references to the JavaScript and CSS files being loaded and will do a lot more. However, that is beyond the scope of this book.
+
+    $menu = $app->getMenu();
+
+This variable asks for the menu from the $app variable.
+
+    $active = $app->getMenu()->getActive();
+
+This variable goes a step further: it looks for the active menu item within the $menu. It also checks if this is the Home page or not.
+
+    $params = $app->getParams();
+
+Using the variable $app we'll query Joomla for the parameters and store that in the variable $params. We will then use to query the page class:
+
+    $pageclass = $params->get('pageclass_sfx');
+
+A rather aptly named variable, $pageclass. The Page Class Suffix is a parameter in Joomla Menu Items. It is set in the Menu Item: [Edit] screen under the "Parameters (Advanced)" section. This will order Joomla to either add a new CSS class or modify the existing CSS class for elements in this specific Menu Item layout.
+
+    $tpath = $this->baseurl.'/templates/'.$this->template;
+
+That's easy: Variable $tpath contains the relative path to the template directory from the base URL. The $tpath variable is told to look for the active template folder from the base url.
+
+These are all the variables used in Blank.
+
+### generator tag
+
+The generator tag tells the world that we build this site with Joomla. Something nobody needs to know, least of all undesirables who want to hack your site. Do we want it? No, we most certainly do not!
+
+    $this->setGenerator(null);
+
+We are the web developers and we are the ones that need to know what the source code actually is. Nobody else should. Hackers need to know what CMS your using, in order to hack it. Why make it any easier than necessary?
+
+Supposing your want to want to tell the world your website runs on Drupal or WordPress? No problem. Just fill in Drupal or WordPress between the single quotes. Or anything that you like:
+
+    $this->setGenerator('Drupal');
+
+This will generate `<meta name="generator" content="Drupal" />` in the outputted source code of your website.
+
+### unset
+
+The following lines are all comment out and have no effect right now. Maybe it will be neccessary to comment the lines in to unset some scripts, e.g. jquery. What happened if you comment the following lines in?
+
+    // unset
+    unset($doc->_scripts[$this->baseurl .'/media/jui/js/jquery.min.js']);
+    unset($doc->_scripts[$this->baseurl .'/media/jui/js/jquery-noconflict.js']);
+    unset($doc->_scripts[$this->baseurl .'/media/jui/js/jquery-migrate.min.js']);
+    unset($doc->_scripts[$this->baseurl .'/media/system/js/caption.js']);
+    if (isset($doc->_script['text/javascript']))
+    {
+        $doc->_script['text/javascript'] = preg_replace('%jQuery\(window\)\.on\(\'load\'\,\s*function\(\)\s*\{\s*new\s*JCaption\(\'img.caption\'\);\s*}\s*\);\s*%', '', $doc->_script['text/javascript']);
+        $doc->_script['text/javascript'] = preg_replace("%\s*jQuery\(document\)\.ready\(function\(\)\{\s*jQuery\('\.hasTooltip'\)\.tooltip\(\{\"html\":\s*true,\"container\":\s*\"body\"\}\);\s*\}\);\s*%", '', $doc->_script['text/javascript']);
+        if (empty($doc->_script['text/javascript']))
+        {
+            unset($doc->_script['text/javascript']);
+        }
+    }
+
+Well, the first line is a comment. The second line unset the file jquery.min.js from head, the third line jquery-noconflict.js, the fourth (may the 4th be with you) line jquery-migrate.min.js and the fifth caption.js. The lines after that unset all direct written javascript in head. With these lines helps you to bring all scripts in only one file.
+
+### Template CSS
+
+To access the one and only template css, you only need this lines:
+
+    // css 
+    $doc->addStyleSheet($tpath.'/build/style.css');
+
+### Custom CSS
+
+The line to add the custom css is comment out. Comment in, if neccessary.
+
+    // $doc->addStyleSheet($tpath.'/css/custom.css');
+
+This will load the custom.css in the head for faster style fixings.
+
