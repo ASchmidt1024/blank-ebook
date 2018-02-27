@@ -214,6 +214,8 @@ Often you need the same value some times in your CSS. Variables make it easier t
       color: @link-color;
     }
 
+If you handle a lot of variables, it makes sense to put them in a separate file called variables.less.
+
 
 #### Functions
 
