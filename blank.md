@@ -353,7 +353,7 @@ Compiling this SASS results in
       color: #B22222;
     }
 
-You can [take use of multiple `&` and change selector order](https://sass-lang.com/documentation/file.SASS_REFERENCE.html#parent-selector) (follow the link).
+[Referencing Parent Selectors: &](https://sass-lang.com/documentation/file.SASS_REFERENCE.html#parent-selector) (follow the link)
 
 #### Mixins
 
