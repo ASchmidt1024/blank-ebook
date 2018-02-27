@@ -1009,7 +1009,7 @@ Well, the first line is a comment. The second line unset the file jquery.min.js 
 
 To access the one and only template css, you only need this lines:
 
-    // css 
+    // css
     $doc->addStyleSheet($tpath.'/build/style.css');
 
 ### Custom CSS
@@ -1019,4 +1019,152 @@ The line to add the custom css is comment out. Comment in, if neccessary.
     // $doc->addStyleSheet($tpath.'/css/custom.css');
 
 This will load the custom.css in the head for faster style fixings.
+
+## Parameter
+
+The template engine is one of the great strengths of Joomla!™. It is possible to gain more flexibility in your template with parameters. For example, you can set different color variations for your template in the backend. These settings are stored as styles in the database. A style is a single definition of settings for your template. You can define multiple styles and assign one to a menu item.
+
+### Definition
+
+Parameters are defined in the templateDetails.xml. However, BL4NK comes with no parameters. For example, here you see a parameter that inserts a Google font in your template:
+
+    <config>
+      <fields name="params">
+    
+        <fieldset name="basic">
+    
+          <!-- GOOGLE FONT-->
+          <field name="googlefont" type="text" default=""
+            label="Google Font"
+            description="font type input">
+          </field>
+    
+        </fieldset>
+    
+      </fields>
+    </config>
+
+For the parameters to work you need to set them in `<fields name="params"></fields>`, which you can find between `<config>` and `</config>`, in the configuration (config) section. You create in the fields tag the space for specifying the parameters. With the fieldset tag you group the parameters. Each parameter is defined within a field tag (please observe: without s). To this very day, attributes of type and name are mandatory. All other attributes are optional.
+
+A Google Font is of the type text. You can enter any text. In the label name you set the title for the parameter, visible in the backend. In description you place the text which will be visible when you hover over the title in the backend.
+
+#### type
+
+specifies the HTML element we want. In this case "text". There are many different standard parameter and form field types supported in the Joomla!™ Framework for all extension types (templates, components, modules and plugins).
+
+#### name
+
+is unique for each parameter, and is used to address the Parameter in the template.
+
+#### default
+
+specifies the default value of the parameter.
+
+#### description
+
+is the description of the parameter in the backend, appearing as a tooltip.
+
+#### label
+
+is the description your see in the backend.
+
+### Types
+
+The Joomla framework has a number of types of parameters for extensions. Developing templates you need to know: text, radio, filelist, folder list and spacer.
+
+#### list
+
+The parameter type list provides a list of drop-down menu entries. If there is an entry for this parameter in the database, this will be selected as the default.
+
+- type (mandatory): list
+- name (mandatory): unique name of the parameter
+- label (mandatory, translatable): A descriptive title field
+- default (optional): the default value of the list
+- description (optional translatable): The description is as Tooltip appears.
+- class (optional): the CSS class of the field; if it is omitted, the default entry will be used
+
+The list must have at least one entry, so an option- Show element. The text between `<option>` and `</option>` appear in the list. Mandatory for entry is the value (the value of the attribute).
+
+- value (mandatory): the value is stored as a parameter
+
+#### text
+
+With this parameter type you can show a line of text. The entered value is stored in the database and displayed by default.
+
+- type (mandatory): text
+- name (mandatory): unique name of the parameter
+- label (mandatory, translatable): A descriptive title field
+- size (optional): Number of characters to be stored
+- default (optional, translated): The default text
+- description (optional translatable): The description is as Tooltip appears.
+- class (optional): the CSS class of the field
+
+#### radio
+
+Using the radio parameter you a create radio buttons. The default value is the stored value or, if no stored value is present, the defined default as the default entry.
+
+- type (mandatory): radio
+- name (mandatory): unique name of the parameter
+- label (mandatory, translatable): A descriptive title field
+- default (optional, translatable): the default choice of Radio buttons
+- description (optional translatable): The description is as Tooltip appears.
+- class (optional): the CSS class of the field
+
+#### filelist
+
+The type filelist parameter is used to list the files from a folder. It carries the declared default value if there is no value in the database. The entries for default usage carries the value of -1 and 0 , if none is to be used are the first two items on the list.
+
+- type (mandatory): folder list
+- name (mandatory): unique name of the parameter
+- label (mandatory, translatable): A descriptive title field
+- directory (mandatory): The path to the directory should be listed
+- default (optional): the default folder
+- description (optional translatable): The description is as tooltip appears.
+- filter (optional): regular expression to filter the folder; the folder specified here are included
+- exclude (optional): regular expression to filter the folder; the folder specified here excludes
+- stripext (optional): Boolean argument; if true, the file extension hidden
+- hide_default (optional): Boolean argument; if true, is the - Use default - entry is not displayed
+- hide_none (optional): Boolean argument; if true, is - Do not use - not displayed
+
+#### folderlist
+
+With the parameter folderlist you create a list of folders from a selected folder. The stored value here is the default value. Two entries exist in any folder list. The first is called "use default" and has the value -1. The second is called "do not use" and has the value 0.
+
+- type (mandatory): folder list
+- name (mandatory): unique name of the parameter
+- label (mandatory, translatable): A descriptive title field
+- directory (mandatory): The path to the directory should be listed
+- default (optional): the default folder
+- description (optional translatable): The description is as Tooltip appears
+- filter (optional): regular expression to filter the folder; the folder specified here are included
+- exclude (optional): regular expression to filter the folder; the folder specified here excludes
+- hide_default (optional): Boolean argument; if true, is the - Use default - entry is not displayed
+- hide_none (optional): Boolean argument; if true, is - Do not use - not displayed
+
+#### spacer
+
+The spacer parameter will place a horizontal line to individual parameters, to separate a heading from a set of parameters.
+
+- type (mandatory): spacer
+- name (optional): serves as a heading
+- hr (optional): can have the value true to a horizontal Display line, or false to indicate the name.
+
+### Database
+
+The settings of parameters are stored in the database. The format is: table #\_template\_styles (# stands for the prefix of the tables). If you access with phpMyAdmin your database can you look at the entries in the table(s) and manage them accordingly.
+
+### Usage
+
+A parameter makes only sense if it can be used in the template. You must define a parameter in the file templateDetails.xml and store its value in the database.  Once you've done both, you can put them to work. An PHP statement is sufficient:
+
+    <?php $variable = $this->params->get('parameter-name'); ?>
+
+For example, when you add a Google Font as a parameter, you can use that value in your CSS.
+
+    <?php
+    $googlefont = $this->params->get('googlefont');
+    $doc->addStyleSheet("https://fonts.googleapis.com/css?family=".$googlefont);
+    ?>
+
+You define a variable $googlefont and add its value as a parameter in the next line: `$doc->addStyleSheet` looks for the Google API then you load the font in your template.
 
