@@ -199,6 +199,31 @@ LESS is a preprocessor of CSS. Or to say it with the official words: [It's CSS, 
 
 By installing BL4NK you install the LESS compiler and the compiling process comes with Gulp. With Gulp you compile your less files into css. More on this later.
 
+Let's take a look into template.less.
+
+    // FRONTEND LESS
+    // ==========================================================================
+
+    // This file will be used to generate the template.css
+
+    html {
+
+    }
+
+    body {
+
+    }
+
+
+
+    @media (min-width: 768px) {}
+
+    @media (min-width: 992px) {}
+
+    @media (min-width: 1200px) {}
+
+Well, "This file will be used to generate the template.css". There are only the comment at the first lines, two selectors `html` and `body` with no attributes and three media queries. This structure should give you the idea of the mobile first strategy. First you write your rules for mobile. If you do it well, there is no need to write other rules. This is called mobile only strategy. But maybe, there should display something in a different way, than you go with your definitions from mobile to tablett to desktop.
+
 #### Imports
 
 It is a good idea to put the styles of an object into a separate file and then import it to you main file. For example, if you want to design the navigation of a website, create a file called navigation.less. If it is created, you can import it to your template.less. The following statements can be used.
@@ -295,6 +320,31 @@ SASS is also a preprocessor of CSS. "Sass is the most mature, stable, and powerf
 
 By installing BL4NK you install the SASS compiler and the compiling process comes with Gulp. With Gulp you compile your less files into css. More on this later.
 
+Let's take a look into template.scss.
+
+    // FRONTEND SASS
+    // ==========================================================================
+
+    // This file will be used to generate the template.css
+
+    html {
+
+    }
+
+    body {
+
+    }
+
+
+
+    @media (min-width: 768px) {}
+
+    @media (min-width: 992px) {}
+
+    @media (min-width: 1200px) {}
+
+Same like LESS above, "This file will be used to generate the template.css". There are only the comment at the first lines, two selectors `html` and `body` with no attributes and three media queries. This structure should give you the idea of the mobile first strategy. First you write your rules for mobile. If you do it well, there is no need to write other rules. This is called mobile only strategy. But maybe, there should display something in a different way, than you go with your definitions from mobile to tablett to desktop.
+
 #### Imports
 
 It is a good idea to put the styles of an object into a separate file and then import it to you main file. For example, if you want to design the navigation of a website, create a file called navigation.scss. If it is created, you can import it to your template.scss. The following statements can be used.
@@ -383,4 +433,216 @@ Results in
 
 There is [a lot more what you can do with mixins](https://sass-lang.com/documentation/file.SASS_REFERENCE.html#mixins).
 
+### custom.css
 
+This is a file for fixing styles in a fast way in the browser (Joomla!™ backend). It's bad to use it but sometimes you have to. So it is empty a ready for your fixes.
+
+    /* CUSTOM
+       ========================================================================== */
+
+    /**
+     * In best case you don't use this file.
+     * It's for fast fixes in browser only.
+     */
+
+Only the comment shows you which file you just opened.
+
+### editor.css
+
+The editor.css file is used to display your own definitions in your Joomla WYSIWYG editor in the backend, if you use one. For example, the JCE editor. This is most popular editor, but there are many more. In the configuration of this editor it is possible to include your own stylesheets. And that's what we  do.
+
+    /* EDITOR
+       ========================================================================== */
+
+    /**
+    * This file is for backend editors like JCE.
+    * It will be used for print style, too.
+    */
+
+    body {
+        background-color: #fff;
+        color: #000;
+        font: normal normal normal 75%/125% arial,sans-serif;
+    }
+
+By default, the text appears black on a white background. It is highly advisable to use the same definitions as in template.css. You may ask yourself: "why not assign the same template.css to the editor?” Well, that usually leads to an ugly editor screen. Also, only some sections of the template.css are responsible for the content. You don't need the remainder. That's why we define what you need in a separate file, without the initial IDs and container classes.
+
+### error.css
+
+The file error.css is linked via the file error.php. Both files are used for the error output that appears when the user visits a non existent page (error 404). The standard Joomla!™ error 404 page is so ugly that it's necessary to code something better. Customized error pages are part of every good template and are therefore not something optional.
+
+The default "error.css" definitions are as follows:
+
+    /* ERROR
+       ========================================================================== */
+
+    html,
+    body {
+      height: 100vh;
+    }
+
+    body {
+      color: #111;
+      font-family: Arial,Sans Serif;
+      font-size: 1rem;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    #error {
+      margin: 0 auto;
+      padding: 20px;
+      max-width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      #error {
+        padding-top: 32vh;
+        max-width: 400px;
+      }
+    }
+
+    h1 {
+      margin:0 0 20px 0;
+    }
+
+    .search label {
+      display:none
+    }
+
+The body are the background and typography defined. The padding is set to zero and output the contents are centered (text-align). The container with the ID #error then defines padding and width. The heading (h1) gets a smaller margin. The label of the search box is set not to be displayed (`display:none`).
+
+### normalize.css
+
+The normalize.css file is a small CSS file written by [Nicolas Gallaghers](https://github.com/necolas/normalize.css). It provides better cross-browser consistency of our HTML tags. It is a modern HTML5 compliant alternative to the traditional CSS reset. In more then 400 lines of code the HTML tags are defined. Look it over in your editor, when you have some free time. Don't mess around with it! 
+
+### offline.css
+
+Just like the error page, the file offline.css is linked within offline.php. The offline page will appear when Joomla is set offline in the global configuration. The visitor will then see the information as defined in this configuration. The appearance (our CSS definitions), is stored in this file.
+
+    /* OFFLINE
+       ========================================================================== */
+
+    html,
+    body {
+      height: 100vh;
+    }
+
+    body {
+      color: #111;
+      font-family: Arial,Sans Serif;
+      font-size: 1rem;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    img {
+      border: 0 none;
+    }
+
+    #frame {
+      margin: 0 auto;
+      padding: 20px;
+      max-width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      #frame {
+        padding-top: 32vh;
+        max-width: 400px;
+      }
+    }
+
+    .inputbox {
+      width: 130px;
+    }
+
+    form {
+      margin: auto;
+    }
+
+    form p {
+      margin: 0;
+      padding: 0;
+    }
+
+    form fieldset {
+      border: 0 none;
+      margin: 0;
+      padding: 0.2em;
+    }
+
+    input {
+      padding: 5px;
+      font-size: 1rem;
+    }
+
+    input.button {
+      cursor: pointer;
+      width: auto;
+    }
+
+    form p {
+      padding: 0.3em 0;
+    }
+
+    label[for="remember"] {
+      font-size: .85rem;
+    }
+
+    .alert {
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid transparent;
+      background-color: #fcf8e3;
+      border-color: #faebcc;
+      color: #8a6d3b;
+    }
+
+    .alert h4 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: inherit;
+        font-family: inherit;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.1;
+    }
+
+    .close {
+        float: right;
+        font-size: 21px;
+        font-weight: 700;
+        line-height: 1;
+        color: #000;
+        text-shadow: 0 1px 0 #fff;
+        filter: alpha(opacity=20);
+        opacity: .2;
+    }
+
+    .close:focus,
+    .close:hover {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+        filter: alpha(opacity=50);
+        opacity: .5;
+    }
+
+### print.css
+
+The print.css file is linked within the file component.php. Joomla offers to display the content as a print preview. This is done by clicking on the print icon. The icon's view can be set within the article options. Using this file enables you to define a printer-friendly output. You can, for example, increase the contrast of the text color to it's background to improve the readability. The background is best to be defined in white, to save printer ink.
+
+In Blank the reset style sheet normalize.css is imported into the print.css file, also the file editor.css to create a printer-friendly version.
+
+    /* PRINT
+       ========================================================================== */
+
+    @import url('normalize.css');
+    @import url('editor.css');
+
+### template.css
+
+In this file, CSS is written which is created by the LESS or SASS compiler generated with the help of your style sheet file template.less or template.scss. You don't need to edit the template.css file.
