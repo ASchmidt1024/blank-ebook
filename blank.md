@@ -1554,3 +1554,19 @@ These values serve as a guide only and may vary from image to image. Therefore, 
 
 Do you want to use transparent images your two choices are GIF or PNG. JPGs don't work with transparency. PNG has a further advantage over GIF: the variable opacity or alpha-effect. With PNGs you can use images that are, for example, 50% transparent. GIF can not do that. It's all (100%) or nothing (0%) transparency. This property sets clearly PNG over GIF. With PNG you can manage to create designs you can't accomplish with other formats.
 
+## JavaScripts
+
+JavaScript itself is a programming language that runs in the visitor's browser, hence on the client side. This means that the visitor's computer must do the heavy work. You can use JavaScript server-side through the script "node.js". Then it behaves like PHP and is executed on the computer (server) in the network. At the price of speed...
+
+You can code JavaScript either directly in the file index.php or include it as a separate file. The program is then executed in the browser run time.
+
+If you want to use additional JavaScript files, for example, the framework jQuery, you can personalize it in its directory (usually called 'js') and link with the following code in the index.php:
+
+    $doc->addScript($tpath.'/js/javascript.js');
+
+Tip: It is better to place additional files, that are not explicitly required in the header area `<head>`, just before the closing tag of the body `</body>` in index.php. It has been proven that your website's performance increase if all CSS files are loaded in head and all JavaScript files at the end of the body area.
+
+Alternatively, you can also load JavaScript libraries via Google, which carry the advantage of faster page loading for visitors. A script loads faster from a client's browser than from the server. Another advantage is that multiple scripts can be loaded parallel. Some browsers limit the connections per server, and therefore lower the website's performance. The biggest advantage however is the better caching. Assume you have already visited a web site and your browser has loaded jQuery through Google in the computer's cache. This library will not be loaded again when you visit a site that uses the same library from Google. For further informations look at [Google Hosted Libraries - Developer's Guide](https://developers.google.com/speed/libraries/devguide).
+
+Hint: With the inclusion of additional JavaScripts or frameworks, complications can arise because Joomla uses the Bootstrap Framework by default. Some frameworks offer a No-Conflict-Method. You should first think carefully whether the extra effort is justified when you plan to use a JavaScript.
+
