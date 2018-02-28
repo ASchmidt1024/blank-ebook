@@ -1613,7 +1613,7 @@ This text will be displayed instead of the variable. In other words: whenever th
 
 ## Photoshop files
 
-As the Goodie BL4NK comes with some Photoshop files. In practice, Photoshop is the image editing program that many the designers work with. GIMP may be a good alternative for amateur designers, however, it doesn't have many of the capabilities and functions of Photoshop. [The following files are you ready for it](http://itr.im/psd.zip):
+As the Goodie BL4NK comes with some Photoshop files. In practice, Photoshop is the image editing program that many the designers work with. GIMP may be a good alternative for amateur designers, however, it doesn't have many of the capabilities and functions of Photoshop. [The following files are you ready for it](http://itr.im/psd):
 
 - App Icon Template [2.0].psd
 - template_preview.psd
