@@ -1168,3 +1168,296 @@ For example, when you add a Google Font as a parameter, you can use that value i
 
 You define a variable $googlefont and add its value as a parameter in the next line: `$doc->addStyleSheet` looks for the Google API then you load the font in your template.
 
+## Error page
+
+When the visitors to your website goes to page that does not exist, they'll get a system error message on screen. The error message from Joomla!™ - to put it mildly - isn't very pretty. Much better to create your own error page. The BL4NK template will do that fine.
+
+### A good structure
+
+The error page should never berate your visitors. After all, it's not their fault if a page doesn't exist or an internal server error occurs. The following requirements should build a a good error page:
+
+- Minimalist design. Express yourself with simple texts and clear images. Write only the bare minimum. Less is more!
+- Link to the home page. Describe in no uncertain terms how reach the Home page and place a link to it. An additional link, for example in the logo is helpful. However, it should not be the only point to get back to the home page.- A search. Offer your visitors always a search box. He'll know what he wants to see, but since he followed a trail, the page he's looking for may have changed or was removed. A search box will be appreciated to narrow down what he was looking for.
+
+Do not use technical terms. To my mother, born in 1954, "404 Error" is completely meaningless.
+
+### error.php
+
+Two files are responsible for the error page: error.php and error.css. The header section of the PHP file is almost identical to the index.php and need no further explanation. The body does:
+
+    <body>
+      <div align="center">
+        <div id="error">
+          <h1>
+            <?php echo htmlspecialchars($app->getCfg('sitename')); ?>
+          </h1>
+          <p>
+            <?php 
+              echo $this->error->getCode().' - '.
+                   $this->error->getMessage(); 
+              if (($this->error->getCode()) == '404') {
+                echo '<br />';
+                echo JText::_('JERROR_..._NOT_FOUND');
+              }
+            ?>
+          </p>
+          <p>
+            <?php echo JText::_('JERROR_..._HOME_PAGE'); ?>: 
+            <a href="<?php echo $this->baseurl; ?>/">
+              <?php echo JText::_('JERROR_LAYOUT_HOME_PAGE'); ?>
+            </a>.
+          </p>
+          <?php // render module mod_search
+            $module = new stdClass();
+            $module->module = 'mod_search';
+            echo JModuleHelper::renderModule($module);
+          ?>
+        </div>
+      </div>
+    </body>
+
+(Note from the author: For better readability the language variables were shortened in some places with three dots ... )
+
+In the heading (h1) the site title of your website is generated. Followed by the output of the error code, and the error message. The control structure (an “if” statement) checks whether it this a 404 error and where to place an additional error message, if necessary. The text of this can be found in the language files. After that, the visitor can click on the link to to go to the home page. As a last step, the module mod\_search is placed in the script. So visitors can search on the error page what they were looking for. The jdoc:include command you use in the index.php file to display modules at certain positions does not work here. However, the object JModuleHelper::renderModule will do that instead.
+
+The error.php is in the top section of the file, with the associated error.css linked to it. The error.css file you can find in the CSS folder in your template directory.
+
+    /* ERROR
+       ========================================================================== */
+
+    html,
+    body {
+      height: 100vh;
+    }
+
+    body {
+      color: #111;
+      font-family: Arial,Sans Serif;
+      font-size: 1rem;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    #error {
+      margin: 0 auto;
+      padding: 20px;
+      max-width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      #error {
+        padding-top: 32vh;
+        max-width: 400px;
+      }
+    }
+
+    h1 {
+      margin:0 0 20px 0;
+    }
+
+    .search label {
+      display:none
+    }
+
+There is plenty of room for your own design, your creativity is not limited. Brows the Internet to find some really great examples of custom error pages. You'll find lots of them.
+
+## Offline page
+
+The offline.php file is always displayed when Joomla!™ is taken offline by the backend. In the configuration you can also leave the offline message, which is then displayed. For the design the offline.css is responsible.
+
+A good opportunity to Joomla!™ set offline are updates. Through the login form you have also the possibility to look at the frontend of your site and test if it works properly.
+
+### offline.php
+
+The head section is similar to the index.php and error.php. In the body you code the part which a visitor see when he enters your website (in offline mode).
+
+    <body>
+      <div id="frame">
+        <?php if ($app->getCfg('offline_image')) : ?>
+          <img src="<?php echo $app->getCfg('offline_image'); ?>" 
+               alt="<?php echo $app->getCfg('sitename'); ?>" />
+        <?php endif; ?>
+        <h1>
+          <?php echo htmlspecialchars($app->getCfg('sitename')); ?>
+        </h1>
+        <?php 
+          if ($app->getCfg('display_offline_message', 1) == 1 
+            && str_replace(' ', '', 
+            $app->getCfg('offline_message')) != ''): 
+        ?>
+        <p><?php echo $app->getCfg('offline_message'); ?></p>
+        <?php 
+          elseif ($app->getCfg('display_offline_message', 1) == 2 
+            && str_replace(' ', '', 
+            JText::_('JOFFLINE_MESSAGE')) != ''): 
+        ?>
+        <p><?php echo JText::_('JOFFLINE_MESSAGE'); ?></p>
+        <?php 
+          endif; 
+        ?>
+        <jdoc:include type="message" />
+        <form action="<?php echo JRoute::_('index.php', true); ?>" 
+          method="post" 
+          name="login" 
+          id="form-login">
+          <fieldset class="input">
+            <p id="form-login-username">
+              <input type="text" 
+                name="username" 
+                id="username" 
+                class="inputbox" 
+                alt="<?php echo JText::_('JGLO...NAME'); ?>" 
+                size="18"
+                placeholder="<?php echo JText::_('JGLO...NAME'); ?>" />
+            </p>
+            <p id="form-login-password">
+              <input type="password" 
+                name="password" 
+                id="password" 
+                class="inputbox" 
+                alt="<?php echo JText::_('JGLO...WORD'); ?>" 
+                size="18"
+                placeholder="<?php echo JText::_('JGLO...WORD'); ?>" />
+            </p>
+            <p id="form-login-remember">
+              <input type="checkbox" 
+                name="remember" 
+                value="yes" 
+                alt="<?php echo JText::_('JGLOBAL_REMEMBER_ME'); ?>" 
+                id="remember" />
+              <label for="remember">
+                <?php echo JText::_('JGLOBAL_REMEMBER_ME'); ?>
+              </label>
+            </p>
+            <p id="form-login-submit">
+              <input type="submit" 
+                name="Submit" 
+                class="button" 
+                value="<?php echo JText::_('JLOGIN'); ?>" />
+            </p>
+          </fieldset>
+          <input type="hidden" name="option" value="com_users" />
+          <input type="hidden" name="task" value="user.login" />
+          <input type="hidden" name="return" 
+            value="<?php echo base64_encode(JURI::base()); ?>" />
+          <?php echo JHTML::_( 'form.token' ); ?>
+        </form>
+      </div>
+    </body>
+
+Unlike on the error page the jdoc:include does work on the offline page. Therefore it is first item in the script. Following is a query to generate the offline image which is stored in the configuration in the backend of your site (if you want to work with an image, that is). This will replace the default offline page by your own, with a place for the output error message that you retrieve from the configuration file of Joomla!™. Then the login with username field and password are added.
+
+The same as for the error page applies to the offline page: be creative as you want to be. Customize the page using the stylesheet offline.css.
+
+    /* OFFLINE
+       ========================================================================== */
+
+    html,
+    body {
+      height: 100vh;
+    }
+
+    body {
+      color: #111;
+      font-family: Arial,Sans Serif;
+      font-size: 1rem;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    img {
+      border: 0 none;
+    }
+
+    #frame {
+      margin: 0 auto;
+      padding: 20px;
+      max-width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      #frame {
+        padding-top: 32vh;
+        max-width: 400px;
+      }
+    }
+
+    .inputbox {
+      width: 130px;
+    }
+
+    form {
+      margin: auto;
+    }
+
+    form p {
+      margin: 0;
+      padding: 0;
+    }
+
+    form fieldset {
+      border: 0 none;
+      margin: 0;
+      padding: 0.2em;
+    }
+
+    input {
+      padding: 5px;
+      font-size: 1rem;
+    }
+
+    input.button {
+      cursor: pointer;
+      width: auto;
+    }
+
+    form p {
+      padding: 0.3em 0;
+    }
+
+    label[for="remember"] {
+      font-size: .85rem;
+    }
+
+    .alert {
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid transparent;
+      background-color: #fcf8e3;
+      border-color: #faebcc;
+      color: #8a6d3b;
+    }
+
+    .alert h4 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: inherit;
+        font-family: inherit;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.1;
+    }
+
+    .close {
+        float: right;
+        font-size: 21px;
+        font-weight: 700;
+        line-height: 1;
+        color: #000;
+        text-shadow: 0 1px 0 #fff;
+        filter: alpha(opacity=20);
+        opacity: .2;
+    }
+
+    .close:focus,
+    .close:hover {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+        filter: alpha(opacity=50);
+        opacity: .5;
+    }
+
+
