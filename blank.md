@@ -1570,3 +1570,53 @@ Alternatively, you can also load JavaScript libraries via Google, which carry th
 
 Hint: With the inclusion of additional JavaScripts or frameworks, complications can arise because Joomla uses the Bootstrap Framework by default. Some frameworks offer a No-Conflict-Method. You should first think carefully whether the extra effort is justified when you plan to use a JavaScript.
 
+## Language files
+
+BL4NK comes without language files. If you want to use language files, you should create a folder called language in your template folder. The name 'language' in lower case letters is compulsory. You need to create that language folder before (!) you install the template.
+
+Language files are created the following way:
+
+- de-DE/de-DE.tpl_frontend.ini
+- en-GB/en-GB.tpl_frontend.ini
+
+For each language you have to create its own folder. In your template folder it would look like this:
+
+- frontend
+  + language
+    * de-DE
+      - de-DE.tpl_frontend.ini
+    * en-GB
+      - en-GB.tpl_frontend.ini
+
+You have to declare the language folder and the various languages in templateDetails.xml under the files section `</files>`:
+
+    <languages folder="language">
+      <language tag="de-DE">de-DE/de-DE.tpl_frontend.ini</language>
+      <language tag="en-GB">en-GB/en-GB.tpl_frontend.ini</language>
+    </languages>
+
+Generally, language files work in both the frontend and backend. Tese files, contain the text used by the language variables. The file name is composed of the country code, the extension type, the template name and the file extension together. The country code de-DE stands for the language (de) and the country (DE). For Switzerland this would be de-CH. For the USA it is (en) and (US), making it en-US and for the United Kingdom of Great Britain and Northern Ireland en-GB. The template extension for language is tpl. Thus, the default language being British English, we have en-GB.tpl. The next part is your template name, separated by an underscore, e. g.: frontend. The file extension .ini designates an initialisation file, say a setup file.
+
+The language files are important for translations. For example, if you equip your templates with parameters, they receive a description. This description can be translated into other languages linguistic and therefore variables are used. The variables associated with the wording to be used, are found in the language files.
+
+**Example**
+
+The file templateDetails.xml of BL4NK you can define a parameter to use Google fonts:
+
+TPL\_FRONTEND\_PARAMETER\_GOOGLEFONT\_LABEL
+
+If you open the file "en-GB.tpl_frontend.ini", you can find the wording for it.
+
+TPL\_FRONTEND\_PARAMETER\_GOOGLEFONT\_LABEL="Google Font"
+
+This text will be displayed instead of the variable. In other words: whenever the variable TPL\_FRONTEND\_PARAMETER\_GOOGLEFONT\_LABEL appears in the template the output of the text in the "Google Font" is displayed.
+
+## Photoshop files
+
+As the Goodie BL4NK comes with some Photoshop files. In practice, Photoshop is the image editing program that many the designers work with. GIMP may be a good alternative for amateur designers, however, it doesn't have many of the capabilities and functions of Photoshop. [The following files are you ready for it](http://itr.im/psd.zip):
+
+- App Icon Template [2.0].psd
+- template_preview.psd
+- template_thumbnail.psd
+
+The app icon template is intended to create the icons. It includes a Smart object to all Icons in a create slip. You can use it to create icon of various sizes and export them the same time. Size, resolution and file name are all already given. The other two files are intended for Preview images.
