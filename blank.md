@@ -1480,5 +1480,77 @@ By using the component.php it is possible for you to create your own css file, d
     @import url('normalize.css');
     @import url('editor.css');
 
+## Overrides
 
+A milestone in Joomla!™ are the overrides. With overrides you can customize an extension for your own needs. Many developers and designers in the past complained about the component com\_content creates HTML tables. This component is responsible for the content. You can change these things now, without touching the core files. Sure, you can also change the core files, thus changing the original. But then you run the risk that the next Joomla!™ update overwrites your file. In that case your changes would be lost and you would have to start all over again. And again and again...
+
+An override works like this: you create an exact copy of the file, put it in your template folder, rewrite it and if the Joomla!™ extension is invoked, your file has priority over the original. Your file is the override of the actual file.
+
+Thanks to the fact that Joomla!™ is based on the architecture Model-View-Controller (abbreviated MVC) overrides are possible. Under this architecture, the output of an extension - what the visitor will actually see on screen - is addressed by so-called 'views'. And these 'views' can be overridden. The 'views' have no influence on the working of the extension.
+
+Suppose you want to change the default output of an article. Responsible for this output is the component com_content. This component directory exists in the of the folder 'article' within the 'tmpl' subfolder. Here you find the "default.php" file that controls the output. The full path in Joomla!™ is:
+
+components/com\_content/views/article/tmpl/default.php
+
+This default.php file you can override in your template within the subfolder 'article' of the folder 'com_content' within the directory 'html'. That's difficult to read but easy to see in an example. The full path would look like this:
+
+templates/frontend/html/com\_content/article/default.php
+
+Following this principle, you gain the complete control over the output of your website.
+
+From Joomla!™ Version 3, you can easily create override in the backend. Go to Extensions > Template Manager > Templates > ... details and files > Create Overrides. Select there the extension or module which you want to override.
+
+## Images
+
+Images required to each template are stored in the template folder 'images'. You don't need to name your folder 'images', but 'images' or 'img' make a lot more sense than 'apples'. However, the two preview images template\_preview.png and template\_thumbnail.png, are exceptions. They reside in the template's root folder. The first image is the large preview of the second image, the small preview; which is displayed in the backend.
+
+Images are available in different formats and each format has its strengths and is used in various fields.
+
+- Use GIF in web design with few colors
+- Use PNG in web design with many colors
+- Use PNG in web design with transparency
+- Use JPG in web design with photos and landscapes
+
+The reason will be described in the following chapter.
+
+### Formats
+
+There are three formats for your images being:
+
+- GIF - Graphics Interchange Format
+- PNG - Portable Network Graphics
+- JPEG - Joint Photographic Experts Group
+
+Other formats such as TIFF are not suitable for the Internet. TIFFs store too much information which increases the size of the image and thus increases the load time unnecessarily. It is an art to deal with images as a web designer, because not every situation has a specific preferable format.
+
+#### GIF
+
+Advantage: Small size, transparency
+Disadvantage: Only 256 colors, no alpha effect
+
+#### PNG
+
+Advantage: Small size, lossless compression, 16,7 million colors, transparency, alpha effect
+Disadvantage: In PNG-8 no alpha effect
+
+#### JPEG
+
+Advantage: Small size, variable compression, 16.7 million colors
+Disadvantage: No transparency, no alpha effect
+
+### Size
+
+It's very important for a web designer is to pick the right size for an image. The smaller, the faster it loads. So our motto should be: save your picture size where you can. It's all about pure loading time. Especially when more than 100 images are used, each kilobyte is valuable.
+
+An experiment has shown that one and the same image has significant differences in the different formats, without recognizing a visible difference.
+
+GIF: 20,7 KB
+PNG: 44,4 KB
+JPG: 25,9 KB
+
+These values serve as a guide only and may vary from image to image. Therefore, export an image in all three formats and look at the result. The ratio of quality to file size is crucial to achieve the best possible loading time.
+
+### Transparency
+
+Do you want to use transparent images your two choices are GIF or PNG. JPGs don't work with transparency. PNG has a further advantage over GIF: the variable opacity or alpha-effect. With PNGs you can use images that are, for example, 50% transparent. GIF can not do that. It's all (100%) or nothing (0%) transparency. This property sets clearly PNG over GIF. With PNG you can manage to create designs you can't accomplish with other formats.
 
