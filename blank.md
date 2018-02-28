@@ -1460,4 +1460,25 @@ The same as for the error page applies to the offline page: be creative as you w
         opacity: .5;
     }
 
+## Print page
+
+The component.php allows you to print a printer-friendly version of your web pages. Printer friendly means that you print the component view only. The component is responsible for showing the articles. The whole layout (modules, menus, etc.) remains as it is. This can be rather handy; the focus is on the content only.
+
+    <body id="print">
+      <div id="overall">
+        <jdoc:include type="message" />
+        <jdoc:include type="component" />
+      </div>
+      <?php if ($_GET['print'] == '1') echo '<script type="text/javascript">window.print();</script>'; ?>
+    </body>
+
+By using the component.php it is possible for you to create your own css file, defining how you want to print that page. In the template directory of Blank your find the file print.css ready to go.
+
+    /* PRINT
+       ========================================================================== */
+
+    @import url('normalize.css');
+    @import url('editor.css');
+
+
 
