@@ -55,4 +55,74 @@ We will get into the other functions later. The template is now ready for develo
 
 Optional, replace the template\_preview.png, template\_thumbnail.png and the favicon.ico with your own. You'll find all three files in the root of your template folder. You can use [this PSD files](http://itr.im/psd) to create your own images.
 
+## index.php
+
+The file index.php is at the heart of each template. This is where all files converge. It is largely responsible for the source code and in the end it's all about creating and influencing the source code. Open it! We go through step by step, before you start coding.
+
+The first line is written in PHP `<?php defined( '_JEXEC' ) or die;`. With `<?php` you open the PHP area (which should be closed with `?>` again) and with `defined( '_JEXEC' ) or die` you forbid direct access to this file. This is done via the Joomla!™ API with the \_JEXEC command. This statement checks to see if the file is being called from within Joomla!™ and it protects your site by making it more difficult for a cracker/hacker to damage your site.
+
+With the next line you include the logic.php file.
+
+    include_once JPATH_THEMES.'/'.$this->template.'/logic.php';
+
+This file holds the variables and program logic of the template. It will be explained after index.php. JPATH_THEMES is a [constant of Joomla!™](https://docs.joomla.org/Constants) and with `$this->template` we get the current template.
+
+### head
+
+> Zombie, zombie, zombie
+> Hey, hey
+> What's in your head, in your head
+> Zombie, zombie, zombie
+> Hey, hey, hey
+> Oh, do, do, dou, do, do, dou, do, do
+> Dou, do, do, dou, dou, do, do, dou
+>
+> (Part of the songtext: The Cranberries - Zombie)
+
+What follows is an HTML document. The declaration of `<!doctype html>`, `<html>` and `<head>`.
+
+    <!doctype html>
+    <html lang="<?php echo $this->language; ?>">
+    <head>
+        <jdoc:include type="head" />
+    </head>
+
+Yo, the first line is the document declaration, second line opens the html area with the attribute `lang` with the site specific language shortcut (e.g. `en`). This will be done with php `echo $this->language;`. The head area follows and contains a Joomla!™ specific code to include all the head stuff. With this line the CMS is able to load scripts, links, metas, title and all the invisible but necessary things of your website. If the template is already installed, take a look at the source code of the frontend and you will see all the stuff.
+
+### body
+
+The body contains all the visible stuff of your site.
+
+    <body class="<?php echo $active->alias . ' ' . $pageclass; ?>">
+
+        <!--
+            SHOW ME YOUR AWESOME CODE
+        -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <jdoc:include type="component" />
+                </div>
+            </div>
+        </div>
+
+
+        <jdoc:include type="modules" name="debug" />
+        <script src="templates/frontend/build/app.js"></script>
+    </body>
+
+Well, the first line opens the body area with two specific class values: `$active->alias` and `$pageclass`. Maybe you still have recognized it, that every time you create a new menu item in the backend, Joomla!™ creates an alias of this item automatically. It will be created throught the item title in lowercase and empty spaces will be replaced with separators. This alias is predestined to be a class name. So we take it and give it to the body. And yes, at the menu item you are able to leave an extra page class. This page class is also taken for the body class.
+
+The seven lines after `SHOW ME YOUR AWESOME CODE` are example code in the bootstrap way. Three divs contains one jdoc. You can read it in the [official Bootstrap documentation](http://getbootstrap.com/), that containers are required when using the grid system. It uses a series of containers, rows and columns to layout and align content. 'It’s built with [flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes) and is fully responsive.' The above example creates one column in full width (the basic grid system has 12 columns) to display the content of each component of Joomla!™, e.g. articles. This will be done with `<jdoc:include type="component" />` and can only be once in every template.
+
+One module follows the component: `<jdoc:include type="modules" name="debug" />`. If you turn on the debug mode in your configuration of your awesome CMS, the output will shown in the frontend in exactly this place. You need to do the same with all your module positions; later more.
+
+Finally, and as an very old developer (39 y, call me grandpa) long awaited, the one and only javascript of the website before the closing body tag: `<script src="templates/frontend/build/app.js"></script>`. This file will be created with Gulp; later more.
+
+Now it's time for a little excursion. It takes only five minutes.
+
+## logic.php
+
+(to be continued)
+
 
