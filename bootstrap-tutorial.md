@@ -117,11 +117,70 @@ The seven lines after `SHOW ME YOUR AWESOME CODE` are example code in the bootst
 
 One module follows the component: `<jdoc:include type="modules" name="debug" />`. If you turn on the debug mode in your configuration of your awesome CMS, the output will shown in the frontend in exactly this place. You need to do the same with all your module positions; later more.
 
-Finally, and as an very old developer (39 y, call me grandpa) long awaited, the one and only javascript of the website before the closing body tag: `<script src="templates/frontend/build/app.js"></script>`. This file will be created with Gulp; later more.
-
-Now it's time for a little excursion. It takes only five minutes.
+Finally, and as an very old developer (40 y, call me grandpa) long awaited, the one and only javascript of the website before the closing body tag: `<script src="templates/frontend/build/app.js"></script>`. This file will be created with Gulp. But before going into gulpfile.js, we just take a look at the logic.php. It takes only five minutes.
 
 ## logic.php
+
+The logic.php file is being included in the index.php. While the index.php stands for the HTML output, the logic.php represents the programming logic. During template development, it is not unusual that the file is further programmed.
+
+First to make sure that this file is called from Joomla!™ only, the following line is written at top.
+
+    <?php defined( '_JEXEC' ) or die;
+
+This code prevents that the file can not be accessed from the address bar of your browser.
+
+Some variables for the proper use of the template are required. [The basics of PHP variables](http://de2.php.net/manual/en/language.variables.basics.php) can be found in PHP manual (for beginners: [A simple tutorial in PHP](http://php.net/manual/en/tutorial.php)).
+
+In a nutshell:
+
+- The first character of each PHP variables is the dollar sign $. This is followed by the variable name. 
+- Distinction is made between uppercase and lowercase. 
+- $My\_variable is not the same as $my\_variable or $My\_Variable. 
+- The dollar sign must be followed by a letter or an underscore (_). 
+- Spaces are not allowed. $\_my\_variable is okay, $ my\_variable is not. 
+
+    // variables 
+    $app = JFactory::getApplication(); 
+    $doc = JFactory::getDocument(); 
+    $menu = $app->getMenu(); 
+    $active = $app->getMenu()->getActive(); 
+    $params = $app->getParams(); 
+    $pageclass = $params->get('pageclass_sfx'); 
+    $tpath = $this->baseurl.'/templates/'.$this->template; 
+
+Most of the variable names are quite self-explanatory. Not so for the contents of the variables, a little explanation is in order. Let's go line by line:
+
+    $app = JFactory::getApplication();
+
+The variable $app is created, the content in the Joomla!™ framework is called for by the JFactory. The application to which it refers to is Joomla!™ itself, the CMS. The variable $app we will also need for the parameters.
+
+    $doc = JFactory::getDocument();
+
+Similarly, here comes the variable $doc. Again, we put the Joomla!™ framework to work with the JFactory class. This variable will take care of the RSS feeds within the page, site information, such as the title and description, references to the JavaScript and CSS files being loaded and will do a lot more. However, that is beyond the scope of this book.
+
+    $menu = $app->getMenu();
+
+This variable points to the menu within the $app variable.
+
+    $active = $app->getMenu()->getActive();
+
+This variable goes a step further: It looks for the active menu item within the $menu. It also checks if this is the home page or not.
+
+    $params = $app->getParams();
+
+Using the variable $app we'll query Joomla!™ for the parameters and store that in the variable $params. We will then use to query the page class:
+
+    $pageclass = $params->get('pageclass_sfx');
+
+A rather aptly named variable, $pageclass. The page class suffix is a parameter in Joomla!™ menu items. It can be set in each menu item: [Edit] screen under the "Parameters (Advanced)" section. This will order Joomla!™ to either add a new CSS class or modify the existing CSS class for elements in this specific menu item layout.
+
+    $tpath = $this->baseurl.'/templates/'.$this->template;
+
+That's easy: Variable $tpath contains the relative path to the template directory from the base URL. The $tpath variable is told to look for the active template folder from the base url.
+
+These are all the variables used in BL4NK.
+
+
 
 (to be continued)
 
