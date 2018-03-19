@@ -129,6 +129,8 @@ First to make sure that this file is called from Joomla!™ only, the following 
 
 This code prevents that the file can not be accessed from the address bar of your browser.
 
+### Declaring variables
+
 Some variables for the proper use of the template are required. [The basics of PHP variables](http://de2.php.net/manual/en/language.variables.basics.php) can be found in PHP manual (for beginners: [A simple tutorial in PHP](http://php.net/manual/en/tutorial.php)).
 
 In a nutshell:
@@ -180,6 +182,56 @@ That's easy: Variable $tpath contains the relative path to the template director
 
 These are all the variables used in BL4NK.
 
+### generator tag
+
+The generator tag tells the world that we build this site with Joomla!™. Something nobody needs to know, least of all undesirables who want to hack your site. Do we want it? No, we most certainly do not!
+
+    $this->setGenerator(null);
+
+We are the web developers and we are the ones that need to know what the source code actually is. Nobody else should. Hackers need to know what CMS your using, in order to hack it. Why make it any easier than necessary?
+
+Supposing your want to want to tell the world your website runs on Drupal or WordPress? No problem. Just fill in Drupal or WordPress between the single quotes. Or anything that you like:
+
+    $this->setGenerator('Drupal');
+
+This will generate `<meta name="generator" content="Drupal" />` in the outputted source code of your website.
+
+### Unset JavaScript
+
+As web developer you should have the full power over your website. In order to that you should unset some JavaScripts, because you want to put this JavaScripts in one single file, referenced before the closing body tag. And it you can take this JavaScripts, you can compressing and uglifiying them. However, the following lines unset some scripts.
+
+    unset($doc->_scripts[$this->baseurl .'/media/jui/js/jquery.min.js']);
+    unset($doc->_scripts[$this->baseurl .'/media/jui/js/jquery-noconflict.js']);
+    unset($doc->_scripts[$this->baseurl .'/media/jui/js/jquery-migrate.min.js']);
+    unset($doc->_scripts[$this->baseurl .'/media/jui/js/bootstrap.min.js']);
+    unset($doc->_scripts[$this->baseurl .'/media/system/js/caption.js']);
+    unset($doc->_scripts[$this->baseurl .'/media/system/js/core.js']);
+    unset($doc->_scripts[$this->baseurl .'/media/system/js/tabs-state.js']);
+    unset($doc->_scripts[$this->baseurl .'/media/system/js/validate.js']);
+
+Each line calls the unset function. This functions gets access to the document ($doc), especially to the scripts (\_scripts). Then, only the path to each script is needed to execute the function correctly. And yes, not only scripts will be loaded in the head. Some plain JavaScript code appears there too. Muah! Lets unset this.
+
+    if (isset($doc->_script['text/javascript']))
+    {
+        $doc->_script['text/javascript'] = preg_replace('%jQuery\(window\)\.on\(\'load\'\,\s*function\(\)\s*\{\s*new\s*JCaption\(\'img.caption\'\);\s*}\s*\);\s*%', '', $doc->_script['text/javascript']);
+        $doc->_script['text/javascript'] = preg_replace("%\s*jQuery\(document\)\.ready\(function\(\)\{\s*jQuery\('\.hasTooltip'\)\.tooltip\(\{\"html\":\s*true,\"container\":\s*\"body\"\}\);\s*\}\);\s*%", '', $doc->_script['text/javascript']);
+        if (empty($doc->_script['text/javascript']))
+        {
+            unset($doc->_script['text/javascript']);
+        }
+    }
+
+Okay, here you need a little structure to control, if the unset is really needed. You do it with a simple if statement. So if some plain script (text/javascript) exists (isset), then there should be a replacement (preg_replace). One replacement function is looking for some jQuery, that activate the JCaption function, a function for image captions. Another replacement is looking for the hasTooltip function, a function - you guess it right - to activate tooltips. Well done. You get it off. The head is cleaned from any script.
+
+### Template CSS
+
+To access the one and compressed CSS file of your template, you only need this line:
+
+    $doc->addStyleSheet($tpath.'/build/main.css');
+
+This will instruct the $doc variable to add main.css by the addStyleSheet function with the path to it. Continue reading to know how this file will be generated.
+
+## gulpfile.js
 
 
 (to be continued)
