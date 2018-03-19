@@ -233,6 +233,94 @@ This will instruct the $doc variable to add main.css by the addStyleSheet functi
 
 ## gulpfile.js
 
+> gulp is a toolkit for automating painful or time-consuming tasks in your development workflow, so you can stop messing around and build something. ~ [gulp.js](https://gulpjs.com/)
+
+You are using Gulp to get the current version of [Bootstrap](http://getbootstrap.com/) and [Font Awesome](https://fontawesome.com/). Another task of Gulp will be to compile your SASS to CSS and compress it. All JavaScripts will be concatinated and compressed to one file. Last but not least you automate a browser reload after every change, so you havn't to do it manually. All this comes with Gulp plugins and will save your time. Well, lets take a look into the gulpfile.js in your template root folder.
+
+### Declaring variables
+
+To use a plugin in Gulp you have to create a variable for it. With a variable you can write a task to use the plugin for his work.
+
+    var gulp        = require('gulp');
+    var concat      = require('gulp-concat');
+    var sass        = require('gulp-sass');
+    var uglify      = require('gulp-uglify');
+    var runSequence = require('run-sequence');
+    var browserSync = require('browser-sync').create();
+
+First gulp itself is declared. concat holds the [gulp-concat](https://github.com/gulp-community/gulp-concat) plugin, to put many files into one file. The plugin [gulp-sass](https://github.com/dlmanning/gulp-sass) will be used as sass compiler to generate and compress your CSS. uglify holds the [gulp-uglify](https://github.com/terinjokes/gulp-uglify) plugin, which is a JavaScript parser, minifier, compressor and beautifier toolkit with [UglifyJS3](https://github.com/mishoo/UglifyJS2). The plugin [run-sequence](https://github.com/OverZealous/run-sequence) runs a sequence of gulp tasks in the specified order. For time-saving synchronised browser testing you're using [browser-sync](https://browsersync.io/). All these plugins will be installed when you install the template through `npm install`.
+
+### Get the new stuff
+
+It's time for the first Gulp task called 'files' to get the new versions of Bootstrap and Font Awesome.
+
+    gulp.task('files', function() {
+        gulp.src('node_modules/bootstrap/scss/**/*')
+            .pipe(gulp.dest('scss/bootstrap'));
+        gulp.src('node_modules/font-awesome/scss/**/*')
+            .pipe(gulp.dest('scss/font-awesome'));
+        gulp.src('node_modules/font-awesome/fonts/**/*')
+            .pipe(gulp.dest('fonts'));
+    });
+
+After installing the template via npm the Node.js® package manager gets the current versions of Bootstrap and Font Awesome and copies the files respectively in a specific folder. This folders will be used as source folders and to get all files in there, your are using placeholders like \*\* and \*. The first placeholder \*\* is for any directory in the folder, the second \* for any file. The destination folders for the files is the scss and the font folder of the template.
+
+### Compiling SASS
+
+To compile your SASS to CSS the gulpfile.js contains another task called 'sass'.
+
+    gulp.task('sass', function() {
+        return gulp.src(['scss/main.scss'])
+            .pipe(sass({outputStyle: 'compressed'}))
+            .pipe(gulp.dest('build'))
+            .pipe(browserSync.stream());
+    });
+
+First line is to declare the task 'sass' as a function. It will take the main.scss as source and compile and compress it with the sass plugin. The final destination is the build folder in your template directory. After that the browser should be reload automatically through browserSync.
+
+### Uglifying JavaScript
+
+The code to bring all JavaScripts together is written in the task 'js'.
+
+    gulp.task('js', function() {
+        return gulp.src([
+            'node_modules/jquery/dist/jquery.slim.min.js',
+            'node_modules/popper.js/dist/umd/popper.min.js',
+            'node_modules/bootstrap/dist/js/bootstrap.min.js',
+            'js/script.js'
+            ])
+            .pipe(concat('app.js'))
+            .pipe(uglify())
+            .pipe(gulp.dest('build'))
+            .pipe(browserSync.stream());
+    });
+
+Four files should be the source. The first three belongs to Bootstrap and the last one called script.js is for your own scripting. With concat your will bring them together. After that only one file is left: 'app.js'. This file will be minified and compressed before put it into the build folder of your template. Finally the browserSyn reloads your browser automatically. Magic!
+
+### Starting a server
+
+Well, you don't want to call every task manually after a change. Gulp can do it for your by watching all necessary files and after a change, it runs the specific task.
+
+    gulp.task('serve', ['sass'], function() {
+        browserSync.init({
+            // server: './'' // default server
+            // proxy: 'http://localhost:8888/' // mamp
+            proxy: 'http://localhost/blank5/' // usualy
+        });
+        gulp.watch(['js/**/*.js'], ['js']);
+        gulp.watch(['scss/**/*.scss'], ['sass']);
+        gulp.watch('*.php').on('change', browserSync.reload);
+    });
+
+This task 'serve' initializes the browserSync by watching all php, js and scss files of your template. To run it correctly change the proxy path with the path of your browser address (e.g. 'http://localhost/blank5/'). This is the address of your Joomla!™ frontend. So if you change your script.js the task 'js' will be done and if you change your \_custom.scss the task 'sass' will be done. Sexy.
+
+### Default tasks
+
+To start Gulp you only type `gulp` into your command line interface (cli). As default it should run all tasks in a specific order.
+
+    gulp.task('default', runSequence('files','sass','js','serve'));
+
+This task runs by runSequence and calls files, sass, js and serve in exactly this order.
 
 (to be continued)
 
