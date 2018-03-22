@@ -323,7 +323,7 @@ This task runs by runSequence and calls bootstrap, sass, js and serve in exactly
 
 ## Navbar
 
-Back to index.php. For the menu and the search we use the [Bootstrap Navbar](http://getbootstrap.com/docs/4.0/components/navbar/) and apply them to Joomla!™.
+Back to index.php. Its time to code. For the menu and the search you use the [Bootstrap Navbar](http://getbootstrap.com/docs/4.0/components/navbar/) and apply them to Joomla!™. Copy the following lines and paste them after the body tag.
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
