@@ -102,6 +102,9 @@ The body contains all the visible stuff of your site.
             <div class="row">
                 <div class="col-12">
                     <jdoc:include type="component" />
+                    <i class="fas fa-user"></i>
+                    <i class="far fa-user"></i>
+                    <i class="fab fa-github-square"></i>
                 </div>
             </div>
         </div>
@@ -113,7 +116,7 @@ The body contains all the visible stuff of your site.
 
 Well, the first line opens the body area with two specific class values: `$active->alias` and `$pageclass`. Maybe you still have recognized it, that every time you create a new menu item in the backend, Joomla!™ creates an alias of this item automatically. It will be created throught the item title in lowercase and empty spaces will be replaced with separators. This alias is predestined to be a class name. So we take it and give it to the body. And yes, at the menu item you are able to leave an extra page class. This page class is also taken for the body class.
 
-The seven lines after `SHOW ME YOUR AWESOME CODE` are example code in the bootstrap way. Three divs contains one jdoc. You can read it in the [official Bootstrap documentation](http://getbootstrap.com/), that containers are required when using the grid system. It uses a series of containers, rows and columns to layout and align content. 'It’s built with [flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes) and is fully responsive.' The above example creates one column in full width (the basic grid system has 12 columns) to display the content of each component of Joomla!™, e.g. articles. This will be done with `<jdoc:include type="component" />` and can only be once in every template.
+The seven lines after `SHOW ME YOUR AWESOME CODE` are example code in the bootstrap way. Three divs contains one jdoc. You can read it in the [official Bootstrap documentation](http://getbootstrap.com/), that containers are required when using the grid system. It uses a series of containers, rows and columns to layout and align content. 'It’s built with [flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes) and is fully responsive.' The above example creates one column in full width (the basic grid system has 12 columns) to display the content of each component of Joomla!™, e.g. articles. This will be done with `<jdoc:include type="component" />` and can only be once in every template. The following three i tags are for preview some icons of Font Awesome (a solid icon, a regular icon and a brand icon).
 
 One module follows the component: `<jdoc:include type="modules" name="debug" />`. If you turn on the debug mode in your configuration of your awesome CMS, the output will shown in the frontend in exactly this place. You need to do the same with all your module positions; later more.
 
@@ -250,20 +253,16 @@ To use a plugin in Gulp you have to create a variable for it. With a variable yo
 
 First gulp itself is declared. concat holds the [gulp-concat](https://github.com/gulp-community/gulp-concat) plugin, to put many files into one file. The plugin [gulp-sass](https://github.com/dlmanning/gulp-sass) will be used as sass compiler to generate and compress your CSS. uglify holds the [gulp-uglify](https://github.com/terinjokes/gulp-uglify) plugin, which is a JavaScript parser, minifier, compressor and beautifier toolkit with [UglifyJS3](https://github.com/mishoo/UglifyJS2). The plugin [run-sequence](https://github.com/OverZealous/run-sequence) runs a sequence of gulp tasks in the specified order. For time-saving synchronised browser testing you're using [browser-sync](https://browsersync.io/). All these plugins will be installed when you install the template through `npm install`.
 
-### Get the new stuff
+### Current Bootstrap
 
-It's time for the first Gulp task called 'files' to get the new versions of Bootstrap and Font Awesome.
+It's time for the first Gulp task called 'bootstrap' to get the new versions of - you guess it right - Bootstrap.
 
-    gulp.task('files', function() {
-        gulp.src('node_modules/bootstrap/scss/**/*')
+    gulp.task('bootstrap', function() {
+        return gulp.src('node_modules/bootstrap/scss/**/*')
             .pipe(gulp.dest('scss/bootstrap'));
-        gulp.src('node_modules/font-awesome/scss/**/*')
-            .pipe(gulp.dest('scss/font-awesome'));
-        gulp.src('node_modules/font-awesome/fonts/**/*')
-            .pipe(gulp.dest('fonts'));
     });
 
-After installing the template via npm the Node.js® package manager gets the current versions of Bootstrap and Font Awesome and copies the files respectively in a specific folder. This folders will be used as source folders and to get all files in there, your are using placeholders like \*\* and \*. The first placeholder \*\* is for any directory in the folder, the second \* for any file. The destination folders for the files is the scss and the font folder of the template.
+After installing the template via npm the Node.js® package manager gets the current versions of Bootstrap and copies the files in a specific folder. This folder will be used as source folder to get all files in there, your are using placeholders like \*\* and \*. The first placeholder \*\* is for any directory in the folder, the second \* for any file. The destination folder for the files is the scss and the font folder of the template.
 
 ### Compiling SASS
 
@@ -318,9 +317,11 @@ This task 'serve' initializes the browserSync by watching all php, js and scss f
 
 To start Gulp you only type `gulp` into your command line interface (cli). As default it should run all tasks in a specific order.
 
-    gulp.task('default', runSequence('files','sass','js','serve'));
+    gulp.task('default', runSequence('bootstrap','sass','js','serve'));
 
-This task runs by runSequence and calls files, sass, js and serve in exactly this order.
+This task runs by runSequence and calls bootstrap, sass, js and serve in exactly this order.
+
+
 
 (to be continued)
 

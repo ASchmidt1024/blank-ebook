@@ -651,9 +651,9 @@ In this file, CSS is written which is created by the LESS or SASS compiler gener
 
 It is and remains the core of every template: the file index.php. This is where all the files come together. The articles and modules created by you on the backend show up here. All on the right place of the page.
 
-### defined( '_JEXEC' ) or die;
+### defined( '\_JEXEC' ) or die;
 
-This is my favorite command and should be on every Joomla T-shirt! This is a direct call to prevent manipulation by others. Only Joomla is allowed to execute the file containing this script. 
+This is my favorite command and should be on every Joomla T-shirt! This is a direct call to prevent manipulation by others. Only Joomla is allowed to execute the file containing this script.
 
     <?php defined( '_JEXEC' ) or die;
 
@@ -909,7 +909,7 @@ Chrome and overrides are the reasons why Joomla!™ is the right system for your
 
 The logic.php file is included in the index.php. While the index.php stands for the HTML output, the logic.php represents the programming logic. During template development, it is not unusual that the file is further programmed.
 
-### defined( '_JEXEC' ) or die;
+### defined( '\_JEXEC' ) or die;
 
 To make sure that this file is called only in Joomla!™, this line is written.
 
