@@ -321,7 +321,45 @@ To start Gulp you only type `gulp` into your command line interface (cli). As de
 
 This task runs by runSequence and calls bootstrap, sass, js and serve in exactly this order.
 
+## Navbar
 
+Back to index.php. For the menu and the search we use the [Bootstrap Navbar](http://getbootstrap.com/docs/4.0/components/navbar/) and apply them to Joomla!™.
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand"
+          href="<?php echo $this->baseurl; ?>/">
+           <?php echo $app->getCfg('sitename'); ?>
+        </a>
+        <button class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#nav-modules"
+          aria-controls="nav-modules"
+          aria-expanded="false"
+          aria-label="Navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse"
+          id="nav-modules"
+        >
+          <jdoc:include type="modules" name="navbar" />
+        </div>
+      </div>
+    </nav>
+
+The code looks harder than it is. Roughly speaking, it is here there to display the page name, the menu and the search on one line next to each other. On the left side the site name with the menu, and to the right a search box. Remark this in the code with comments, so later on you can find it back more easily.
+
+First, you open a div with the class `navbar navbar-expand-lg navbar-light bg-light`. Bootstrap creates a (responsive) navigation menu. Its horizontal padding is removed at breakpoints lower than the specified `navbar-expand-lg` class. This ensures your are not doubling up on padding unnecessarily on lower viewports when your navbar is collapsed. Theming the navbar will be done by `navbar-light bg-light`. You can try `navbar-dark bg-dark` or `navbar-dark bg-primary` as well (take a look at [Color shemes](http://getbootstrap.com/docs/4.0/components/navbar/#color-schemes)). Although it’s not required, you can wrap a navbar in div with the class `container` to center it on a page.
+
+What follows is the link to the site name. The class `navbar-brand` formats the presentation of the site name. The Joomla!™ API gives you a target (href) to the base URL. Important here is the backslash (/) at the end. About the predefined variable $app you have to get the site name from the configuration and display it.
+
+With the site name on the left the toggle button comes on the right. The toggler appears only on small devices. Its a `button` with the class `navbar-toggle`. The `data-toggle` attribute has the value `collapse`, so the navigation can toggle in and out. The target (attribute `data-target`) is the ID `#nav-modules`. Below you write in a div with the same ID (`#navbar-modules`) a module position called `navbar`.
+
+Look at the result in the frontend. Apart from the site name nothing to see. Both the menu and the search should be created in the backend. But first we need to set the module positions.
+
+## Module positions
 
 (to be continued)
 
