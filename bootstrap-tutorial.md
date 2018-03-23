@@ -370,6 +370,47 @@ In order to do it right you should define all module positions in the file templ
 
 What? These are already listed? Well the template seems to be well written, hehe. Okay, the names are self-explanatory (always use a good naming convention!). The login should be published at the "sidebar" position. Maybe later you want to add another module there, so the name "sidebar" is better than "login" for this position. The "largebar" is intended for visitors with large displays. One you defined the module positions, save and close the file.
 
+## Boilerplate text
+
+Now it'is time to make some preparations in the backend. You create a blank article for building the menu. First create an item with some boiler plate text. Click in Content > Articles > New and set the title "HTML Ipsum Presents". You can copy the following text:
+
+    <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+
+    <h2>Header Level 2</h2>
+
+    <ol>
+       <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+       <li>Aliquam tincidunt mauris eu risus.</li>
+    </ol>
+
+    <blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>
+
+    <hr id="system-readmore" />
+
+    <h3>Header Level 3</h3>
+
+    <ul>
+       <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+       <li>Aliquam tincidunt mauris eu risus.</li>
+    </ul>
+
+    <pre><code>
+    #header h1 a {
+      display: block;
+      width: 300px;
+      height: 80px;
+    }
+    </code></pre>
+
+This text was written by Chris Coyiers on his site [html-ipsum.com](http://html-ipsum.com/) and is called Kitchen Sink. It's a good boiler plate text with some elements, that might be appear on your website. Before the third title `<h3>` we place a "Read more" link. Well, make it a featured article (Featured > Yes) and Save & Close it. Now under Options > Articles hide the following entries near the bottom:
+
+- Show Icons > Hide
+- Show Print Icon > Hide
+- Show Email Icon > Hide
+- Show Hits > Hide
+
+Open the frontend in another tab to preview the result. Ah, yeah! Looks good.
+
 (to be continued)
 
 
