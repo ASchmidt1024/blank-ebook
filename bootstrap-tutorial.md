@@ -361,6 +361,15 @@ Look at the result in the frontend. Apart from the site name nothing to see. Bot
 
 ## Module positions
 
+In order to do it right you should define all module positions in the file templateDetails.xml. So the system has access to and the backend user can publish modules at this defined positions. Open the file in an editor of your choice and scoll to `<positions>`. There you'll find one predefined position called "debug". Add the following code:
+
+    <position>navbar</position>
+    <position>breadcrumbs</position>
+    <position>largebar</position>
+    <position>sidebar</position>
+
+What? These are already listed? Well the template seems to be well written, hehe. Okay, the names are self-explanatory (always use a good naming convention!). The login should be published at the "sidebar" position. Maybe later you want to add another module there, so the name "sidebar" is better than "login" for this position. The "largebar" is intended for visitors with large displays. One you defined the module positions, save and close the file.
+
 (to be continued)
 
 
