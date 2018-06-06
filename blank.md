@@ -1,12 +1,10 @@
-# BL4NK
-
 BL4NK is a great starting point for a new Joomla!™ template project. It's a fully functional template (can be installed directly) and has responsive support. Internet Explorer is obsolete,  HTML5 and CSS3 are the present. And that is how I build BL4NK. HTML5 tags can be used that all browsers correctly interpret. The CSS file [Normalize.css](http://necolas.github.io/normalize.css/) is to all values neutral and independently to render by the browser. It is a advanced HTML5 alternative to the last CSS resets. All style sheets will be combined in one file and load compressed, which are compiled by [Gulp](https://gulpjs.com/) before. The browser loads only a single CSS file with just one line. You can't get it any faster than that.
 
 To write your CSS you can choose between [LESS](http://lesscss.org/) and [SASS](https://sass-lang.com/). Wait a moment, you don't know both? LESS and Sass are preprocessors of CSS. Similar to PHP and HTML you can write code with them that will put out clear CSS. You will use LESS or SASS to write CSS more effective. You can use variables, e.g. to use the same hexadecimal color values on different points. There are a lot of functions, also, and much more. We will get it later.
 
 Then there is a [BL4NK Bootstrap Edition](https://github.com/Bloggerschmidt/Blank-Bootstrap-Edition) (short BBE). For those of you who don't know [Bootstrap](http://getbootstrap.com/): you should! Bootstrap allows you to design a template responsive with mobile-first strategy. If you are using the grid system your template will be responsive for desktops, tabletts and smartphones. Frameworks and APIs (Applications Programming Interfaces) make your life easier. If you are use them, your coding will be much faster as stand alone coding.
 
-## Features
+# Features
 
 - Loading brutally fast
 - Start browsing through constant normalize.css
@@ -17,7 +15,7 @@ Then there is a [BL4NK Bootstrap Edition](https://github.com/Bloggerschmidt/Blan
 - [BL4NK Bootstrap Edition](https://github.com/Bloggerschmidt/Blank-Bootstrap-Edition)
 - Great icons in Bootstrap with Font Awesome
 
-## PSD
+# PSD
 
 Download [psd.zip](http://itr.im/psd) (10.8 MB) to create icons and preview images faster. The ZIP package contains the following files:
 
@@ -29,7 +27,7 @@ All files in Blank, starting with the most important file named index.php until 
 
 Following the Unix principle, each file is a text file and can be opened and edited with your editor. Okay, okay - for image files you'd rather use an image editing program.
 
-# Overview
+# File structure
 
 Have you downloaded the Blank Template and unpacked, find you the following folders and files:
 
@@ -57,7 +55,7 @@ Strictly speaking, you only need two files to create a working template:
 
 Combining these two files gives you [Mini](https://github.com/Bloggerschmidt/Mini), the template with the smallest possible number of files. Follow the idea of minimalism further and look for the smallest index.php in the world.
 
-## index.php (Mini)
+# index.php (Mini)
 
 The index.php file is the core of the template.  This makes all the files work together. It is crucial for the source code responsible and ultimately it's all about the source to create and influence.
 
@@ -135,7 +133,7 @@ The code begins with the document type `<!doctype html>` on line one. Followed b
 
 This source-code comes from the default settings of a content-less Joomla!™ installation. The global meta-data (keywords and description) are not defined and are therefore not displayed. In the previous main-menu the entry "Home" is responsible for the title and heading. This entry is specified as a blog layout hence the class "blog-featured" with activated feed display. Therefore the links in the head-section are titled "RSS 2.0" and "Atom 1.0". On the remaining source-code - for now - you don't have an impact on the backend. At a later stage you will get a chance to take influence on the meta tag called "generator" with code snippets and to take out unneeded JavaScripts. Besides JavaScripts belong to the end of the HTML page before the closing body tag `</body>`. To increase performance, all JavaScripts should be loaded combined and compresses into a single file. There are exceptions, such as the JavaScript modernizr.js, which expressly is to be included in the head-section `<head>`. So much for the generated source code of the minimal index.php.
 
-## templateDetails.xml (Mini)
+# templateDetails.xml (Mini)
 
 The file templateDetails.xml (note the capital D) is the second most important file after index.php within the template. The templateDetails.xml includes general template information (name, author, etc.) and defines the installation routine. The installation routine is nothing else than a listing of all folders and files that belong to the template, in order to have them unpacked and stored with the installation. Additionally the module positions are stored here in order to be integrated via the `jdoc:include` command in the index.php. Optionally, you can create parameters to make the template adjustable within the backend. Perhaps you want your template to shine in different colours, then you adjust those parameters. How about a pretty pink as in the BEEZ template (Joomla!™ 1.5), for example?
 
@@ -175,7 +173,7 @@ The mini template is not all suited as the starting point of your template devel
 - CSS files
 - error, offline and print pages
 
-## Cascading Style Sheets
+# Cascading Style Sheets
 
 The Cascading Style Sheets of Blank are located in folder css. If you open this folder, you find other files beside the css files:
 
@@ -191,7 +189,7 @@ The Cascading Style Sheets of Blank are located in folder css. If you open this 
 
 The files template.less and template.scss are not css files. For what are these files?
 
-### template.less
+## template.less
 
 LESS is a preprocessor of CSS. Or to say it with the official words: [It's CSS, with just a little more.](http://lesscss.org/). So, you can write simple CSS in every LESS-file. Maybe for someone is CSS enough, but to build more complex templates imports, variables, functions, advanced selectors, mixins and a lot more could be usefull. You will get a very short overview of what LESS offers. For a deep dive read the official documentation.
 
@@ -218,7 +216,7 @@ body {
 ```
 Well, "This file will be used to generate the template.css". There are only the comment at the first lines, two selectors `html` and `body` with no attributes and three media queries. This structure should give you the idea of the mobile first strategy. First you write your rules for mobile. If you do it well, there is no need to write other rules. This is called mobile only strategy. But maybe, there should display something in a different way, than you go with your definitions from mobile to tablett to desktop.
 
-#### Imports
+### Imports
 
 It is a good idea to put the styles of an object into a separate file and then import it to you main file. For example, if you want to design the navigation of a website, create a file called navigation.less. If it is created, you can import it to your template.less. The following statements can be used.
 ```
@@ -227,7 +225,7 @@ It is a good idea to put the styles of an object into a separate file and then i
 ```
 There are also [more options for @import At-Rules](http://lesscss.org/features/#import-atrules-feature), which you can read in the official manual of LESS.
 
-#### Variables
+### Variables
 
 Often you need the same value some times in your CSS. Variables make it easier to controll those values from a single location.
 ```
@@ -240,7 +238,7 @@ a {
 If you handle a lot of variables, it makes sense to put them in a separate file called variables.less.
 
 
-#### Functions
+### Functions
 
 You find a [list of all built-in functions supported by LESS](http://lesscss.org/functions/) on the main manual. Here is a short example of the function to darken a color.
 ```
@@ -255,7 +253,7 @@ a:hover {
   color: @link-color-hover;
 }
 ```
-#### Advanced selectors
+### Advanced selectors
 
 With the ampersand `&` you can reference parent selectors the following way.
 ```
@@ -278,7 +276,7 @@ a:hover {
 ```
 You can [take use of multiple `&` and change selector order](http://lesscss.org/features/#parent-selectors-feature) (follow the link).
 
-#### Mixins
+### Mixins
 
 You can mix-in class and id selectors.
 ```
@@ -306,7 +304,7 @@ Results in
 ```
 There is [a lot more what you can do with mixins](http://lesscss.org/features/#mixins-feature).
 
-### template.scss
+## template.scss
 
 SASS is also a preprocessor of CSS. "Sass is the most mature, stable, and powerful professional grade CSS extension language in the world." SASS-files normally ends with .scss (in the past it was .sass, but with an upgrade it changes the ending). You can use imports, variables, functions, advanced selectors, mixins and a lot more. I will give you a short overview of what is possible. Take a look in the official documentation for deep diving.
 
@@ -333,7 +331,7 @@ body {
 ```
 Same like LESS above, "This file will be used to generate the template.css". There are only the comment at the first lines, two selectors `html` and `body` with no attributes and three media queries. This structure should give you the idea of the mobile first strategy. First you write your rules for mobile. If you do it well, there is no need to write other rules. This is called mobile only strategy. But maybe, there should display something in a different way, than you go with your definitions from mobile to tablett to desktop.
 
-#### Imports
+### Imports
 
 It is a good idea to put the styles of an object into a separate file and then import it to you main file. For example, if you want to design the navigation of a website, create a file called navigation.scss. If it is created, you can import it to your template.scss. The following statements can be used.
 ```
@@ -342,7 +340,7 @@ It is a good idea to put the styles of an object into a separate file and then i
 ```
 There are also [@-Rules and Directives](https://sass-lang.com/documentation/file.SASS_REFERENCE.html#import), which you can read in the official manual of SASS.
 
-#### Variables
+### Variables
 
 Often you need the same value some times in your CSS. Variables make it easier to control those values from a single location.
 ```
@@ -355,7 +353,7 @@ a {
 If you handle a lot of variables, it makes sense to put them in a separate file called variables.scss.
 
 
-#### Functions
+### Functions
 
 You find a [list of all built-in functions supported by SASS](http://sass-lang.com/documentation/Sass/Script/Functions.html) on the main manual. Here is a short example of the function to darken a color.
 ```
@@ -370,7 +368,7 @@ a:hover {
   color: $link-color-hover;
 }
 ```
-#### Advanced selectors
+### Advanced selectors
 
 With the ampersand `&` you can reference parent selectors the following way.
 ```
@@ -393,7 +391,7 @@ a:hover {
 ```
 [Referencing Parent Selectors: &](https://sass-lang.com/documentation/file.SASS_REFERENCE.html#parent-selector) (follow the link)
 
-#### Mixins
+### Mixins
 
 You can mix-in class and id selectors.
 ```
@@ -421,7 +419,7 @@ Results in
 ```
 There is [a lot more what you can do with mixins](https://sass-lang.com/documentation/file.SASS_REFERENCE.html#mixins).
 
-### custom.css
+## custom.css
 
 This is a file for fixing styles in a fast way in the browser (Joomla!™ backend). It's bad to use it but sometimes you have to. So it is empty a ready for your fixes.
 ```
@@ -435,7 +433,7 @@ This is a file for fixing styles in a fast way in the browser (Joomla!™ backen
  ```
 Only the comment shows you which file you just opened.
 
-### editor.css
+## editor.css
 
 The editor.css file is used to display your own definitions in your Joomla WYSIWYG editor in the backend, if you use one. For example, the JCE editor. This is most popular editor, but there are many more. In the configuration of this editor it is possible to include your own stylesheets. And that's what we  do.
 ```
@@ -455,7 +453,7 @@ body {
 ```
 By default, the text appears black on a white background. It is highly advisable to use the same definitions as in template.css. You may ask yourself: "why not assign the same template.css to the editor?” Well, that usually leads to an ugly editor screen. Also, only some sections of the template.css are responsible for the content. You don't need the remainder. That's why we define what you need in a separate file, without the initial IDs and container classes.
 
-### error.css
+## error.css
 
 The file error.css is linked via the file error.php. Both files are used for the error output that appears when the user visits a non existent page (error 404). The standard Joomla!™ error 404 page is so ugly that it's necessary to code something better. Customized error pages are part of every good template and are therefore not something optional.
 
@@ -501,11 +499,11 @@ h1 {
 ```
 The body are the background and typography defined. The padding is set to zero and output the contents are centered (text-align). The container with the ID #error then defines padding and width. The heading (h1) gets a smaller margin. The label of the search box is set not to be displayed (`display:none`).
 
-### normalize.css
+## normalize.css
 
 The normalize.css file is a small CSS file written by [Nicolas Gallaghers](https://github.com/necolas/normalize.css). It provides better cross-browser consistency of our HTML tags. It is a modern HTML5 compliant alternative to the traditional CSS reset. In more then 400 lines of code the HTML tags are defined. Look it over in your editor, when you have some free time. Don't mess around with it!
 
-### offline.css
+## offline.css
 
 Just like the error page, the file offline.css is linked within offline.php. The offline page will appear when Joomla is set offline in the global configuration. The visitor will then see the information as defined in this configuration. The appearance (our CSS definitions), is stored in this file.
 ```
@@ -619,7 +617,7 @@ label[for="remember"] {
     opacity: .5;
 }
 ```
-### print.css
+## print.css
 
 The print.css file is linked within the file component.php. Joomla offers to display the content as a print preview. This is done by clicking on the print icon. The icon's view can be set within the article options. Using this file enables you to define a printer-friendly output. You can, for example, increase the contrast of the text color to it's background to improve the readability. The background is best to be defined in white, to save printer ink.
 
@@ -631,15 +629,15 @@ In Blank the reset style sheet normalize.css is imported into the print.css file
 @import url('normalize.css');
 @import url('editor.css');
 ```
-### template.css
+## template.css
 
 In this file, CSS is written which is created by the LESS or SASS compiler generated with the help of your style sheet file template.less or template.scss. You don't need to edit the template.css file.
 
-## index.php (Blank)
+# index.php (Blank)
 
 It is and remains the core of every template: the file index.php. This is where all the files come together. The articles and modules created by you on the backend show up here. All on the right place of the page.
 
-### defined( '\_JEXEC' ) or die;
+## defined( '\_JEXEC' ) or die;
 
 This is my favorite command and should be on every Joomla T-shirt! This is a direct call to prevent manipulation by others. Only Joomla is allowed to execute the file containing this script.
 ```
@@ -647,7 +645,7 @@ This is my favorite command and should be on every Joomla T-shirt! This is a dir
 ```
 The PHP script remains open. Normally it would be closed with ?> but there there is more to follow.
 
-### logic.php
+## logic.php
 
 The logic.php file is not only explained separately (after the index.php file described here), but also included.
 ```
@@ -659,7 +657,7 @@ include_once 'templates/frontend/logic.php';
 ```
 However, this notation is error-prone. Just remember, if you renaming the template to mytemplate from frontend. In this case, you should know that you have to change the path in index.php. That's it. We close the area of PHP with `?>`.
 
-### Document type
+## Document type
 
 Now we leave the PHP part behind us and have a look at the HTML area. Starting with the document type. Old fogies like myself still remember the complexity of this tag in days gone by. Depending on which "dialect" was spoken, whether HTML 4 or XHTML 1.1, whether or strict standard, you had set a correct lengthy and complicated line of code. That's fortunately over in HTML5:
 ```
@@ -667,11 +665,11 @@ Now we leave the PHP part behind us and have a look at the HTML area. Starting w
 ```
 Cool!
 
-### html
+## html
 
 We open the Hyper Text Markup Language document with the `<html>` tag and it is closed with `</html>`. Therein is the header `<head>` part and the body `<body>` part.
 
-### head
+## head
 
 In your head, in your head
 Zombie, zombie, zombie
@@ -686,7 +684,7 @@ Dou, do, do, dou, dou, do, do, dou
 
 Everything within `<head>` and `</head>` are part of the header of the HTML document.
 
-### Header information
+## Header information
 
 Through the interface of Joomla!™, called the API (Application Programming Interface), we can use the header information:
 ```
@@ -694,7 +692,7 @@ Through the interface of Joomla!™, called the API (Application Programming Int
 ```
 This will load the page title, all CSS files and JavaScripts and extensions are loaded (and more, but we'll not worry about that). Yes, you read it right. JavaScript ... In head ... Head shot. And every good frontend developer know: JavaScript should be at the end of the index before the closing body-tag `</body>`. But anyway, we do not use this way, hehe.
 
-### Viewport
+## Viewport
 
 The mobile view of your site is supported so that  view (viewport) of your browser shows the correct viewport.
 ```
@@ -707,11 +705,11 @@ The mobile view of your site is supported so that  view (viewport) of your brows
 ```
 The above code sets the correct width.
 
-### body
+## body
 
 All that stands between the `<body>` and `</body>` is shown to the visitors of your site. This is the place for your layout structure. This is where the actual content of your website takes shape. In BL4NK this area relatively empty. For the start there are two includings. One type component to display the articles for example and the debug module. And yes, before the closing body-tag `</body>` we put our awesome uglified and full compressed javascript file to rule all our javascript. This is the best case we can have.
 
-### page class
+## page class
 
 The body tag gets two classes added so that you later can define your CSS more precisely.
 ```
@@ -719,7 +717,7 @@ The body tag gets two classes added so that you later can define your CSS more p
 ```
 Let's start from the end: The variable `$pageclass` is declared in the file logic.php (more on that later). It is in the backend of Joomla!™, in each menu item to be specified in options and is quite handy for your own layouts. The variable `$active->alias` is the alias of each menu item displayed.
 
-### Debug module
+## Debug module
 
 The debug module is necessary for troubleshooting. If you turn the debug mode on in Joomla!™ (in the global configuration), this module outputs the database query that many developers - you, amongst others - find helpful. The debug module is the only module included in Blank. Just as any other module the position must be defined in templateDetails.xml. The name debug is compulsory. I usually place it as the last item in the `<positions>` section of templateDetails.xml:
 ```
@@ -729,7 +727,7 @@ The debug module is necessary for troubleshooting. If you turn the debug mode on
 ```
 Now the position is available, and the module can be used by the index.php. This is done by Joomla!™ API with the jdoc:include command. At the end of index.php, before the closing body tag, you find the following line:
 ```
-    <jdoc:include type="modules" name="debug" />
+<jdoc:include type="modules" name="debug" />
 ```
 This line causes the debug mode to be switched on and the output of it to be shown (when required) in the browser window. You need to do the same with all your module positions. For example, if you want to create the module positions header, navigation, breadcrumbs, you write in the templateDetails.xml:
 ```
@@ -747,7 +745,7 @@ And in the index.php on the places where you want them to appear:
 ```
 That finished the module positions. From now on, all modules are assigned the the correct position. In the backend (Extensions> Modules> Site) - thanks templateDetails.xml. And in the frontend - thanks to index.php.
 
-### Module Chrome
+## Module Chrome
 
 Module chrome belongs, together with overrides, to Joomla!™'s special features. It makes the system very flexible for web developers. Module chrome and overrides are some of the reasons why Joomla!™ is so powerful. In addition to the type and name the jdoc:include command gives you also the attribute style. This allows to control the output of a module. We have the following values available:
 
@@ -760,7 +758,7 @@ Module chrome belongs, together with overrides, to Joomla!™'s special features
 
 With these values, you can significantly influence the output. This chrome value (please do not confuse with the likewise named browser from Google) lets the system know how the  module should be rendered. Joomla!™ also enables you to define your own chrome variables. The above values in detail:
 
-#### none
+### none
 
 Command:
 ```
@@ -772,7 +770,7 @@ Output:
    <li><!-- menu items --></li>
 </ul>
 ```
-#### xhtml
+### xhtml
 
 Command:
 ```
@@ -787,7 +785,7 @@ Output:
    </ul>
 </div>
 ```
-#### outline
+### outline
 
 Command:
 ```
@@ -804,7 +802,7 @@ Output:
    </div>
 </div>
 ```
-#### rounded
+### rounded
 
 Command:
 ```
@@ -825,7 +823,7 @@ Output:
    </div>
 </div>
 ```
-#### table
+### table
 
 Command:
 ```
@@ -846,7 +844,7 @@ Output:
    </tr>
 </table>
 ```
-#### horz
+### horz
 
 Command:
 ```
@@ -867,7 +865,7 @@ Output:
    </tr>
 </table>
 ```
-#### custom chrome
+### custom chrome
 
 As already mentioned, it is possible to define your own output, thus own chrome variables for the style attribute. The Blank contains the file modules.php found in the html folder of the template directory. As you may have noticed, in Blank there is neither the said folder (html), nor the said file (modules.php). Have you installed the template, you can safely create the folder and create the file inside this folder. If you stand before the installation, then the reference to the newly created folder belongs to the templateDetails.xml, so that the installation routine of Joomla!™ knows that this folder exists. Otherwise the folder wouldn't be installed. For details see the chapter templateDetails.xml.
 
@@ -893,11 +891,11 @@ This chrome can be controlled throught the value mystyle. Important in creating 
 
 Chrome and overrides are the reasons why Joomla!™ is the right system for your web project.
 
-## logic.php
+# logic.php
 
 The logic.php file is included in the index.php. While the index.php stands for the HTML output, the logic.php represents the programming logic. During template development, it is not unusual that the file is further programmed.
 
-### defined( '\_JEXEC' ) or die;
+## defined( '\_JEXEC' ) or die;
 
 To make sure that this file is called only in Joomla!™, this line is written.
 ```
@@ -905,7 +903,7 @@ To make sure that this file is called only in Joomla!™, this line is written.
 ```
 This code prevents that the file can not be accessed from the address bar of your browser.
 
-### Declaring variables
+## Declaring variables
 
 Some variables for the proper use of the template are required. [The basics of PHP variables](http://de2.php.net/manual/en/language.variables.basics.php) can be found in PHP manual (for beginners: [A simple tutorial in PHP](http://php.net/manual/en/tutorial.php)).
 
@@ -958,7 +956,7 @@ That's easy: Variable $tpath contains the relative path to the template director
 
 These are all the variables used in Blank.
 
-### generator tag
+## generator tag
 
 The generator tag tells the world that we build this site with Joomla. Something nobody needs to know, least of all undesirables who want to hack your site. Do we want it? No, we most certainly do not!
 ```
@@ -972,7 +970,7 @@ $this->setGenerator('Drupal');
 ```
 This will generate `<meta name="generator" content="Drupal" />` in the outputted source code of your website.
 
-### unset
+## unset
 
 The following lines are all comment out and have no effect right now. Maybe it will be neccessary to comment the lines in to unset some scripts, e.g. jquery. What happened if you comment the following lines in?
 ```
@@ -993,14 +991,14 @@ if (isset($doc->_script['text/javascript']))
 ```
 Well, the first line is a comment. The second line unset the file jquery.min.js from head, the third line jquery-noconflict.js, the fourth (may the 4th be with you) line jquery-migrate.min.js and the fifth caption.js. The lines after that unset all direct written javascript in head. With these lines helps you to bring all scripts in only one file.
 
-### Template CSS
+## Template CSS
 
 To access the one and only template css, you only need this lines:
 ```
 // css
 $doc->addStyleSheet($tpath.'/build/style.css');
 ```
-### Custom CSS
+## Custom CSS
 
 The line to add the custom css is comment out. Comment in, if neccessary.
 ```
@@ -1008,11 +1006,11 @@ The line to add the custom css is comment out. Comment in, if neccessary.
 ```
 This will load the custom.css in the head for faster style fixings.
 
-## Parameter
+# Parameter
 
 The template engine is one of the great strengths of Joomla!™. It is possible to gain more flexibility in your template with parameters. For example, you can set different color variations for your template in the backend. These settings are stored as styles in the database. A style is a single definition of settings for your template. You can define multiple styles and assign one to a menu item.
 
-### Definition
+## Definition
 
 Parameters are defined in the templateDetails.xml. However, BL4NK comes with no parameters. For example, here you see a parameter that inserts a Google font in your template:
 ```
@@ -1036,31 +1034,31 @@ For the parameters to work you need to set them in `<fields name="params"></fiel
 
 A Google Font is of the type text. You can enter any text. In the label name you set the title for the parameter, visible in the backend. In description you place the text which will be visible when you hover over the title in the backend.
 
-#### type
+### type
 
 specifies the HTML element we want. In this case "text". There are many different standard parameter and form field types supported in the Joomla!™ Framework for all extension types (templates, components, modules and plugins).
 
-#### name
+### name
 
 is unique for each parameter, and is used to address the Parameter in the template.
 
-#### default
+### default
 
 specifies the default value of the parameter.
 
-#### description
+### description
 
 is the description of the parameter in the backend, appearing as a tooltip.
 
-#### label
+### label
 
 is the description your see in the backend.
 
-### Types
+## Types
 
 The Joomla framework has a number of types of parameters for extensions. Developing templates you need to know: text, radio, filelist, folder list and spacer.
 
-#### list
+### list
 
 The parameter type list provides a list of drop-down menu entries. If there is an entry for this parameter in the database, this will be selected as the default.
 
@@ -1075,7 +1073,7 @@ The list must have at least one entry, so an option- Show element. The text betw
 
 - value (mandatory): the value is stored as a parameter
 
-#### text
+### text
 
 With this parameter type you can show a line of text. The entered value is stored in the database and displayed by default.
 
@@ -1087,7 +1085,7 @@ With this parameter type you can show a line of text. The entered value is store
 - description (optional translatable): The description is as Tooltip appears.
 - class (optional): the CSS class of the field
 
-#### radio
+### radio
 
 Using the radio parameter you a create radio buttons. The default value is the stored value or, if no stored value is present, the defined default as the default entry.
 
@@ -1098,7 +1096,7 @@ Using the radio parameter you a create radio buttons. The default value is the s
 - description (optional translatable): The description is as Tooltip appears.
 - class (optional): the CSS class of the field
 
-#### filelist
+### filelist
 
 The type filelist parameter is used to list the files from a folder. It carries the declared default value if there is no value in the database. The entries for default usage carries the value of -1 and 0 , if none is to be used are the first two items on the list.
 
@@ -1114,7 +1112,7 @@ The type filelist parameter is used to list the files from a folder. It carries 
 - hide_default (optional): Boolean argument; if true, is the - Use default - entry is not displayed
 - hide_none (optional): Boolean argument; if true, is - Do not use - not displayed
 
-#### folderlist
+### folderlist
 
 With the parameter folderlist you create a list of folders from a selected folder. The stored value here is the default value. Two entries exist in any folder list. The first is called "use default" and has the value -1. The second is called "do not use" and has the value 0.
 
@@ -1129,7 +1127,7 @@ With the parameter folderlist you create a list of folders from a selected folde
 - hide_default (optional): Boolean argument; if true, is the - Use default - entry is not displayed
 - hide_none (optional): Boolean argument; if true, is - Do not use - not displayed
 
-#### spacer
+### spacer
 
 The spacer parameter will place a horizontal line to individual parameters, to separate a heading from a set of parameters.
 
@@ -1137,11 +1135,11 @@ The spacer parameter will place a horizontal line to individual parameters, to s
 - name (optional): serves as a heading
 - hr (optional): can have the value true to a horizontal Display line, or false to indicate the name.
 
-### Database
+## Database
 
 The settings of parameters are stored in the database. The format is: table #\_template\_styles (# stands for the prefix of the tables). If you access with phpMyAdmin your database can you look at the entries in the table(s) and manage them accordingly.
 
-### Usage
+## Usage
 
 A parameter makes only sense if it can be used in the template. You must define a parameter in the file templateDetails.xml and store its value in the database. Once you've done both, you can put them to work. An PHP statement is sufficient:
 ```
@@ -1156,11 +1154,11 @@ $doc->addStyleSheet("https://fonts.googleapis.com/css?family=".$googlefont);
 ```
 You define a variable $googlefont and add its value as a parameter in the next line: `$doc->addStyleSheet` looks for the Google API then you load the font in your template. E.g. if you use 'Roboto' as font you can use it like `font-family: 'Roboto', sans-serif;`.
 
-## Error page
+# Error page
 
 When the visitors to your website goes to page that does not exist, they'll get a system error message on screen. The error message from Joomla!™ - to put it mildly - isn't very pretty. Much better to create your own error page. The BL4NK template will do that fine.
 
-### A good structure
+## A good structure
 
 The error page should never berate your visitors. After all, it's not their fault if a page doesn't exist or an internal server error occurs. The following requirements should build a a good error page:
 
@@ -1169,7 +1167,7 @@ The error page should never berate your visitors. After all, it's not their faul
 
 Do not use technical terms. To my mother, born in 1954, "404 Error" is completely meaningless.
 
-### error.php
+## error.php
 
 Two files are responsible for the error page: error.php and error.css. The header section of the PHP file is almost identical to the index.php and need no further explanation. The body does:
 ```
@@ -1250,13 +1248,13 @@ h1 {
 ```
 There is plenty of room for your own design, your creativity is not limited. Brows the Internet to find some really great examples of custom error pages. You'll find lots of them.
 
-## Offline page
+# Offline page
 
 The offline.php file is always displayed when Joomla!™ is taken offline by the backend. In the configuration you can also leave the offline message, which is then displayed. For the design the offline.css is responsible.
 
 A good opportunity to Joomla!™ set offline are updates. Through the login form you have also the possibility to look at the frontend of your site and test if it works properly.
 
-### offline.php
+## offline.php
 
 The head section is similar to the index.php and error.php. In the body you code the part which a visitor see when he enters your website (in offline mode).
 ```
@@ -1448,7 +1446,7 @@ label[for="remember"] {
     opacity: .5;
 }
 ```
-## Print page
+# Print page
 
 The component.php allows you to print a printer-friendly version of your web pages. Printer friendly means that you print the component view only. The component is responsible for showing the articles. The whole layout (modules, menus, etc.) remains as it is. This can be rather handy; the focus is on the content only.
 ```
@@ -1468,7 +1466,7 @@ By using the component.php it is possible for you to create your own css file, d
 @import url('normalize.css');
 @import url('editor.css');
 ```
-## Overrides
+# Overrides
 
 A milestone in Joomla!™ are the overrides. With overrides you can customize an extension for your own needs. Many developers and designers in the past complained about the component com\_content creates HTML tables. This component is responsible for the content. You can change these things now, without touching the core files. Sure, you can also change the core files, thus changing the original. But then you run the risk that the next Joomla!™ update overwrites your file. In that case your changes would be lost and you would have to start all over again. And again and again...
 
@@ -1488,7 +1486,7 @@ Following this principle, you gain the complete control over the output of your 
 
 From Joomla!™ Version 3, you can easily create override in the backend. Go to Extensions > Template Manager > Templates > ... details and files > Create Overrides. Select there the extension or module which you want to override.
 
-## Images
+# Images
 
 Images required to each template are stored in the template folder 'images'. You don't need to name your folder 'images', but 'images' or 'img' make a lot more sense than 'apples'. However, the two preview images template\_preview.png and template\_thumbnail.png, are exceptions. They reside in the template's root folder. The first image is the large preview of the second image, the small preview; which is displayed in the backend.
 
@@ -1501,7 +1499,7 @@ Images are available in different formats and each format has its strengths and 
 
 The reason will be described in the following chapter.
 
-### Formats
+## Formats
 
 There are three formats for your images being:
 
@@ -1511,22 +1509,22 @@ There are three formats for your images being:
 
 Other formats such as TIFF are not suitable for the Internet. TIFFs store too much information which increases the size of the image and thus increases the load time unnecessarily. It is an art to deal with images as a web designer, because not every situation has a specific preferable format.
 
-#### GIF
+### GIF
 
 Advantage: Small size, transparency
 Disadvantage: Only 256 colors, no alpha effect
 
-#### PNG
+### PNG
 
 Advantage: Small size, lossless compression, 16,7 million colors, transparency, alpha effect
 Disadvantage: In PNG-8 no alpha effect
 
-#### JPEG
+### JPEG
 
 Advantage: Small size, variable compression, 16.7 million colors
 Disadvantage: No transparency, no alpha effect
 
-### Size
+## Size
 
 It's very important for a web designer is to pick the right size for an image. The smaller, the faster it loads. So our motto should be: save your picture size where you can. It's all about pure loading time. Especially when more than 100 images are used, each kilobyte is valuable.
 
@@ -1538,11 +1536,11 @@ JPG: 25,9 KB
 
 These values serve as a guide only and may vary from image to image. Therefore, export an image in all three formats and look at the result. The ratio of quality to file size is crucial to achieve the best possible loading time.
 
-### Transparency
+## Transparency
 
 Do you want to use transparent images your two choices are GIF or PNG. JPGs don't work with transparency. PNG has a further advantage over GIF: the variable opacity or alpha-effect. With PNGs you can use images that are, for example, 50% transparent. GIF can not do that. It's all (100%) or nothing (0%) transparency. This property sets clearly PNG over GIF. With PNG you can manage to create designs you can't accomplish with other formats.
 
-## JavaScripts
+# JavaScripts
 
 JavaScript itself is a programming language that runs in the visitor's browser, hence on the client side. This means that the visitor's computer must do the heavy work. You can use JavaScript server-side through the script "node.js". Then it behaves like PHP and is executed on the computer (server) in the network. At the price of speed...
 
@@ -1558,7 +1556,7 @@ Alternatively, you can also load JavaScript libraries via Google, which carry th
 
 Hint: With the inclusion of additional JavaScripts or frameworks, complications can arise because Joomla uses the Bootstrap Framework by default. Some frameworks offer a No-Conflict-Method. You should first think carefully whether the extra effort is justified when you plan to use a JavaScript.
 
-## Language files
+# Language files
 
 BL4NK comes without language files. If you want to use language files, you should create a folder called language in your template folder. The name 'language' in lower case letters is compulsory. You need to create that language folder before (!) you install the template.
 
@@ -1601,7 +1599,7 @@ This text will be displayed instead of the variable. In other words: whenever th
 
 In other words, if there is a key value pair in the language file "en-GB.tpl_frontend.ini" you can use the key (e.g. TPL\_FRONTEND\_PARAMETER\_GOOGLEFONT\_LABEL) in the templateDetails.xml to display the value (e.g. Google Font).
 
-## Photoshop files
+# Photoshop files
 
 As the Goodie BL4NK comes with some Photoshop files. In practice, Photoshop is the image editing program that many the designers work with. GIMP may be a good alternative for amateur designers, however, it doesn't have many of the capabilities and functions of Photoshop. [The following files are you ready for it](http://itr.im/psd):
 
