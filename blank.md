@@ -727,7 +727,7 @@ All that stands between the `<body>` and `</body>` is shown to the visitors of y
 
 The body tag gets two classes added so that you later can define your CSS more precisely.
 
-    <body class="<?php echo $active->alias.' '.$pageclass; ?>">
+    
 
 Let's start from the end: The variable `$pageclass` is declared in the file logic.php (more on that later). It is in the backend of Joomla!™, in each menu item to be specified in options and is quite handy for your own layouts. The variable `$active->alias` is the alias of each menu item displayed.
 
