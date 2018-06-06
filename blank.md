@@ -142,7 +142,8 @@ This source-code comes from the default settings of a content-less Joomla!™ in
 The file templateDetails.xml (note the capital D) is the second most important file after index.php within the template. The templateDetails.xml includes general template information (name, author, etc.) and defines the installation routine. The installation routine is nothing else than a listing of all folders and files that belong to the template, in order to have them unpacked and stored with the installation. Additionally the module positions are stored here in order to be integrated via the `jdoc:include` command in the index.php. Optionally, you can create parameters to make the template adjustable within the backend. Perhaps you want your template to shine in different colours, then you adjust those parameters. How about a pretty pink as in the BEEZ template (Joomla!™ 1.5), for example?
 
 Now please, check out the minimum version of templateDetails.xml:
-```
+
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE install Public "-//Joomla! 2.5//DTD template 1.0//EN"
   "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
@@ -202,7 +203,8 @@ LESS is a preprocessor of CSS. Or to say it with the official words: [It's CSS, 
 By installing BL4NK you install the LESS compiler and the compiling process comes with Gulp. With Gulp you compile your less files into css. More on this later.
 
 Let's take a look into template.less.
-```
+
+```less
 // FRONTEND LESS
 // ==========================================================================
 
@@ -223,7 +225,8 @@ Well, "This file will be used to generate the template.css". There are only the 
 ### Imports
 
 It is a good idea to put the styles of an object into a separate file and then import it to you main file. For example, if you want to design the navigation of a website, create a file called navigation.less. If it is created, you can import it to your template.less. The following statements can be used.
-```
+
+```less
 @import "navigation";
 @import "navigation.less";
 ```
@@ -232,7 +235,8 @@ There are also [more options for @import At-Rules](http://lesscss.org/features/#
 ### Variables
 
 Often you need the same value some times in your CSS. Variables make it easier to controll those values from a single location.
-```
+
+```less
 @link-color: #B22222;
 
 a {
@@ -241,11 +245,11 @@ a {
 ```
 If you handle a lot of variables, it makes sense to put them in a separate file called variables.less.
 
-
 ### Functions
 
 You find a [list of all built-in functions supported by LESS](http://lesscss.org/functions/) on the main manual. Here is a short example of the function to darken a color.
-```
+
+```less
 @link-color: #B22222;
 @link-color-hover: darken(@link-color, 10%);
 
@@ -260,7 +264,8 @@ a:hover {
 ### Advanced selectors
 
 With the ampersand `&` you can reference parent selectors the following way.
-```
+
+```less
 a {
   color: @link-color;
   &:hover {
@@ -269,7 +274,8 @@ a {
 }
 ```
 Compiling this LESS results in
-```
+
+```css
 a {
   color: #B22222;
 }
@@ -283,7 +289,8 @@ You can [take use of multiple `&` and change selector order](http://lesscss.org/
 ### Mixins
 
 You can mix-in class and id selectors.
-```
+
+```less
 .class, #id {
   color: red;
 }
@@ -295,7 +302,8 @@ You can mix-in class and id selectors.
 }
 ```
 Results in
-```
+
+```css
 .class, #id {
   color: red;
 }
@@ -317,7 +325,8 @@ SASS is also a preprocessor of CSS. "Sass is the most mature, stable, and powerf
 By installing BL4NK you install the SASS compiler and the compiling process comes with Gulp. With Gulp you compile your less files into css. More on this later.
 
 Let's take a look into template.scss.
-```
+
+```scss
 // FRONTEND SASS
 // ==========================================================================
 
@@ -338,7 +347,8 @@ Same like LESS above, "This file will be used to generate the template.css". The
 ### Imports
 
 It is a good idea to put the styles of an object into a separate file and then import it to you main file. For example, if you want to design the navigation of a website, create a file called navigation.scss. If it is created, you can import it to your template.scss. The following statements can be used.
-```
+
+```scss
 @import "navigation";
 @import "navigation.scss";
 ```
@@ -347,7 +357,8 @@ There are also [@-Rules and Directives](https://sass-lang.com/documentation/file
 ### Variables
 
 Often you need the same value some times in your CSS. Variables make it easier to control those values from a single location.
-```
+
+```scss
 $link-color: #B22222;
 
 a {
@@ -356,11 +367,11 @@ a {
 ```
 If you handle a lot of variables, it makes sense to put them in a separate file called variables.scss.
 
-
 ### Functions
 
 You find a [list of all built-in functions supported by SASS](http://sass-lang.com/documentation/Sass/Script/Functions.html) on the main manual. Here is a short example of the function to darken a color.
-```
+
+```scss
 $link-color: #B22222;
 $link-color-hover: darken($link-color, 10%);
 
@@ -375,7 +386,8 @@ a:hover {
 ### Advanced selectors
 
 With the ampersand `&` you can reference parent selectors the following way.
-```
+
+```scss
 a {
   color: $link-color;
   &:hover {
@@ -384,7 +396,8 @@ a {
 }
 ```
 Compiling this SASS results in
-```
+
+```css
 a {
   color: #B22222;
 }
@@ -398,7 +411,8 @@ a:hover {
 ### Mixins
 
 You can mix-in class and id selectors.
-```
+
+```scss
 .class, #id {
   color: red;
 }
@@ -410,7 +424,8 @@ You can mix-in class and id selectors.
 }
 ```
 Results in
-```
+
+```css
 .class, #id {
   color: red;
 }
@@ -426,7 +441,8 @@ There is [a lot more what you can do with mixins](https://sass-lang.com/document
 ## custom.css
 
 This is a file for fixing styles in a fast way in the browser (Joomla!™ backend). It's bad to use it but sometimes you have to. So it is empty a ready for your fixes.
-```
+
+```css
 /* CUSTOM
    ========================================================================== */
 
@@ -440,7 +456,8 @@ Only the comment shows you which file you just opened.
 ## editor.css
 
 The editor.css file is used to display your own definitions in your Joomla WYSIWYG editor in the backend, if you use one. For example, the JCE editor. This is most popular editor, but there are many more. In the configuration of this editor it is possible to include your own stylesheets. And that's what we  do.
-```
+
+```css
 /* EDITOR
    ========================================================================== */
 
@@ -462,7 +479,8 @@ By default, the text appears black on a white background. It is highly advisable
 The file error.css is linked via the file error.php. Both files are used for the error output that appears when the user visits a non existent page (error 404). The standard Joomla!™ error 404 page is so ugly that it's necessary to code something better. Customized error pages are part of every good template and are therefore not something optional.
 
 The default "error.css" definitions are as follows:
-```
+
+```css
 /* ERROR
    ========================================================================== */
 
@@ -510,7 +528,8 @@ The normalize.css file is a small CSS file written by [Nicolas Gallaghers](https
 ## offline.css
 
 Just like the error page, the file offline.css is linked within offline.php. The offline page will appear when Joomla is set offline in the global configuration. The visitor will then see the information as defined in this configuration. The appearance (our CSS definitions), is stored in this file.
-```
+
+```css
 /* OFFLINE
    ========================================================================== */
 
@@ -626,7 +645,8 @@ label[for="remember"] {
 The print.css file is linked within the file component.php. Joomla offers to display the content as a print preview. This is done by clicking on the print icon. The icon's view can be set within the article options. Using this file enables you to define a printer-friendly output. You can, for example, increase the contrast of the text color to it's background to improve the readability. The background is best to be defined in white, to save printer ink.
 
 In Blank the reset style sheet normalize.css is imported into the print.css file, also the file editor.css to create a printer-friendly version.
-```
+
+```css
 /* PRINT
    ========================================================================== */
 
@@ -644,7 +664,8 @@ It is and remains the core of every template: the file index.php. This is where 
 ## defined( '\_JEXEC' ) or die;
 
 This is my favorite command and should be on every Joomla T-shirt! This is a direct call to prevent manipulation by others. Only Joomla is allowed to execute the file containing this script.
-```
+
+```php
 <?php defined( '_JEXEC' ) or die;
 ```
 The PHP script remains open. Normally it would be closed with ?> but there there is more to follow.
@@ -652,11 +673,13 @@ The PHP script remains open. Normally it would be closed with ?> but there there
 ## logic.php
 
 The logic.php file is not only explained separately (after the index.php file described here), but also included.
-```
+
+```php
 include_once JPATH_THEMES.'/'.$this->template.'/logic.php';
 ```
 The logic.php file is included exactly once with the command `include_once` and integrated and executed as PHP script. Joomla specifies the path to the templates into `JPATH_THEMES`. Then it goes on with a slash (/) and the folder of the actual templates in `$this->template` inserted in the variable. Another slash and the file name logic.php form the end. Perhaps it would be easier to write the path directly.
-```
+
+```php
 include_once 'templates/frontend/logic.php';
 ```
 However, this notation is error-prone. Just remember, if you renaming the template to mytemplate from frontend. In this case, you should know that you have to change the path in index.php. That's it. We close the area of PHP with `?>`.
@@ -664,7 +687,8 @@ However, this notation is error-prone. Just remember, if you renaming the templa
 ## Document type
 
 Now we leave the PHP part behind us and have a look at the HTML area. Starting with the document type. Old fogies like myself still remember the complexity of this tag in days gone by. Depending on which "dialect" was spoken, whether HTML 4 or XHTML 1.1, whether or strict standard, you had set a correct lengthy and complicated line of code. That's fortunately over in HTML5:
-```
+
+```html
 <!doctype html>
 ```
 Cool!
@@ -675,23 +699,24 @@ We open the Hyper Text Markup Language document with the `<html>` tag and it is 
 
 ## head
 
-In your head, in your head
-Zombie, zombie, zombie
-Hey, hey
-What's in your head, in your head
-Zombie, zombie, zombie
-Hey, hey, hey
-Oh, do, do, dou, do, do, dou, do, do
-Dou, do, do, dou, dou, do, do, dou
-
-(Part of the songtext: The Cranberries - Zombie)
+>In your head, in your head
+>Zombie, zombie, zombie
+>Hey, hey
+>What's in your head, in your head
+>Zombie, zombie, zombie
+>Hey, hey, hey
+>Oh, do, do, dou, do, do, dou, do, do
+>Dou, do, do, dou, dou, do, do, dou
+> 
+>(Part of the songtext: The Cranberries - Zombie)
 
 Everything within `<head>` and `</head>` are part of the header of the HTML document.
 
 ## Header information
 
 Through the interface of Joomla!™, called the API (Application Programming Interface), we can use the header information:
-```
+
+```html
 <jdoc:include type="head" />
 ```
 This will load the page title, all CSS files and JavaScripts and extensions are loaded (and more, but we'll not worry about that). Yes, you read it right. JavaScript ... In head ... Head shot. And every good frontend developer know: JavaScript should be at the end of the index before the closing body-tag `</body>`. But anyway, we do not use this way, hehe.
@@ -699,7 +724,8 @@ This will load the page title, all CSS files and JavaScripts and extensions are 
 ## Viewport
 
 The mobile view of your site is supported so that  view (viewport) of your browser shows the correct viewport.
-```
+
+```html
 <!-- mobile viewport -->
 <meta name="viewport"
       content="width=device-width,
@@ -716,7 +742,8 @@ All that stands between the `<body>` and `</body>` is shown to the visitors of y
 ## page class
 
 The body tag gets two classes added so that you later can define your CSS more precisely.
-```
+
+```html
 <body class="<?php echo $active->alias . ' ' . $pageclass; ?>">
 ```
 Let's start from the end: The variable `$pageclass` is declared in the file logic.php (more on that later). It is in the backend of Joomla!™, in each menu item to be specified in options and is quite handy for your own layouts. The variable `$active->alias` is the alias of each menu item displayed.
@@ -724,17 +751,20 @@ Let's start from the end: The variable `$pageclass` is declared in the file logi
 ## Debug module
 
 The debug module is necessary for troubleshooting. If you turn the debug mode on in Joomla!™ (in the global configuration), this module outputs the database query that many developers - you, amongst others - find helpful. The debug module is the only module included in Blank. Just as any other module the position must be defined in templateDetails.xml. The name debug is compulsory. I usually place it as the last item in the `<positions>` section of templateDetails.xml:
-```
+
+```xml
 <positions>
    <position>debug</position>
 </positions>
 ```
 Now the position is available, and the module can be used by the index.php. This is done by Joomla!™ API with the jdoc:include command. At the end of index.php, before the closing body tag, you find the following line:
-```
+
+```html
 <jdoc:include type="modules" name="debug" />
 ```
 This line causes the debug mode to be switched on and the output of it to be shown (when required) in the browser window. You need to do the same with all your module positions. For example, if you want to create the module positions header, navigation, breadcrumbs, you write in the templateDetails.xml:
-```
+
+```xml
 <positions>
   <position>header</position>
   <position>navigation</position>
@@ -742,7 +772,8 @@ This line causes the debug mode to be switched on and the output of it to be sho
 </positions>
 ```
 And in the index.php on the places where you want them to appear:
-```
+
+```html
 <jdoc:include type="modules" name="header" />
 <jdoc:include type="modules" name="navigation" />
 <jdoc:include type="modules" name="breadcrumbs" />
@@ -765,11 +796,13 @@ With these values, you can significantly influence the output. This chrome value
 ### none
 
 Command:
-```
+
+```html
 <jdoc:include type="modules" name="menu" style="none" />
 ```
 Output:
-```
+
+```html
 <ul class="menu">
    <li><!-- menu items --></li>
 </ul>
@@ -777,11 +810,13 @@ Output:
 ### xhtml
 
 Command:
-```
+
+```html
 <jdoc:include type="modules" name="menu" style="xhtml" />
 ```
 Output:
-```
+
+```html
 <div class="moduletable">
    <h3>Main Menu</h3>
    <ul class="menu">
@@ -792,11 +827,13 @@ Output:
 ### outline
 
 Command:
-```
+
+```html
 <jdoc:include type="modules" name="menu" style="outline" />
 ```
 Output:
-```
+
+```html
 <div class="mod-preview">
    <div class="mod-preview-info">left[outline]</div>
    <div class="mod-preview-wrapper">
@@ -809,11 +846,13 @@ Output:
 ### rounded
 
 Command:
-```
+
+```html
 <jdoc:include type="modules" name="menu" style="rounded" />
 ```
 Output:
-```
+
+```html
 <div class="module">
    <div>
       <div>
@@ -830,11 +869,13 @@ Output:
 ### table
 
 Command:
-```
+
+```html
 <jdoc:include type="modules" name="menu" style="table" />
 ```
 Output:
-```
+
+```html
 <table cellpadding="0" cellspacing="0" class="moduletable">
    <tr>
       <th valign="top">Main Menu</th>
@@ -851,11 +892,13 @@ Output:
 ### horz
 
 Command:
-```
+
+```html
 <jdoc:include type="modules" name="menu" style="horz" />
 ```
 Output:
-```
+
+```html
 <table cellpadding="0" cellspacing="0" class="moduletable">
    <tr>
       <th valign="top">Main Menu</th>
@@ -874,7 +917,8 @@ Output:
 As already mentioned, it is possible to define your own output, thus own chrome variables for the style attribute. The Blank contains the file modules.php found in the html folder of the template directory. As you may have noticed, in Blank there is neither the said folder (html), nor the said file (modules.php). Have you installed the template, you can safely create the folder and create the file inside this folder. If you stand before the installation, then the reference to the newly created folder belongs to the templateDetails.xml, so that the installation routine of Joomla!™ knows that this folder exists. Otherwise the folder wouldn't be installed. For details see the chapter templateDetails.xml.
 
 If you create the modules.php file in also new created folder called html, the content could look like this:
-```
+
+```php
 <?php defined('_JEXEC') or die;
 
 function modChrome_mystyle($module, &$params, &$attribs) { ?>
@@ -902,7 +946,8 @@ The logic.php file is included in the index.php. While the index.php stands for 
 ## defined( '\_JEXEC' ) or die;
 
 To make sure that this file is called only in Joomla!™, this line is written.
-```
+
+```php
 <?php defined( '_JEXEC' ) or die;
 ```
 This code prevents that the file can not be accessed from the address bar of your browser.
@@ -919,41 +964,49 @@ In a nutshell:
 - The dollar sign must be followed by a letter or an underscore (\_).
 - Spaces are not allowed. $\_my\_variable is okay, $ my\_variable is not.
 
-    // variables
-    $app = JFactory::getApplication();
-    $doc = JFactory::getDocument();
-    $menu = $app->getMenu();
-    $active = $app->getMenu()->getActive();
-    $params = $app->getParams();
-    $pageclass = $params->get('pageclass_sfx');
-    $tpath = $this->baseurl.'/templates/'.$this->template;
-
-Most of the variable names are quite self-explanatory.  Not so for the contents of the variables, a little explanation is in order. Let's go line by line:
+```php
+// variables
+$app = JFactory::getApplication();
+$doc = JFactory::getDocument();
+$menu = $app->getMenu();
+$active = $app->getMenu()->getActive();
+$params = $app->getParams();
+$pageclass = $params->get('pageclass_sfx');
+$tpath = $this->baseurl.'/templates/'.$this->template;
 ```
+Most of the variable names are quite self-explanatory.  Not so for the contents of the variables, a little explanation is in order. Let's go line by line:
+
+```php
 $app = JFactory::getApplication();
 ```
 Here the variable $app is first created, the content in the Joomla framework is called for by the JFactory. The application to which it refers to is Joomla itself, the CMS. The variable $app we will also need for the parameters.
-```
+
+```php
 $doc = JFactory::getDocument();
 ```
 Similarly, the variable $doc. Again, we put about the Joomla framework to work with the JFactory class. This variable will take care of the RSS feeds within the page, site information, such as the title and description, references to the JavaScript and CSS files being loaded and will do a lot more. However, that is beyond the scope of this book.
-```
+
+```php
 $menu = $app->getMenu();
 ```
 This variable asks for the menu from the $app variable.
-```
+
+```php
 $active = $app->getMenu()->getActive();
 ```
 This variable goes a step further: it looks for the active menu item within the $menu. It also checks if this is the Home page or not.
-```
+
+```php
 $params = $app->getParams();
 ```
 Using the variable $app we'll query Joomla for the parameters and store that in the variable $params. We will then use to query the page class:
-```
+
+```php
 $pageclass = $params->get('pageclass_sfx');
 ```
 A rather aptly named variable, $pageclass. The Page Class Suffix is a parameter in Joomla Menu Items. It is set in the Menu Item: [Edit] screen under the "Parameters (Advanced)" section. This will order Joomla to either add a new CSS class or modify the existing CSS class for elements in this specific Menu Item layout.
-```
+
+```php
 $tpath = $this->baseurl.'/templates/'.$this->template;
 ```
 That's easy: Variable $tpath contains the relative path to the template directory from the base URL. The $tpath variable is told to look for the active template folder from the base url.
@@ -963,13 +1016,15 @@ These are all the variables used in Blank.
 ## generator tag
 
 The generator tag tells the world that we build this site with Joomla. Something nobody needs to know, least of all undesirables who want to hack your site. Do we want it? No, we most certainly do not!
-```
+
+```php
 $this->setGenerator(null);
 ```
 We are the web developers and we are the ones that need to know what the source code actually is. Nobody else should. Hackers need to know what CMS your using, in order to hack it. Why make it any easier than necessary?
 
 Supposing your want to want to tell the world your website runs on Drupal or WordPress? No problem. Just fill in Drupal or WordPress between the single quotes. Or anything that you like:
-```
+
+```php
 $this->setGenerator('Drupal');
 ```
 This will generate `<meta name="generator" content="Drupal" />` in the outputted source code of your website.
@@ -977,7 +1032,8 @@ This will generate `<meta name="generator" content="Drupal" />` in the outputted
 ## unset
 
 The following lines are all comment out and have no effect right now. Maybe it will be neccessary to comment the lines in to unset some scripts, e.g. jquery. What happened if you comment the following lines in?
-```
+
+```php
 // unset
 unset($doc->_scripts[$this->baseurl .'/media/jui/js/jquery.min.js']);
 unset($doc->_scripts[$this->baseurl .'/media/jui/js/jquery-noconflict.js']);
@@ -998,14 +1054,16 @@ Well, the first line is a comment. The second line unset the file jquery.min.js 
 ## Template CSS
 
 To access the one and only template css, you only need this lines:
-```
+
+```php
 // css
 $doc->addStyleSheet($tpath.'/build/style.css');
 ```
 ## Custom CSS
 
 The line to add the custom css is comment out. Comment in, if neccessary.
-```
+
+```php
 // $doc->addStyleSheet($tpath.'/css/custom.css');
 ```
 This will load the custom.css in the head for faster style fixings.
@@ -1017,7 +1075,8 @@ The template engine is one of the great strengths of Joomla!™. It is possible 
 ## Definition
 
 Parameters are defined in the templateDetails.xml. However, BL4NK comes with no parameters. For example, here you see a parameter that inserts a Google font in your template:
-```
+
+```xml
 <config>
   <fields name="params">
 
@@ -1146,11 +1205,13 @@ The settings of parameters are stored in the database. The format is: table #\_t
 ## Usage
 
 A parameter makes only sense if it can be used in the template. You must define a parameter in the file templateDetails.xml and store its value in the database. Once you've done both, you can put them to work. An PHP statement is sufficient:
-```
+
+```php
 <?php $variable = $this->params->get('parameter-name'); ?>
 ```
 For example, when you add a Google Font as a parameter, you can use that value in your CSS.
-```
+
+```php
 <?php
 $googlefont = $this->params->get('googlefont');
 $doc->addStyleSheet("https://fonts.googleapis.com/css?family=".$googlefont);
@@ -1174,7 +1235,8 @@ Do not use technical terms. To my mother, born in 1954, "404 Error" is completel
 ## error.php
 
 Two files are responsible for the error page: error.php and error.css. The header section of the PHP file is almost identical to the index.php and need no further explanation. The body does:
-```
+
+```html
 <body>
   <div align="center">
     <div id="error">
@@ -1211,7 +1273,8 @@ Two files are responsible for the error page: error.php and error.css. The heade
 In the heading (h1) the site title of your website is generated. Followed by the output of the error code, and the error message. The control structure (an “if” statement) checks whether it this a 404 error and where to place an additional error message, if necessary. The text of this can be found in the language files. After that, the visitor can click on the link to to go to the home page. As a last step, the module mod\_search is placed in the script. So visitors can search on the error page what they were looking for. The jdoc:include command you use in the index.php file to display modules at certain positions does not work here. However, the object JModuleHelper::renderModule will do that instead.
 
 The error.php is in the top section of the file, with the associated error.css linked to it. The error.css file you can find in the CSS folder in your template directory.
-```
+
+```css
 /* ERROR
    ========================================================================== */
 
@@ -1261,7 +1324,8 @@ A good opportunity to Joomla!™ set offline are updates. Through the login form
 ## offline.php
 
 The head section is similar to the index.php and error.php. In the body you code the part which a visitor see when he enters your website (in offline mode).
-```
+
+```html
 <body>
   <div id="frame">
     <?php if ($app->getCfg('offline_image')) : ?>
@@ -1339,7 +1403,8 @@ The head section is similar to the index.php and error.php. In the body you code
 Unlike on the error page the jdoc:include does work on the offline page. Therefore it is first item in the script. Following is a query to generate the offline image which is stored in the configuration in the backend of your site (if you want to work with an image, that is). This will replace the default offline page by your own, with a place for the output error message that you retrieve from the configuration file of Joomla!™. Then the login with username field and password are added.
 
 The same as for the error page applies to the offline page: be creative as you want to be. Customize the page using the stylesheet offline.css.
-```
+
+```css
 /* OFFLINE
    ========================================================================== */
 
@@ -1453,7 +1518,8 @@ label[for="remember"] {
 # Print page
 
 The component.php allows you to print a printer-friendly version of your web pages. Printer friendly means that you print the component view only. The component is responsible for showing the articles. The whole layout (modules, menus, etc.) remains as it is. This can be rather handy; the focus is on the content only.
-```
+
+```html
 <body id="print">
   <div id="overall">
     <jdoc:include type="message" />
@@ -1463,7 +1529,8 @@ The component.php allows you to print a printer-friendly version of your web pag
 </body>
 ```
 By using the component.php it is possible for you to create your own css file, defining how you want to print that page. In the template directory of Blank your find the file print.css ready to go.
-```
+
+```css
 /* PRINT
    ========================================================================== */
 
@@ -1551,7 +1618,8 @@ JavaScript itself is a programming language that runs in the visitor's browser, 
 You can code JavaScript either directly in the file index.php or include it as a separate file. The program is then executed in the browser run time.
 
 If you want to use additional JavaScript files, for example, the framework jQuery, you can personalize it in its directory (usually called 'js') and link with the following code in the index.php:
-```
+
+```php
 $doc->addScript($tpath.'/js/javascript.js');
 ```
 Tip: It is better to place additional files, that are not explicitly required in the header area `<head>`, just before the closing tag of the body `</body>` in index.php. It has been proven that your website's performance increase if all CSS files are loaded in head and all JavaScript files at the end of the body area.
@@ -1579,7 +1647,8 @@ For each language you have to create its own folder. In your template folder it 
       - en-GB.tpl_frontend.ini
 
 You have to declare the language folder and the various languages in templateDetails.xml under the files section `</files>`:
-```
+
+```xml
 <languages folder="language">
   <language tag="de-DE">de-DE/de-DE.tpl_frontend.ini</language>
   <language tag="en-GB">en-GB/en-GB.tpl_frontend.ini</language>

@@ -7,11 +7,13 @@ This template is for local developing under [Node.js®](http://nodejs.org/) and 
 * [XAMPP](https://www.apachefriends.org/) or [MAMP](https://www.mamp.info) (or any local web server)
 * [Joomla!™](https://www.joomla.org/) (should be installed)
 * [Node.js®](http://nodejs.org/) (should be installed)
-* [Gulp](https://gulpjs.com/)  
+* [Gulp](https://gulpjs.com/)
 
 If Node.js® is installed, install Gulp via command prompt (e.g. console or terminal).
 
-    npm install -g gulp
+```
+npm install -g gulp-cli
+```
 
 * [BL4NK](https://github.com/Bloggerschmidt/Blank/releases/latest) (download latest version)
 
@@ -20,11 +22,11 @@ If Node.js® is installed, install Gulp via command prompt (e.g. console or term
 You can customize your template with your information doing the following steps.
 
 * Unzip BL4NK
-* Edit the `templateDetails.xml`  
+* Edit the `templateDetails.xml`
  Fill out all information
-* Replace the following images \(optional\)  
- `template_preview.png`  
- `template_thumbnail.png`  
+* Replace the following images \(optional\)
+ `template_preview.png`
+ `template_thumbnail.png`
  `favicon.ico`
 * Zip the template folder again
 
@@ -32,13 +34,17 @@ You can customize your template with your information doing the following steps.
 
 Install BL4NK like a normal template in Joomla!™. Open your command prompt and go to the template directory. Install all dependencies.
 
-    npm install
+```
+npm install
+```
 
 Run Gulp to compile, compress and build.
 
-    gulp
+```
+gulp
+```
 
-See the magic happen on your command line if you edit some files. 
+See the magic happen on your command line if you edit some files.
 
 ## Working files
 
