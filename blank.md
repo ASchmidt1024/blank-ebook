@@ -81,35 +81,35 @@ On line two we declare with `<!doctype html>` the document type. This line is on
 
 What follows in line three, is the smallest possible construction of a HTML page. This page is opened with `<html>` and ends with `</html>`. The header section begins with `<head>` and ends with `</head>`. The body starts with `<body>` and ends with `</body>`. Within the header area while we load the header information with `<jdoc: include type="head" />` from the Joomla!™ (API) in line five. This `jdoc:include` command will include the normal header information a website needs. It is a Joomla!™ statement that picks up the necessary bits from your Joomla!™ configuration. For example, the global metadata of the system load, the css stylesheets, JavaScripts and the RSS feeds.
 
-The `jdoc:include` command you'll find twice more in the index.php: once as message type and then as a component type (on lines 8 and 9). In line eight we see `<jdoc:include type="message" />`, this makes the system messages work.  Whenever Joomla!™ needs to talk to you, this line will show it on your screen. For example, if you send an email on a contact form, you'll see the message “your message has been successfully send” after you hit the send button. 
+The `jdoc:include` command you'll find twice more in the index.php: once as message type and then as a component type (on lines 8 and 9). In line eight we see `<jdoc:include type="message" />`, this makes the system messages work.  Whenever Joomla!™ needs to talk to you, this line will show it on your screen. For example, if you send an email on a contact form, you'll see the message “your message has been successfully send” after you hit the send button.
 
 Last item to discuss is `<jdoc:include type="component" />` in line nine. This element should only appear once in the `<body>` element of the template to render the main content of the page with respect to the current page being viewed. So, enough explained. This is how the generated source looks like:
 ```
 <!doctype html>
 <html>
- 
+
 <head>
   <base href="http://localhost/joomla/" />
-  <meta http-equiv="content-type" 
+  <meta http-equiv="content-type"
         content="text/html; charset=utf-8" />
   <meta name="generator" content="Joomla! ..." />
   <title>Home</title>
-  <link href="http://localhost/joomla/?view=featured" 
+  <link href="http://localhost/joomla/?view=featured"
         rel="canonical" />
-  <link href="/joomla/index.php?format=feed&amp;type=rss" 
-        rel="alternate" type="application/rss+xml" 
+  <link href="/joomla/index.php?format=feed&amp;type=rss"
+        rel="alternate" type="application/rss+xml"
         title="RSS 2.0" />
-  <link href="/joomla/index.php?format=feed&amp;type=atom" 
-        rel="alternate" type="application/atom+xml" 
+  <link href="/joomla/index.php?format=feed&amp;type=atom"
+        rel="alternate" type="application/atom+xml"
         title="Atom 1.0" />
-  <link href="/joomla/templates/frontend/favicon.ico" 
-        rel="shortcut icon" 
+  <link href="/joomla/templates/frontend/favicon.ico"
+        rel="shortcut icon"
         type="image/vnd.microsoft.icon" />
-  <script src="/joomla/media/system/js/mootools-core.js" 
+  <script src="/joomla/media/system/js/mootools-core.js"
         type="text/javascript"></script>
-  <script src="/joomla/media/system/js/core.js" 
+  <script src="/joomla/media/system/js/core.js"
         type="text/javascript"></script>
-  <script src="/joomla/media/system/js/caption.js" 
+  <script src="/joomla/media/system/js/caption.js"
         type="text/javascript"></script>
   <script type="text/javascript">
     window.addEvent('load', function() {
@@ -117,7 +117,7 @@ Last item to discuss is `<jdoc:include type="component" />` in line nine. This e
     });
   </script>
 </head>
- 
+
 <body>
   <div id="system-message-container">
     <div id="system-message"></div>
@@ -128,7 +128,7 @@ Last item to discuss is `<jdoc:include type="component" />` in line nine. This e
     </div>
   </div>
 </body>
- 
+
 </html>
 ```
 The code begins with the document type `<!doctype html>` on line one. Followed by the `<html>` tag on line two. The next line, line three, begins the header information with `<head>`. Here the header information loaded (base, meta, title, link and script). In the body `<body>` to display a div an `id="system-message-container"` for system messages and the div `class="blog featured"` for the actual content. In the last div (line 25) the article title as the title as a first degree heading (h1) is generated.
@@ -142,9 +142,9 @@ The file templateDetails.xml (note the capital D) is the second most important f
 Now please, check out the minimum version of templateDetails.xml:
 ```
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE install Public "-//Joomla! 2.5//DTD template 1.0//EN" 
+<!DOCTYPE install Public "-//Joomla! 2.5//DTD template 1.0//EN"
   "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
- 
+
 <extension version="3.8" type="template" method="upgrade">
    <name>mini</name>
    <creationDate>14.01.14</creationDate>
@@ -207,19 +207,13 @@ Let's take a look into template.less.
 // This file will be used to generate the template.css
 
 html {
-
 }
 
 body {
-
 }
 
-
-
 @media (min-width: 768px) {}
-
 @media (min-width: 992px) {}
-
 @media (min-width: 1200px) {}
 ```
 Well, "This file will be used to generate the template.css". There are only the comment at the first lines, two selectors `html` and `body` with no attributes and three media queries. This structure should give you the idea of the mobile first strategy. First you write your rules for mobile. If you do it well, there is no need to write other rules. This is called mobile only strategy. But maybe, there should display something in a different way, than you go with your definitions from mobile to tablett to desktop.
@@ -328,19 +322,13 @@ Let's take a look into template.scss.
 // This file will be used to generate the template.css
 
 html {
-
 }
 
 body {
-
 }
 
-
-
 @media (min-width: 768px) {}
-
 @media (min-width: 992px) {}
-
 @media (min-width: 1200px) {}
 ```
 Same like LESS above, "This file will be used to generate the template.css". There are only the comment at the first lines, two selectors `html` and `body` with no attributes and three media queries. This structure should give you the idea of the mobile first strategy. First you write your rules for mobile. If you do it well, there is no need to write other rules. This is called mobile only strategy. But maybe, there should display something in a different way, than you go with your definitions from mobile to tablett to desktop.
@@ -515,7 +503,7 @@ The body are the background and typography defined. The padding is set to zero a
 
 ### normalize.css
 
-The normalize.css file is a small CSS file written by [Nicolas Gallaghers](https://github.com/necolas/normalize.css). It provides better cross-browser consistency of our HTML tags. It is a modern HTML5 compliant alternative to the traditional CSS reset. In more then 400 lines of code the HTML tags are defined. Look it over in your editor, when you have some free time. Don't mess around with it! 
+The normalize.css file is a small CSS file written by [Nicolas Gallaghers](https://github.com/necolas/normalize.css). It provides better cross-browser consistency of our HTML tags. It is a modern HTML5 compliant alternative to the traditional CSS reset. In more then 400 lines of code the HTML tags are defined. Look it over in your editor, when you have some free time. Don't mess around with it!
 
 ### offline.css
 
@@ -711,10 +699,10 @@ This will load the page title, all CSS files and JavaScripts and extensions are 
 The mobile view of your site is supported so that  view (viewport) of your browser shows the correct viewport.
 ```
 <!-- mobile viewport -->
-<meta name="viewport" 
-      content="width=device-width, 
-               initial-scale=1.0, 
-               maximum-scale=1.0, 
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
                user-scalable=0" />
 ```
 The above code sets the correct width.
@@ -803,7 +791,7 @@ Output:
 
 Command:
 ```
-    <jdoc:include type="modules" name="menu" style="outline" />
+<jdoc:include type="modules" name="menu" style="outline" />
 ```
 Output:
 ```
@@ -926,7 +914,7 @@ In a nutshell:
 - The first character of each PHP variables is the dollar sign $. This is followed by the variable name.
 - Distinction is made between uppercase and lowercase.
 - $My\_variable is not the same as $my\_variable or $My\_Variable.
-- The dollar sign must be followed by a letter or an underscore (_).
+- The dollar sign must be followed by a letter or an underscore (\_).
 - Spaces are not allowed. $\_my\_variable is okay, $ my\_variable is not.
 
     // variables
@@ -1275,71 +1263,71 @@ The head section is similar to the index.php and error.php. In the body you code
 <body>
   <div id="frame">
     <?php if ($app->getCfg('offline_image')) : ?>
-      <img src="<?php echo $app->getCfg('offline_image'); ?>" 
+      <img src="<?php echo $app->getCfg('offline_image'); ?>"
            alt="<?php echo $app->getCfg('sitename'); ?>" />
     <?php endif; ?>
     <h1>
       <?php echo htmlspecialchars($app->getCfg('sitename')); ?>
     </h1>
-    <?php 
-      if ($app->getCfg('display_offline_message', 1) == 1 
-        && str_replace(' ', '', 
-        $app->getCfg('offline_message')) != ''): 
+    <?php
+      if ($app->getCfg('display_offline_message', 1) == 1
+        && str_replace(' ', '',
+        $app->getCfg('offline_message')) != ''):
     ?>
     <p><?php echo $app->getCfg('offline_message'); ?></p>
-    <?php 
-      elseif ($app->getCfg('display_offline_message', 1) == 2 
-        && str_replace(' ', '', 
-        JText::_('JOFFLINE_MESSAGE')) != ''): 
+    <?php
+      elseif ($app->getCfg('display_offline_message', 1) == 2
+        && str_replace(' ', '',
+        JText::_('JOFFLINE_MESSAGE')) != ''):
     ?>
     <p><?php echo JText::_('JOFFLINE_MESSAGE'); ?></p>
-    <?php 
-      endif; 
+    <?php
+      endif;
     ?>
     <jdoc:include type="message" />
-    <form action="<?php echo JRoute::_('index.php', true); ?>" 
-      method="post" 
-      name="login" 
+    <form action="<?php echo JRoute::_('index.php', true); ?>"
+      method="post"
+      name="login"
       id="form-login">
       <fieldset class="input">
         <p id="form-login-username">
-          <input type="text" 
-            name="username" 
-            id="username" 
-            class="inputbox" 
-            alt="<?php echo JText::_('JGLO...NAME'); ?>" 
+          <input type="text"
+            name="username"
+            id="username"
+            class="inputbox"
+            alt="<?php echo JText::_('JGLO...NAME'); ?>"
             size="18"
             placeholder="<?php echo JText::_('JGLO...NAME'); ?>" />
         </p>
         <p id="form-login-password">
-          <input type="password" 
-            name="password" 
-            id="password" 
-            class="inputbox" 
-            alt="<?php echo JText::_('JGLO...WORD'); ?>" 
+          <input type="password"
+            name="password"
+            id="password"
+            class="inputbox"
+            alt="<?php echo JText::_('JGLO...WORD'); ?>"
             size="18"
             placeholder="<?php echo JText::_('JGLO...WORD'); ?>" />
         </p>
         <p id="form-login-remember">
-          <input type="checkbox" 
-            name="remember" 
-            value="yes" 
-            alt="<?php echo JText::_('JGLOBAL_REMEMBER_ME'); ?>" 
+          <input type="checkbox"
+            name="remember"
+            value="yes"
+            alt="<?php echo JText::_('JGLOBAL_REMEMBER_ME'); ?>"
             id="remember" />
           <label for="remember">
             <?php echo JText::_('JGLOBAL_REMEMBER_ME'); ?>
           </label>
         </p>
         <p id="form-login-submit">
-          <input type="submit" 
-            name="Submit" 
-            class="button" 
+          <input type="submit"
+            name="Submit"
+            class="button"
             value="<?php echo JText::_('JLOGIN'); ?>" />
         </p>
       </fieldset>
       <input type="hidden" name="option" value="com_users" />
       <input type="hidden" name="task" value="user.login" />
-      <input type="hidden" name="return" 
+      <input type="hidden" name="return"
         value="<?php echo base64_encode(JURI::base()); ?>" />
       <?php echo JHTML::_( 'form.token' ); ?>
     </form>
