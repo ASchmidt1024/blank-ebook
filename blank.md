@@ -1,3 +1,5 @@
+# BL4NK
+
 BL4NK is a great starting point for a new Joomla!™ template project. It's a fully functional template (can be installed directly) and has responsive support. Internet Explorer is obsolete,  HTML5 and CSS3 are the present. And that is how I build BL4NK. HTML5 tags can be used that all browsers correctly interpret. The CSS file [Normalize.css](http://necolas.github.io/normalize.css/) is to all values neutral and independently to render by the browser. It is a advanced HTML5 alternative to the last CSS resets. All style sheets will be combined in one file and load compressed, which are compiled by [Gulp](https://gulpjs.com/) before. The browser loads only a single CSS file with just one line. You can't get it any faster than that.
 
 To write your CSS you can choose between [LESS](http://lesscss.org/) and [SASS](https://sass-lang.com/). Wait a moment, you don't know both? LESS and Sass are preprocessors of CSS. Similar to PHP and HTML you can write code with them that will put out clear CSS. You will use LESS or SASS to write CSS more effective. You can use variables, e.g. to use the same hexadecimal color values on different points. There are a lot of functions, also, and much more. We will get it later.
@@ -15,7 +17,7 @@ Then there is a [BL4NK Bootstrap Edition](https://github.com/Bloggerschmidt/Blan
 - [BL4NK Bootstrap Edition](https://github.com/Bloggerschmidt/Blank-Bootstrap-Edition)
 - Great icons in Bootstrap with Font Awesome
 
-# PSD
+# Photoshop files
 
 Download [psd.zip](http://itr.im/psd) (10.8 MB) to create icons and preview images faster. The ZIP package contains the following files:
 
@@ -1598,13 +1600,3 @@ TPL\_FRONTEND\_PARAMETER\_GOOGLEFONT\_LABEL="Google Font"
 This text will be displayed instead of the variable. In other words: whenever the variable TPL\_FRONTEND\_PARAMETER\_GOOGLEFONT\_LABEL appears in the template the output of the text in the "Google Font" is displayed.
 
 In other words, if there is a key value pair in the language file "en-GB.tpl_frontend.ini" you can use the key (e.g. TPL\_FRONTEND\_PARAMETER\_GOOGLEFONT\_LABEL) in the templateDetails.xml to display the value (e.g. Google Font).
-
-# Photoshop files
-
-As the Goodie BL4NK comes with some Photoshop files. In practice, Photoshop is the image editing program that many the designers work with. GIMP may be a good alternative for amateur designers, however, it doesn't have many of the capabilities and functions of Photoshop. [The following files are you ready for it](http://itr.im/psd):
-
-- App Icon Template [2.0].psd
-- template_preview.psd
-- template_thumbnail.psd
-
-The app icon template is intended to create the icons. It includes a Smart object to all Icons in a create slip. You can use it to create icon of various sizes and export them the same time. Size, resolution and file name are all already given. The other two files are intended for Preview images.
