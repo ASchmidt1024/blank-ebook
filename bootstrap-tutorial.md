@@ -201,7 +201,7 @@ This will generate `<meta name="generator" content="Drupal" />` in the outputted
 
 ### Unset JavaScript
 
-As web developer you should have the full power over your website. In order to that you should unset some JavaScripts, because you want to put this JavaScripts in one single file, referenced before the closing body tag. And it you can take this JavaScripts, you can compressing and uglifiying them. However, the following lines unset some scripts.
+As web developer you should have the full power over your website. In order to that you should unset some JavaScripts, because you want to put this JavaScripts in one single file, referenced before the closing body tag. And if you can take this JavaScripts, you can compressing and uglifiying them. This is the best case for performance. However, the following lines unset some scripts.
 
     unset($doc->_scripts[$this->baseurl .'/media/jui/js/jquery.min.js']);
     unset($doc->_scripts[$this->baseurl .'/media/jui/js/jquery-noconflict.js']);
@@ -224,7 +224,11 @@ Each line calls the unset function. This functions gets access to the document (
         }
     }
 
-Okay, here you need a little structure to control, if the unset is really needed. You do it with a simple if statement. So if some plain script (text/javascript) exists (isset), then there should be a replacement (preg_replace). One replacement function is looking for some jQuery, that activate the JCaption function, a function for image captions. Another replacement is looking for the hasTooltip function, a function - you guess it right - to activate tooltips. Well done. You get it off. The head is cleaned from any script.
+This JavaScript belongs to the image caption and the tooltip via jQuery. We don't need and and if we need it in the future, we will do it the Bootstrap way. Okay, here you need a little structure to control, if the unset is really needed. You do it with a simple if statement. So if some plain script (text/javascript) exists (isset), then there should be a replacement (preg_replace). One replacement function is looking for some jQuery, that activate the JCaption function, a function for image captions. Another replacement is looking for the hasTooltip function, a function - you guess it right - to activate tooltips.
+
+Keep in mind that some scripts belong in the head, e.g. modernizr. If this is the case you shouldn't unset them. Well done.
+
+You get it off. The head is cleaned from any script.
 
 ### Template CSS
 
@@ -353,7 +357,7 @@ The code looks harder than it is. Roughly speaking, it is here there to display 
 
 First, you open a div with the class `navbar navbar-expand-lg navbar-light bg-light`. Bootstrap creates a (responsive) navigation menu. Its horizontal padding is removed at breakpoints lower than the specified `navbar-expand-lg` class. This ensures your are not doubling up on padding unnecessarily on lower viewports when your navbar is collapsed. Theming the navbar will be done by `navbar-light bg-light`. You can try `navbar-dark bg-dark` or `navbar-dark bg-primary` as well (take a look at [Color shemes](http://getbootstrap.com/docs/4.0/components/navbar/#color-schemes)). Although it’s not required, you can wrap a navbar in div with the class `container` to center it on a page.
 
-What follows is the link to the site name. The class `navbar-brand` formats the presentation of the site name. The Joomla!™ API gives you a target (href) to the base URL. Important here is the backslash (/) at the end. About the predefined variable $app you have to get the site name from the configuration and display it.
+What follows is the link to the site name. The class `navbar-brand` formats the presentation of the site name. The Joomla!™ API gives you a target (href) to the base URL. Important here is the slash (/) at the end. If you open a tag you have to close it, too. Normally you do it separat (e.g. `<div></div>`) but you can do it the short way (e.g. `<div />`), when no value between the opening and closing tag is needed. About the predefined variable $app you have to get the site name from the configuration and display it.
 
 With the site name on the left the toggle button comes on the right. The toggler appears only on small devices. Its a `button` with the class `navbar-toggle`. The `data-toggle` attribute has the value `collapse`, so the navigation can toggle in and out. The target (attribute `data-target`) is the ID `#nav-modules`. Below you write in a div with the same ID (`#navbar-modules`) a module position called `navbar`.
 

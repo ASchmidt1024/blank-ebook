@@ -1155,7 +1155,7 @@ The settings of parameters are stored in the database. The format is: table #\_t
 
 ### Usage
 
-A parameter makes only sense if it can be used in the template. You must define a parameter in the file templateDetails.xml and store its value in the database.  Once you've done both, you can put them to work. An PHP statement is sufficient:
+A parameter makes only sense if it can be used in the template. You must define a parameter in the file templateDetails.xml and store its value in the database. Once you've done both, you can put them to work. An PHP statement is sufficient:
 
     <?php $variable = $this->params->get('parameter-name'); ?>
 
@@ -1166,7 +1166,7 @@ For example, when you add a Google Font as a parameter, you can use that value i
     $doc->addStyleSheet("https://fonts.googleapis.com/css?family=".$googlefont);
     ?>
 
-You define a variable $googlefont and add its value as a parameter in the next line: `$doc->addStyleSheet` looks for the Google API then you load the font in your template.
+You define a variable $googlefont and add its value as a parameter in the next line: `$doc->addStyleSheet` looks for the Google API then you load the font in your template. E.g. if you use 'Roboto' as font you can use it like `font-family: 'Roboto', sans-serif;`.
 
 ## Error page
 
@@ -1601,7 +1601,7 @@ The language files are important for translations. For example, if you equip you
 
 **Example**
 
-The file templateDetails.xml of BL4NK you can define a parameter to use Google fonts:
+In the file templateDetails.xml of BL4NK you can define a parameter to use Google fonts:
 
 TPL\_FRONTEND\_PARAMETER\_GOOGLEFONT\_LABEL
 
@@ -1610,6 +1610,8 @@ If you open the file "en-GB.tpl_frontend.ini", you can find the wording for it.
 TPL\_FRONTEND\_PARAMETER\_GOOGLEFONT\_LABEL="Google Font"
 
 This text will be displayed instead of the variable. In other words: whenever the variable TPL\_FRONTEND\_PARAMETER\_GOOGLEFONT\_LABEL appears in the template the output of the text in the "Google Font" is displayed.
+
+In other words, if there is a key value pair in the language file "en-GB.tpl_frontend.ini" you can use the key (e.g. TPL\_FRONTEND\_PARAMETER\_GOOGLEFONT\_LABEL) in the templateDetails.xml to display the value (e.g. Google Font).
 
 ## Photoshop files
 
