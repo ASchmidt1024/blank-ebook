@@ -729,7 +729,7 @@ The body tag gets two classes added so that you later can define your CSS more p
 
     <body class="<?php echo $active->alias . ' ' . $pageclass; ?>">
 
-Yikes! What is this? That doesn't look overly clear. Quite confusing, actually. But it does make sense. Let's start from the end: The variable `$pageclass`, which in the file is declared in logic.php (more on that later), the page class is generated. The page class is in the backend of Joomla!™, in each menu item to be specified in options and is quite handy for your own layouts. The variable `$active->alias` is the alias of each menu item displayed.
+Let's start from the end: The variable `$pageclass` is declared in the file logic.php (more on that later). It is in the backend of Joomla!™, in each menu item to be specified in options and is quite handy for your own layouts. The variable `$active->alias` is the alias of each menu item displayed.
 
 ### Debug module
 
