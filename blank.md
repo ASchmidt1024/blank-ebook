@@ -62,7 +62,8 @@ Combining these two files gives you [Mini](https://github.com/Bloggerschmidt/Min
 The index.php file is the core of the template.  This makes all the files work together. It is crucial for the source code responsible and ultimately it's all about the source to create and influence.
 
 The minimal structure of the index.php looks like this:
-```
+
+```html
 <?php defined('_JEXEC') or die; ?>
 <!doctype html>
 <html>
@@ -84,7 +85,8 @@ What follows in line three, is the smallest possible construction of a HTML page
 The `jdoc:include` command you'll find twice more in the index.php: once as message type and then as a component type (on lines 8 and 9). In line eight we see `<jdoc:include type="message" />`, this makes the system messages work.  Whenever Joomla!™ needs to talk to you, this line will show it on your screen. For example, if you send an email on a contact form, you'll see the message “your message has been successfully send” after you hit the send button.
 
 Last item to discuss is `<jdoc:include type="component" />` in line nine. This element should only appear once in the `<body>` element of the template to render the main content of the page with respect to the current page being viewed. So, enough explained. This is how the generated source looks like:
-```
+
+```html
 <!doctype html>
 <html>
 
