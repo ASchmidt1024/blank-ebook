@@ -73,15 +73,15 @@ This file holds the variables and program logic of the template. It will be expl
 
 ### head
 
-> Zombie, zombie, zombie
-> Hey, hey
-> What's in your head, in your head
-> Zombie, zombie, zombie
-> Hey, hey, hey
-> Oh, do, do, dou, do, do, dou, do, do
-> Dou, do, do, dou, dou, do, do, dou
+> Zombie, zombie, zombie 
+> Hey, hey 
+> What's in your head, in your head 
+> Zombie, zombie, zombie 
+> Hey, hey, hey 
+> Oh, do, do, dou, do, do, dou, do, do 
+> Dou, do, do, dou, dou, do, do, dou 
 > 
-> (Part of the songtext: The Cranberries - Zombie)
+> (Part of the songtext: The Cranberries - Zombie) 
 
 What follows is an HTML document. The declaration of `<!doctype html>`, `<html>` and `<head>`.
 
