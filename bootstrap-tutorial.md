@@ -478,19 +478,19 @@ Open the frontend in another tab to preview the result. Ah, yeah! Looks good.
 
 Now we can build a two-level menu. Go to Menus > Main Menu and create some new entries, each as "Single Article", "Link" to "Lorem Ispum" and "Link Class" "nav-link". It is important that the parent entry of the second level (in our case "About") get the menu item type "System Links > URL" and as "Link" the route sign (#), with the "Link Class" "nav-link dropdown-toggle". Only so it drops correctly under bootstrap. The structure should look something like this:
 
-**Home** [1]
-**About** [2]
-**- Vulputate Aenean** [3]
-**- Euismod Vestibulum Sit** [3]
-**- Ligula** [3]
-**Contact** [3]
+**Home** [1]  
+**About** [2]  
+**- Vulputate Aenean** [3]  
+**- Euismod Vestibulum Sit** [3]  
+**- Ligula** [3]  
+**Contact** [3]  
 
-[1] Articles » Featured Articles
-    'Link Class' (Link Type) `nav-link`
-[2] System Links » URL
-    'Link Class' (Link Type) `nav-link dropdown-toggle`
-[3] Articles     » Single Article
-    'Link Class' (Link Type) `nav-link`
+[1] Articles » Featured Articles  
+    'Link Class' (Link Type) `nav-link`  
+[2] System Links » URL  
+    'Link Class' (Link Type) `nav-link dropdown-toggle`  
+[3] Articles     » Single Article  
+    'Link Class' (Link Type) `nav-link`  
 
 Tip: The parent element "About" should not (!) be assigned to an article. This is to be liable to the "Mobile First Strategy". Have you previously been accustomed under the parent element into view something, you can instead add below a summary page as the first element.
 
