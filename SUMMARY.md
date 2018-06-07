@@ -1,9 +1,10 @@
-# Summary
+# Table of contents
 
-* [First](/README.md)
-* [Preface](/preface.md)
-* [Author](/author.md)
-* [Introduction](/introduction.md)
-* [Getting Started](/getting-started.md)
-* [BL4NK](/blank.md)
-* [Bootstrap Tutorial](/bootstrap-tutorial.md)
+* [First](README.md)
+* [Preface](preface.md)
+* [Author](author.md)
+* [Introduction](introduction.md)
+* [Getting Started](getting-started.md)
+* [BL4NK](bl4nk.md)
+* [Bootstrap Tutorial](bootstrap-tutorial.md)
+

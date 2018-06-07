@@ -4,55 +4,63 @@ In this guide you will learn how to use BL4NK with Bootstrap in order to create 
 
 ## Requirement
 
-* [XAMPP](https://www.apachefriends.org/) or [MAMP](https://www.mamp.info) (or any local web server)
-* [Joomla!™](https://www.joomla.org/) (without content)
-* [Node.js®](http://nodejs.org/) (should be installed)
-* [Gulp](https://gulpjs.com/) (will be installed)
+* [XAMPP](https://www.apachefriends.org/) or [MAMP](https://www.mamp.info) \(or any local web server\)
+* [Joomla!™](https://www.joomla.org/) \(without content\)
+* [Node.js®](http://nodejs.org/) \(should be installed\)
+* [Gulp](https://gulpjs.com/) \(will be installed\)
 
 What you further need
 
-- [Blank Bootstrap Edition](https://github.com/Bloggerschmidt/Blank-Bootstrap-Edition/releases/latest)
-- [Journal](https://bootswatch.com/journal/) Bootstrap Theme
+* [Blank Bootstrap Edition](https://github.com/Bloggerschmidt/Blank-Bootstrap-Edition/releases/latest)
+* [Journal](https://bootswatch.com/journal/) Bootstrap Theme
 
 Good to know
 
-- [Bootstrap Documentation](http://getbootstrap.com/)
-- [Template Snippets](https://gist.github.com/Bloggerschmidt/2360208)
+* [Bootstrap Documentation](http://getbootstrap.com/)
+* [Template Snippets](https://gist.github.com/Bloggerschmidt/2360208)
 
 ## Installation
 
-First download the latest version of [Blank Bootstrap Edition](https://github.com/Bloggerschmidt/Blank-Bootstrap-Edition/releases/latest). Install it in the backend of Joomla!™ under Extensions > Manage > Install > Upload Package File. After successful installation choose the template called _frontend_ as default template under Extensions > Templates > Styles. Now it is active and can be viewed in the front end. Just click on the preview link at the top right. It is recommended to use two tabs in your browser (back end and front end) to work with.
+First download the latest version of [Blank Bootstrap Edition](https://github.com/Bloggerschmidt/Blank-Bootstrap-Edition/releases/latest). Install it in the backend of Joomla!™ under Extensions &gt; Manage &gt; Install &gt; Upload Package File. After successful installation choose the template called _frontend_ as default template under Extensions &gt; Templates &gt; Styles. Now it is active and can be viewed in the front end. Just click on the preview link at the top right. It is recommended to use two tabs in your browser \(back end and front end\) to work with.
 
 Unfortunatly, you have to install the template twice, to automate and enhance your workflow. First keep shure you have installed [Node.js®](http://nodejs.org/). If Node.js® is installed, install Gulp via command prompt. Just open a console or a terminal.
-```
+
+```text
 npm install -g gulp
 ```
+
 Now change your path to the template directory. Install all dependencies.
-```
+
+```text
 npm install
 ```
+
 Run Gulp to compile, compress and build.
-```
+
+```text
 gulp
 ```
+
 Magic!
 
 ## Preparation
 
-Before we get into details, you should give your (!) template a personal touch. Open the file templateDetails.xml in your template folder under JOOMLA-ROOT/templates/frontend/. This file is an XML file and must be filled in with your data. You can keep the `<name>` frontend. If you want to change your template name into something else, you should do that before (!) you install the template. The steps are the same, only that you unzip Blank Bootstrap Edition, change the name frontend in templateDetails.xml, rename the folder, zip the template (the renamed folder) and install it in the backend. If you want to do it right now, you should deinstall the current template. Keep shure you take another template as default before.
+Before we get into details, you should give your \(!\) template a personal touch. Open the file templateDetails.xml in your template folder under JOOMLA-ROOT/templates/frontend/. This file is an XML file and must be filled in with your data. You can keep the `<name>` frontend. If you want to change your template name into something else, you should do that before \(!\) you install the template. The steps are the same, only that you unzip Blank Bootstrap Edition, change the name frontend in templateDetails.xml, rename the folder, zip the template \(the renamed folder\) and install it in the backend. If you want to do it right now, you should deinstall the current template. Keep shure you take another template as default before.
 
-Continue in the templateDetails.xml. The date in `<creationDate>` should be set to the current date. Just take a format you want. Your name is in `<author>` tag. The `<copyright>` follows. `<authorEmail>` and `<authorUrl>` are self explanatory. In `<version>` you can specify which version of the template this is. A description of the templates can be stored under `<description>`. You can use HTML here. The rest can remain as it is for the moment. Later on, when you set the module positions, you will need this file again. Save the file and you'll see that your changes in the backend (Extensions > Templates > Templates. Yes, you read it right: Double 'Templates'. Do you work as a freelancer? It is awesome to explain this path to your client on the phone).
+Continue in the templateDetails.xml. The date in `<creationDate>` should be set to the current date. Just take a format you want. Your name is in `<author>` tag. The `<copyright>` follows. `<authorEmail>` and `<authorUrl>` are self explanatory. In `<version>` you can specify which version of the template this is. A description of the templates can be stored under `<description>`. You can use HTML here. The rest can remain as it is for the moment. Later on, when you set the module positions, you will need this file again. Save the file and you'll see that your changes in the backend \(Extensions &gt; Templates &gt; Templates. Yes, you read it right: Double 'Templates'. Do you work as a freelancer? It is awesome to explain this path to your client on the phone\).
 
 BL4NK comes with a little feature called 'browserSync'. Everytime you save your changes in PHP, CSS or JavaScript, the browser will be reloaded automatically. So that can happen you should change the path in gulpfile.js in your template folder. Open the file and search for the `serve` function. Change the line
 
 ```javascript
 proxy: 'http://localhost/your-website/'
 ```
+
 to your local developing path, the address of your front end in the browser. E.g.
 
 ```javascript
 proxy: 'http://localhost/my-awesome-website/'
 ```
+
 We will get into the other functions later. The template is now ready for development.
 
 Optional, replace the template\_preview.png, template\_thumbnail.png and the favicon.ico with your own. You'll find all three files in the root of your template folder. You can use [this PSD files](http://itr.im/psd) to create your own images.
@@ -61,7 +69,7 @@ Optional, replace the template\_preview.png, template\_thumbnail.png and the fav
 
 The file index.php is at the heart of each template. This is where all files converge. It is largely responsible for the source code and in the end it's all about creating and influencing the source code. Open it! We go through step by step, before you start coding.
 
-The first line is written in PHP `<?php defined( '_JEXEC' ) or die;`. With `<?php` you open the PHP area (which should be closed with `?>` again) and with `defined( '_JEXEC' ) or die` you forbid direct access to this file. This is done via the Joomla!™ API with the \_JEXEC command. This statement checks to see if the file is being called from within Joomla!™ and it protects your site by making it more difficult for a cracker/hacker to damage your site.
+The first line is written in PHP `<?php defined( '_JEXEC' ) or die;`. With `<?php` you open the PHP area \(which should be closed with `?>` again\) and with `defined( '_JEXEC' ) or die` you forbid direct access to this file. This is done via the Joomla!™ API with the \_JEXEC command. This statement checks to see if the file is being called from within Joomla!™ and it protects your site by making it more difficult for a cracker/hacker to damage your site.
 
 With the next line you include the logic.php file.
 
@@ -69,7 +77,7 @@ With the next line you include the logic.php file.
 include_once JPATH_THEMES.'/'.$this->template.'/logic.php';
 ```
 
-This file holds the variables and program logic of the template. It will be explained after index.php. JPATH_THEMES is a [constant of Joomla!™](https://docs.joomla.org/Constants) and with `$this->template` we get the current template.
+This file holds the variables and program logic of the template. It will be explained after index.php. JPATH\_THEMES is a [constant of Joomla!™](https://docs.joomla.org/Constants) and with `$this->template` we get the current template.
 
 ### head
 
@@ -80,12 +88,11 @@ This file holds the variables and program logic of the template. It will be expl
 > Hey, hey, hey  
 > Oh, do, do, dou, do, do, dou, do, do  
 > Dou, do, do, dou, dou, do, do, dou  
->  
-> (Part of the songtext: The Cranberries - Zombie)  
+> \(Part of the songtext: The Cranberries - Zombie\)
 
 What follows is an HTML document. The declaration of `<!doctype html>`, `<html>` and `<head>`.
 
-```html
+```markup
 <!doctype html>
 <html lang="<?php echo $this->language; ?>">
 <head>
@@ -93,13 +100,13 @@ What follows is an HTML document. The declaration of `<!doctype html>`, `<html>`
 </head>
 ```
 
-Yo, the first line is the document declaration, second line opens the html area with the attribute `lang` with the site specific language shortcut (e.g. `en`). This will be done with php `echo $this->language;`. The head area follows and contains a Joomla!™ specific code to include all the head stuff. With this line the CMS is able to load scripts, links, metas, title and all the invisible but necessary things of your website. If the template is already installed, take a look at the source code of the frontend and you will see all the stuff.
+Yo, the first line is the document declaration, second line opens the html area with the attribute `lang` with the site specific language shortcut \(e.g. `en`\). This will be done with php `echo $this->language;`. The head area follows and contains a Joomla!™ specific code to include all the head stuff. With this line the CMS is able to load scripts, links, metas, title and all the invisible but necessary things of your website. If the template is already installed, take a look at the source code of the frontend and you will see all the stuff.
 
 ### body
 
 The body contains all the visible stuff of your site.
 
-```html
+```markup
 <body class="<?php echo $active->alias . ' ' . $pageclass; ?>">
 
     <!--
@@ -123,11 +130,11 @@ The body contains all the visible stuff of your site.
 
 Well, the first line opens the body area with two specific class values: `$active->alias` and `$pageclass`. Maybe you still have recognized it, that every time you create a new menu item in the backend, Joomla!™ creates an alias of this item automatically. It will be created throught the item title in lowercase and empty spaces will be replaced with separators. This alias is predestined to be a class name. So we take it and give it to the body. And yes, at the menu item you are able to leave an extra page class. This page class is also taken for the body class.
 
-The seven lines after `SHOW ME YOUR AWESOME CODE` are example code in the bootstrap way. Three divs contains one jdoc. You can read it in the [official Bootstrap documentation](http://getbootstrap.com/), that containers are required when using the grid system. It uses a series of containers, rows and columns to layout and align content. 'It’s built with [flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes) and is fully responsive.' The above example creates one column in full width (the basic grid system has 12 columns) to display the content of each component of Joomla!™, e.g. articles. This will be done with `<jdoc:include type="component" />` and can only be once in every template. The following three i tags are for preview some icons of Font Awesome (a solid icon, a regular icon and a brand icon).
+The seven lines after `SHOW ME YOUR AWESOME CODE` are example code in the bootstrap way. Three divs contains one jdoc. You can read it in the [official Bootstrap documentation](http://getbootstrap.com/), that containers are required when using the grid system. It uses a series of containers, rows and columns to layout and align content. 'It’s built with [flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes) and is fully responsive.' The above example creates one column in full width \(the basic grid system has 12 columns\) to display the content of each component of Joomla!™, e.g. articles. This will be done with `<jdoc:include type="component" />` and can only be once in every template. The following three i tags are for preview some icons of Font Awesome \(a solid icon, a regular icon and a brand icon\).
 
 One module follows the component: `<jdoc:include type="modules" name="debug" />`. If you turn on the debug mode in your configuration of your awesome CMS, the output will shown in the frontend in exactly this place. You need to do the same with all your module positions; later more.
 
-Finally, and as an very old developer (40 y, call me grandpa) long awaited, the one and only javascript of the website before the closing body tag: `<script src="templates/frontend/build/app.js"></script>`. This file will be created with Gulp. But before going into gulpfile.js, we just take a look at the logic.php. It takes only five minutes.
+Finally, and as an very old developer \(40 y, call me grandpa\) long awaited, the one and only javascript of the website before the closing body tag: `<script src="templates/frontend/build/app.js"></script>`. This file will be created with Gulp. But before going into gulpfile.js, we just take a look at the logic.php. It takes only five minutes.
 
 ## logic.php
 
@@ -143,15 +150,15 @@ This code prevents that the file can not be accessed from the address bar of you
 
 ### Declaring variables
 
-Some variables for the proper use of the template are required. [The basics of PHP variables](http://de2.php.net/manual/en/language.variables.basics.php) can be found in PHP manual (for beginners: [A simple tutorial in PHP](http://php.net/manual/en/tutorial.php)).
+Some variables for the proper use of the template are required. [The basics of PHP variables](http://de2.php.net/manual/en/language.variables.basics.php) can be found in PHP manual \(for beginners: [A simple tutorial in PHP](http://php.net/manual/en/tutorial.php)\).
 
 In a nutshell:
 
-- The first character of each PHP variables is the dollar sign $. This is followed by the variable name.
-- Distinction is made between uppercase and lowercase.
-- $My\_variable is not the same as $my\_variable or $My\_Variable.
-- The dollar sign must be followed by a letter or an underscore (_).
-- Spaces are not allowed. $\_my\_variable is okay, $ my\_variable is not.
+* The first character of each PHP variables is the dollar sign $. This is followed by the variable name.
+* Distinction is made between uppercase and lowercase.
+* $My\_variable is not the same as $my\_variable or $My\_Variable.
+* The dollar sign must be followed by a letter or an underscore \(\_\).
+* Spaces are not allowed. $\_my\_variable is okay, $ my\_variable is not.
 
 ```php
 // variables
@@ -200,7 +207,7 @@ Using the variable $app we'll query Joomla!™ for the parameters and store that
 $pageclass = $params->get('pageclass_sfx');
 ```
 
-A rather aptly named variable, $pageclass. The page class suffix is a parameter in Joomla!™ menu items. It can be set in each menu item: [Edit] screen under the "Parameters (Advanced)" section. This will order Joomla!™ to either add a new CSS class or modify the existing CSS class for elements in this specific menu item layout.
+A rather aptly named variable, $pageclass. The page class suffix is a parameter in Joomla!™ menu items. It can be set in each menu item: \[Edit\] screen under the "Parameters \(Advanced\)" section. This will order Joomla!™ to either add a new CSS class or modify the existing CSS class for elements in this specific menu item layout.
 
 ```php
 $tpath = $this->baseurl.'/templates/'.$this->template;
@@ -243,7 +250,7 @@ unset($doc->_scripts[$this->baseurl .'/media/system/js/tabs-state.js']);
 unset($doc->_scripts[$this->baseurl .'/media/system/js/validate.js']);
 ```
 
-Each line calls the unset function. This functions gets access to the document ($doc), especially to the scripts (\_scripts). Then, only the path to each script is needed to execute the function correctly. And yes, not only scripts will be loaded in the head. Some plain JavaScript code appears there too. Muah! Lets unset this.
+Each line calls the unset function. This functions gets access to the document \($doc\), especially to the scripts \(\_scripts\). Then, only the path to each script is needed to execute the function correctly. And yes, not only scripts will be loaded in the head. Some plain JavaScript code appears there too. Muah! Lets unset this.
 
 ```php
 if (isset($doc->_script['text/javascript']))
@@ -257,7 +264,7 @@ if (isset($doc->_script['text/javascript']))
 }
 ```
 
-This JavaScript belongs to the image caption and the tooltip via jQuery. We don't need and and if we need it in the future, we will do it the Bootstrap way. Okay, here you need a little structure to control, if the unset is really needed. You do it with a simple if statement. So if some plain script (text/javascript) exists (isset), then there should be a replacement (preg_replace). One replacement function is looking for some jQuery, that activate the JCaption function, a function for image captions. Another replacement is looking for the hasTooltip function, a function - you guess it right - to activate tooltips.
+This JavaScript belongs to the image caption and the tooltip via jQuery. We don't need and and if we need it in the future, we will do it the Bootstrap way. Okay, here you need a little structure to control, if the unset is really needed. You do it with a simple if statement. So if some plain script \(text/javascript\) exists \(isset\), then there should be a replacement \(preg\_replace\). One replacement function is looking for some jQuery, that activate the JCaption function, a function for image captions. Another replacement is looking for the hasTooltip function, a function - you guess it right - to activate tooltips.
 
 Keep in mind that some scripts belong in the head, e.g. modernizr. If this is the case you shouldn't unset them. Well done.
 
@@ -359,11 +366,11 @@ gulp.task('serve', ['sass'], function() {
 });
 ```
 
-This task 'serve' initializes the browserSync by watching all php, js and scss files of your template. To run it correctly change the proxy path with the path of your browser address (e.g. 'http://localhost/blank5/'). This is the address of your Joomla!™ frontend. So if you change your script.js the task 'js' will be done and if you change your \_custom.scss the task 'sass' will be done. Sexy.
+This task 'serve' initializes the browserSync by watching all php, js and scss files of your template. To run it correctly change the proxy path with the path of your browser address \(e.g. '[http://localhost/blank5/](http://localhost/blank5/)'\). This is the address of your Joomla!™ frontend. So if you change your script.js the task 'js' will be done and if you change your \_custom.scss the task 'sass' will be done. Sexy.
 
 ### Default tasks
 
-To start Gulp you only type `gulp` into your command line interface (cli). As default it should run all tasks in a specific order.
+To start Gulp you only type `gulp` into your command line interface \(cli\). As default it should run all tasks in a specific order.
 
 ```javascript
 gulp.task('default', gulp.parallel('bootstrap','sass','js','serve'));
@@ -375,7 +382,7 @@ This task runs the following tasks parallel: bootstrap, sass, js and serve.
 
 Back to index.php. Its time to code. For the menu and the search you use the [Bootstrap Navbar](http://getbootstrap.com/docs/4.0/components/navbar/) and apply them to Joomla!™. Copy the following lines and paste them after the body tag.
 
-```html
+```markup
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand"
@@ -403,11 +410,11 @@ Back to index.php. Its time to code. For the menu and the search you use the [Bo
 
 The code looks harder than it is. Roughly speaking, it is here there to display the page name, the menu and the search on one line next to each other. On the left side the site name with the menu, and to the right a search box. Remark this in the code with comments, so later on you can find it back more easily.
 
-First, you open a div with the class `navbar navbar-expand-lg navbar-light bg-light`. Bootstrap creates a (responsive) navigation menu. Its horizontal padding is removed at breakpoints lower than the specified `navbar-expand-lg` class. This ensures your are not doubling up on padding unnecessarily on lower viewports when your navbar is collapsed. Theming the navbar will be done by `navbar-light bg-light`. You can try `navbar-dark bg-dark` or `navbar-dark bg-primary` as well (take a look at [Color shemes](http://getbootstrap.com/docs/4.0/components/navbar/#color-schemes)). Although it’s not required, you can wrap a navbar in div with the class `container` to center it on a page.
+First, you open a div with the class `navbar navbar-expand-lg navbar-light bg-light`. Bootstrap creates a \(responsive\) navigation menu. Its horizontal padding is removed at breakpoints lower than the specified `navbar-expand-lg` class. This ensures your are not doubling up on padding unnecessarily on lower viewports when your navbar is collapsed. Theming the navbar will be done by `navbar-light bg-light`. You can try `navbar-dark bg-dark` or `navbar-dark bg-primary` as well \(take a look at [Color shemes](http://getbootstrap.com/docs/4.0/components/navbar/#color-schemes)\). Although it’s not required, you can wrap a navbar in div with the class `container` to center it on a page.
 
-What follows is the link to the site name. The class `navbar-brand` formats the presentation of the site name. The Joomla!™ API gives you a target (href) to the base URL. Important here is the slash (/) at the end. If you open a tag you have to close it, too. Normally you do it separat (e.g. `<div></div>`) but you can do it the short way (e.g. `<div />`), when no value between the opening and closing tag is needed. About the predefined variable $app you have to get the site name from the configuration and display it.
+What follows is the link to the site name. The class `navbar-brand` formats the presentation of the site name. The Joomla!™ API gives you a target \(href\) to the base URL. Important here is the slash \(/\) at the end. If you open a tag you have to close it, too. Normally you do it separat \(e.g. `<div></div>`\) but you can do it the short way \(e.g. `<div />`\), when no value between the opening and closing tag is needed. About the predefined variable $app you have to get the site name from the configuration and display it.
 
-With the site name on the left the toggle button comes on the right. The toggler appears only on small devices. Its a `button` with the class `navbar-toggle`. The `data-toggle` attribute has the value `collapse`, so the navigation can toggle in and out. The target (attribute `data-target`) is the ID `#nav-modules`. Below you write in a div with the same ID (`#navbar-modules`) a module position called `navbar`.
+With the site name on the left the toggle button comes on the right. The toggler appears only on small devices. Its a `button` with the class `navbar-toggle`. The `data-toggle` attribute has the value `collapse`, so the navigation can toggle in and out. The target \(attribute `data-target`\) is the ID `#nav-modules`. Below you write in a div with the same ID \(`#navbar-modules`\) a module position called `navbar`.
 
 Look at the result in the frontend. Apart from the site name nothing to see. Both the menu and the search should be created in the backend. But first we need to set the module positions.
 
@@ -415,20 +422,20 @@ Look at the result in the frontend. Apart from the site name nothing to see. Bot
 
 In order to do it right you should define all module positions in the file templateDetails.xml. So the system has access to and the backend user can publish modules at this defined positions. Open the file in an editor of your choice and scoll to `<positions>`. There you'll find one predefined position called "debug". Add the following code:
 
-```xml
+```markup
 <position>navbar</position>
 <position>breadcrumbs</position>
 <position>largebar</position>
 <position>sidebar</position>
 ```
 
-What? These are already listed? Well the template seems to be well written, hehe. Okay, the names are self-explanatory (always use a good naming convention!). The login should be published at the "sidebar" position. Maybe later you want to add another module there, so the name "sidebar" is better than "login" for this position. The "largebar" is intended for visitors with large displays. One you defined the module positions, save and close the file.
+What? These are already listed? Well the template seems to be well written, hehe. Okay, the names are self-explanatory \(always use a good naming convention!\). The login should be published at the "sidebar" position. Maybe later you want to add another module there, so the name "sidebar" is better than "login" for this position. The "largebar" is intended for visitors with large displays. One you defined the module positions, save and close the file.
 
 ## Boilerplate text
 
-Now it'is time to make some preparations in the backend. You create a blank article for building the menu. First create an item with some boiler plate text. Click in Content > Articles > New and set the title "HTML Ipsum Presents". You can copy the following text:
+Now it'is time to make some preparations in the backend. You create a blank article for building the menu. First create an item with some boiler plate text. Click in Content &gt; Articles &gt; New and set the title "HTML Ipsum Presents". You can copy the following text:
 
-```html
+```markup
 <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
 
 <h2>Header Level 2</h2>
@@ -458,15 +465,14 @@ Now it'is time to make some preparations in the backend. You create a blank arti
 </code></pre>
 ```
 
-This text was written by Chris Coyiers on his site [html-ipsum.com](http://html-ipsum.com/) and is called Kitchen Sink. It's a good boiler plate text with some elements, that might be appear on your website. Before the third title `<h3>` we place a "Read more" link. Well, make it a featured article (Featured > Yes) and Save & Close it. Now under Options > Articles hide the following entries near the bottom:
+This text was written by Chris Coyiers on his site [html-ipsum.com](http://html-ipsum.com/) and is called Kitchen Sink. It's a good boiler plate text with some elements, that might be appear on your website. Before the third title `<h3>` we place a "Read more" link. Well, make it a featured article \(Featured &gt; Yes\) and Save & Close it. Now under Options &gt; Articles hide the following entries near the bottom:
 
-- Show Icons > Hide
-- Show Print Icon > Hide
-- Show Email Icon > Hide
-- Show Hits > Hide
+* Show Icons &gt; Hide
+* Show Print Icon &gt; Hide
+* Show Email Icon &gt; Hide
+* Show Hits &gt; Hide
 
 Open the frontend in another tab to preview the result. Ah, yeah! Looks good.
 
-(to be continued)
-
+\(to be continued\)
 
