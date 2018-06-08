@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Readme](README.md)
+* [](README.md)
 * [Preface](preface.md)
 * [Author](author.md)
 * [Introduction](introduction.md)
