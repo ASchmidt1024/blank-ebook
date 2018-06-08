@@ -11,7 +11,7 @@ In this guide you will learn how to use BL4NK with Bootstrap in order to create 
 
 What you further need
 
-* [Blank Bootstrap Edition](https://github.com/Bloggerschmidt/Blank-Bootstrap-Edition/releases/latest)
+* [BL4NK Bootstrap Edition](https://github.com/Bloggerschmidt/Blank-Bootstrap-Edition/releases/latest)
 * [Journal](https://bootswatch.com/journal/) Bootstrap Theme
 
 Good to know
@@ -21,7 +21,7 @@ Good to know
 
 ## Installation
 
-First download the latest version of [Blank Bootstrap Edition](https://github.com/Bloggerschmidt/Blank-Bootstrap-Edition/releases/latest). Install it in the backend of Joomla!™ under Extensions &gt; Manage &gt; Install &gt; Upload Package File. After successful installation choose the template called _frontend_ as default template under Extensions &gt; Templates &gt; Styles. Now it is active and can be viewed in the front end. Just click on the preview link at the top right. It is recommended to use two tabs in your browser \(back end and front end\) to work with.
+First download the latest version of [BL4NK Bootstrap Edition](https://github.com/Bloggerschmidt/Blank-Bootstrap-Edition/releases/latest). Install it in the backend of Joomla!™ under Extensions &gt; Manage &gt; Install &gt; Upload Package File. After successful installation choose the template called _frontend_ as default template under Extensions &gt; Templates &gt; Styles. Now it is active and can be viewed in the front end. Just click on the preview link at the top right. It is recommended to use two tabs in your browser \(back end and front end\) to work with.
 
 Unfortunatly, you have to install the template twice, to automate and enhance your workflow. First keep shure you have installed [Node.js®](http://nodejs.org/). If Node.js® is installed, install Gulp via command prompt. Just open a console or a terminal.
 
@@ -45,7 +45,7 @@ Magic!
 
 ## Preparation
 
-Before we get into details, you should give your \(!\) template a personal touch. Open the file templateDetails.xml in your template folder under JOOMLA-ROOT/templates/frontend/. This file is an XML file and must be filled in with your data. You can keep the `<name>` frontend. If you want to change your template name into something else, you should do that before \(!\) you install the template. The steps are the same, only that you unzip Blank Bootstrap Edition, change the name frontend in templateDetails.xml, rename the folder, zip the template \(the renamed folder\) and install it in the backend. If you want to do it right now, you should deinstall the current template. Keep shure you take another template as default before.
+Before we get into details, you should give your \(!\) template a personal touch. Open the file templateDetails.xml in your template folder under JOOMLA-ROOT/templates/frontend/. This file is an XML file and must be filled in with your data. You can keep the `<name>` frontend. If you want to change your template name into something else, you should do that before \(!\) you install the template. The steps are the same, only that you unzip BL4NK Bootstrap Edition, change the name frontend in templateDetails.xml, rename the folder, zip the template \(the renamed folder\) and install it in the backend. If you want to do it right now, you should deinstall the current template. Keep shure you take another template as default before.
 
 Continue in the templateDetails.xml. The date in `<creationDate>` should be set to the current date. Just take a format you want. Your name is in `<author>` tag. The `<copyright>` follows. `<authorEmail>` and `<authorUrl>` are self explanatory. In `<version>` you can specify which version of the template this is. A description of the templates can be stored under `<description>`. You can use HTML here. The rest can remain as it is for the moment. Later on, when you set the module positions, you will need this file again. Save the file and you'll see that your changes in the backend \(Extensions &gt; Templates &gt; Templates. Yes, you read it right: Double 'Templates'. Do you work as a freelancer? It is awesome to explain this path to your client on the phone\).
 
@@ -490,7 +490,7 @@ Now we can build a two-level menu. Go to Menus &gt; Main Menu and create some ne
 The parent element "About" should not \(!\) be assigned to an article. This is to be liable to the "Mobile First Strategy". Have you previously been accustomed under the parent element into view something, you can instead add below a summary page as the first element.
 {% endhint %}
 
-Now it is time to publish the menu in the right position. Edit the module of the menu in Extensions &gt; Modules &gt; Main Menu \(or create it if it doesn't exist\) and publish it in the position `navbar`. When you create a drop-down menu, 'Show Sub-menu Items' should be set to "Yes". In 'Menu Class Suffix' \(Advanced\) you set the class `navbar-nav` \(preceded by a space!\). Save & Close. Refresh your browser page \(frontend\).
+Now it is time to publish the menu in the right position. Edit the module of the menu in Extensions &gt; Modules &gt; Main Menu \(or create it if it doesn't exist\) and publish it in the position `navbar`. When you create a drop-down menu, 'Show Sub-menu Items' should be set to "Yes". In 'Menu Class Suffix' \(Advanced\) you set the class ` navbar-nav mr-auto` \(preceded by a space!\). Save & Close. Refresh your browser page \(frontend\).
 
 Looks good? No, it doesn't. On the second level you'll see some slack. What we need are some extra classes according to the [Bootstrap documentation of the navbar](http://getbootstrap.com/docs/4.1/components/navbar/). We'll add them in one override. There is a long way to do this, so pack a pair sandwiches and a bottle of water, and then go to Extensions &gt; Templates &gt; Templates \(again\) &gt; Frontend Details and Files &gt; Create Overrides &gt; Modules &gt; mod\_menu. One click on mod\_menu creates the override in your template directory in the html folder. Now open the file default.php in there.
 
@@ -557,6 +557,38 @@ $('ul.dropdown-menu').each(function(){
 And the way we add the id we can add the other attributes `role`, `data-toggle`, `aria-haspopup` and `aria-expanded` as well.
 
 Save. Upload. Done. Browser: refresh. View. Be proud. Applause!
+
+## Search
+
+To improve the user experience offering a search module is a good idea. You can use the module position `navbar`, but the corresponding module in the backend won't work yet. Do that in Extensions > Modules. Click on "New" and select "Search". The 'title' should perhaps be named "Search" and the position `navbar`. Save & Close.
+
+It still looks a little bit ugly. The label before the box can actually be removed. Therefore we create another override. You are strengthened by sandwiches and water? Then go to Extensions > Template Manager> Templates > Frontend Details and Files > Create Overrides > Modules > mod\_search. A click on mod\_search again creates the override in the template directory in the folder html. Go into the same directory, look for mod\_search open the file default.php.
+
+Comment out the following line:
+
+```php
+$output = '<label for="mod-search-searchword' . $module->id . '" class="element-invisible">' . $label . '</label> ';
+```
+
+to
+
+```php
+// $output = '<label for="mod-search-searchword' . $module->id . '" class="element-invisible">' . $label . '</label> ';
+```
+
+and remove the dot `.` before the equal sign on line above and give the input element the additional classes `form-control mr-sm-2`:
+
+```php
+$output .= '<input name="searchword" id="mod-search-searchword' . $module->id . '" maxlength="' . $maxlength . '"  class="inputbox search-query input-medium" type="search"' . $width;
+```
+
+to
+
+```php
+$output = '<input name="searchword" id="mod-search-searchword' . $module->id . '" maxlength="' . $maxlength . '"  class="inputbox search-query input-medium form-control mr-sm-2" type="search"' . $width;
+```
+
+(Note: With the dot you can attach other values to variables, here HTML. However, attach the first assignment of a value must be done without a dot.) So, well done. The search looks responsive beautiful.
 
 \(to be continued\)
 
