@@ -1,7 +1,5 @@
 # BL4NK
 
-## BL4NK
-
 BL4NK is a great starting point for a new Joomla!™ template project. It's a fully functional template \(can be installed directly\) and has responsive support. Internet Explorer is obsolete, HTML5 and CSS3 are the present. And that is how I build BL4NK. HTML5 tags can be used that all browsers correctly interpret. The CSS file [Normalize.css](http://necolas.github.io/normalize.css/) is to all values neutral and independently to render by the browser. It is a advanced HTML5 alternative to the last CSS resets. All style sheets will be combined in one file and load compressed, which are compiled by [Gulp](https://gulpjs.com/) before. The browser loads only a single CSS file with just one line. You can't get it any faster than that.
 
 To write your CSS you can choose between [LESS](http://lesscss.org/) and [SASS](https://sass-lang.com/). Wait a moment, you don't know both? LESS and Sass are preprocessors of CSS. Similar to PHP and HTML you can write code with them that will put out clear CSS. You will use LESS or SASS to write CSS more effective. You can use variables, e.g. to use the same hexadecimal color values on different points. There are a lot of functions, also, and much more. We will get it later.
