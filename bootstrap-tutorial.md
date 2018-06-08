@@ -478,25 +478,22 @@ Open the frontend in another tab to preview the result. Ah, yeah! Looks good.
 
 Now we can build a two-level menu. Go to Menus &gt; Main Menu and create some new entries, each as "Single Article", "Link" to "Lorem Ispum" and "Link Class" "nav-link". It is important that the parent entry of the second level \(in our case "About"\) get the menu item type "System Links &gt; URL" and as "Link" the route sign \(\#\), with the "Link Class" "nav-link dropdown-toggle". Only so it drops correctly under bootstrap. The structure should look something like this:
 
-* Home \[1\]
-* About \[2\]   
-    Vulputate Aenean \[3\]   
-    Euismod Vestibulum Sit \[3\]   
-    Ligula \[3\]   
+* Home  \[1\]
+* About \[2\]
+  * Vulputate Aenean \[3\]
+  * Euismod Vestibulum Sit \[3\]
+  * Ligula \[3\]
 * Contact \[3\]
 
-1. Articles » Featured Articles   
-    'Link Class' \(Link Type\) `nav-link`
-2. System Links » URL   
-    'Link Class' \(Link Type\) `nav-link dropdown-toggle`
-3. Articles » Single Article   
-    'Link Class' \(Link Type\) `nav-link`
+1. Articles &gt; Featured Articles 'Link Class' \(Link Type\) `nav-link`
+2. System Links &gt; URL 'Link Class' \(Link Type\) `nav-link dropdown-toggle`
+3. Articles &gt; Single Article 'Link Class' \(Link Type\) `nav-link`
 
 {% hint style="info" %}
 The parent element "About" should not \(!\) be assigned to an article. This is to be liable to the "Mobile First Strategy". Have you previously been accustomed under the parent element into view something, you can instead add below a summary page as the first element.
 {% endhint %}
 
-Now it is time to publish the menu in the right position. Edit the module of the menu in Extensions &gt; Modules &gt; Main Menu \(or create it if it doesn't exist\) and publish it in the position `navbar`. When you create a drop-down menu, 'Show Sub-menu Items' should be set to "Yes". In 'Menu Class Suffix' \(Advanced\) you set the class ` navbar-nav mr-auto` \(preceded by a space!\). Save & Close. Refresh your browser page \(frontend\).
+Now it is time to publish the menu in the right position. Edit the module of the menu in Extensions &gt; Modules &gt; Main Menu \(or create it if it doesn't exist\) and publish it in the position `navbar`. When you create a drop-down menu, 'Show Sub-menu Items' should be set to "Yes". In 'Menu Class Suffix' \(Advanced\) you set the class `navbar-nav mr-auto` \(preceded by a space!\). Save & Close. Refresh your browser page \(frontend\).
 
 Looks good? No, it doesn't. On the second level you'll see some slack. What we need are some extra classes according to the [Bootstrap documentation of the navbar](http://getbootstrap.com/docs/4.1/components/navbar/). We'll add them in one override. There is a long way to do this, so pack a pair sandwiches and a bottle of water, and then go to Extensions &gt; Templates &gt; Templates \(again\) &gt; Frontend Details and Files &gt; Create Overrides &gt; Modules &gt; mod\_menu. One click on mod\_menu creates the override in your template directory in the html folder. Now open the file default.php in there.
 
@@ -566,9 +563,9 @@ Save. Upload. Done. Browser: refresh. View. Be proud. Applause!
 
 ## Search
 
-To improve the user experience offering a search module is a good idea. You can use the module position `navbar`, but the corresponding module in the backend won't work yet. Do that in Extensions > Modules. Click on "New" and select "Search". The 'title' should perhaps be named "Search" and the position `navbar`. Save & Close.
+To improve the user experience offering a search module is a good idea. You can use the module position `navbar`, but the corresponding module in the backend won't work yet. Do that in Extensions &gt; Modules. Click on "New" and select "Search". The 'title' should perhaps be named "Search" and the position `navbar`. Save & Close.
 
-It still looks a little bit ugly. The label before the box can actually be removed. Therefore we create another override. You are strengthened by sandwiches and water? Then go to Extensions > Template Manager> Templates > Frontend Details and Files > Create Overrides > Modules > mod\_search. A click on mod\_search again creates the override in the template directory in the folder html. Go into the same directory, look for mod\_search open the file default.php.
+It still looks a little bit ugly. The label before the box can actually be removed. Therefore we create another override. You are strengthened by sandwiches and water? Then go to Extensions &gt; Template Manager&gt; Templates &gt; Frontend Details and Files &gt; Create Overrides &gt; Modules &gt; mod\_search. A click on mod\_search again creates the override in the template directory in the folder html. Go into the same directory, look for mod\_search open the file default.php.
 
 Comment out the following line:
 
@@ -594,7 +591,7 @@ to
 $output = '<input name="searchword" id="mod-search-searchword' . $module->id . '" maxlength="' . $maxlength . '"  class="inputbox search-query input-medium form-control mr-sm-2" type="search"' . $width;
 ```
 
-(Note: With the dot you can attach other values to variables, here HTML. However, attach the first assignment of a value must be done without a dot.) So, well done. The search looks responsive beautiful.
+\(Note: With the dot you can attach other values to variables, here HTML. However, attach the first assignment of a value must be done without a dot.\) So, well done. The search looks responsive beautiful.
 
 \(to be continued\)
 

@@ -6,6 +6,6 @@
 * [Introduction](introduction.md)
 * [Getting Started](getting-started.md)
 * [Snippets](snippets.md)
-* [BL4NK](bl4nk.md)
+* [BL4NK](bl4nk-1.md)
 * [Bootstrap Tutorial](bootstrap-tutorial.md)
 
