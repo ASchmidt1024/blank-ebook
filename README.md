@@ -11,7 +11,7 @@ from Alexander Schmidt
 
 Copyright © 2018
 
-Blank is opensource software released under the GPL.
+Blank is Open Source software released under the GPL.
 
 Feel free to use it for your own commercial projects.
 
