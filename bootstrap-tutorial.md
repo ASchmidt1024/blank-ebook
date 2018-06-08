@@ -476,27 +476,27 @@ Open the frontend in another tab to preview the result. Ah, yeah! Looks good.
 
 ## Menu
 
-Now we can build a two-level menu. Go to Menus > Main Menu and create some new entries, each as "Single Article", "Link" to "Lorem Ispum" and "Link Class" "nav-link". It is important that the parent entry of the second level (in our case "About") get the menu item type "System Links > URL" and as "Link" the route sign (#), with the "Link Class" "nav-link dropdown-toggle". Only so it drops correctly under bootstrap. The structure should look something like this:
+Now we can build a two-level menu. Go to Menus &gt; Main Menu and create some new entries, each as "Single Article", "Link" to "Lorem Ispum" and "Link Class" "nav-link". It is important that the parent entry of the second level \(in our case "About"\) get the menu item type "System Links &gt; URL" and as "Link" the route sign \(\#\), with the "Link Class" "nav-link dropdown-toggle". Only so it drops correctly under bootstrap. The structure should look something like this:
 
-**Home** [1]  
-**About** [2]  
-**- Vulputate Aenean** [3]  
-**- Euismod Vestibulum Sit** [3]  
-**- Ligula** [3]  
-**Contact** [3]  
+**Home** \[1\]  
+**About** \[2\]  
+**- Vulputate Aenean** \[3\]  
+**- Euismod Vestibulum Sit** \[3\]  
+**- Ligula** \[3\]  
+**Contact** \[3\]
 
-[1] Articles » Featured Articles  
-    'Link Class' (Link Type) `nav-link`  
-[2] System Links » URL  
-    'Link Class' (Link Type) `nav-link dropdown-toggle`  
-[3] Articles     » Single Article  
-    'Link Class' (Link Type) `nav-link`  
+\[1\] Articles » Featured Articles  
+'Link Class' \(Link Type\) `nav-link`  
+\[2\] System Links » URL  
+'Link Class' \(Link Type\) `nav-link dropdown-toggle`  
+\[3\] Articles » Single Article  
+'Link Class' \(Link Type\) `nav-link`
 
-Tip: The parent element "About" should not (!) be assigned to an article. This is to be liable to the "Mobile First Strategy". Have you previously been accustomed under the parent element into view something, you can instead add below a summary page as the first element.
+Tip: The parent element "About" should not \(!\) be assigned to an article. This is to be liable to the "Mobile First Strategy". Have you previously been accustomed under the parent element into view something, you can instead add below a summary page as the first element.
 
-Now it is time to publish the menu in the right position. Edit the module of the menu in Extensions > Modules > Main Menu (or create it if it doesn't exist) and publish it in the position `navbar`. When you create a drop-down menu, 'Show Sub-menu Items' should be set to "Yes". In 'Menu Class Suffix' (Advanced) you set the class ` navbar-nav` (preceded by a space!). Save & Close. Refresh your browser page (frontend).
+Now it is time to publish the menu in the right position. Edit the module of the menu in Extensions &gt; Modules &gt; Main Menu \(or create it if it doesn't exist\) and publish it in the position `navbar`. When you create a drop-down menu, 'Show Sub-menu Items' should be set to "Yes". In 'Menu Class Suffix' \(Advanced\) you set the class `navbar-nav` \(preceded by a space!\). Save & Close. Refresh your browser page \(frontend\).
 
-Looks good? No, it doesn't. On the second level you'll see some slack. What we need are some extra classes according to the [Bootstrap documentation of the navbar](http://getbootstrap.com/docs/4.1/components/navbar/). We'll add them in one override. There is a long way to do this, so pack a pair sandwiches and a bottle of water, and then go to Extensions > Templates > Templates (again) > Frontend Details and Files > Create Overrides > Modules > mod\_menu. One click on mod\_menu creates the override in your template directory in the html folder. Now open the file default.php in there.
+Looks good? No, it doesn't. On the second level you'll see some slack. What we need are some extra classes according to the [Bootstrap documentation of the navbar](http://getbootstrap.com/docs/4.1/components/navbar/). We'll add them in one override. There is a long way to do this, so pack a pair sandwiches and a bottle of water, and then go to Extensions &gt; Templates &gt; Templates \(again\) &gt; Frontend Details and Files &gt; Create Overrides &gt; Modules &gt; mod\_menu. One click on mod\_menu creates the override in your template directory in the html folder. Now open the file default.php in there.
 
 The line 24
 
@@ -543,7 +543,7 @@ jQuery(function($) {
 
 Ooo...kay. With the first line we open the jQuery function in generell and with the last line we close it. The inner code is for each dropdown menu. Before every single dropdown menu there is a button to trigger it. For example it look like this.
 
-```html
+```markup
 <a href="#" class="nav-link dropdown-toggle">...</a>
 <ul class="dropdown-menu" aria-labelledby="navbarDropdownXXX">
 ```
@@ -560,7 +560,7 @@ $('ul.dropdown-menu').each(function(){
 
 And the way we add the id we can add the other attributes `role`, `data-toggle`, `aria-haspopup` and `aria-expanded` as well.
 
-Save. Upload. Done. Browser:  refresh. View. Be proud. Applause!
+Save. Upload. Done. Browser: refresh. View. Be proud. Applause!
 
 \(to be continued\)
 

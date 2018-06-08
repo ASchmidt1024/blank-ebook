@@ -1,4 +1,4 @@
-# BL4NK
+# Hello
 
 Light, powerful and free template for Joomla!™  
 for faster and easier web development.
@@ -16,3 +16,4 @@ Blank is opensource software released under the GPL.
 Feel free to use it for your own commercial projects.
 
 For free software
+
