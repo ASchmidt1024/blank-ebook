@@ -1,6 +1,4 @@
-# BL4NK
-
-## Mastering templates for Joomla!™
+# Mastering templates for Joomla!™
 
 Light, powerful and free template for Joomla!™  
 for faster and easier web development.
@@ -13,7 +11,7 @@ from Alexander Schmidt
 
 Copyright © 2018
 
-Blank is Open Source software released under the GPL.
+BL4NK is Open Source software released under the GPL.
 
 Feel free to use it for your own commercial projects.
 
