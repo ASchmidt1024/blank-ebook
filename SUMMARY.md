@@ -1,6 +1,6 @@
 # Table of contents
 
-* [BL4NK](README.md)
+* [Mastering templates for Joomla!™](README.md)
 * [Preface](preface.md)
 * [Author](author.md)
 * [Introduction](introduction.md)
