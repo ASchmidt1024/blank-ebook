@@ -685,7 +685,7 @@ function modChrome_card($module, &$params, &$attribs) {
 ?>
 ```
 
-You know now why the first line is there? Yes, only Joomla!™ is allowed to execute this file. Otherwise you will die. That's sounds hard, but it ondy works this way. What follows is a PHP function called "modChrome\_card", in which the module is placed with the div class card. If you want to know exactly what it is about this module chrome, then read the Section [Module Chrome](https://schmidt.gitbook.io/bl4nk/bl4nk-1\#module-chrome).
+You know now why the first line is there? Yes, only Joomla!™ is allowed to execute this file. Otherwise you will die. That's sounds hard, but it ondy works this way. What follows is a PHP function called "modChrome\_card", in which the module is placed with the div class card. If you want to know exactly what it is about this module chrome, then read the section [Module Chrome](https://schmidt.gitbook.io/bl4nk/bl4nk-1\#module-chrome).
 
 If you refresh the frontend you will see a ugly thing: The read more button. This button missed a class called `btn-primary`. This thing need this class to look good. And it would like to look good \(like you and me\). Create Overrides &gt; Layouts &gt; joomla &gt; content. Go to the folder html/layouts/joomla/content and open the file readmore.php. All other files could be deleted. You don't need them. Now catch all anchor elements with the class `btn` and add `btn-primary`.
 

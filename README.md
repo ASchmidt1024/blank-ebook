@@ -5,13 +5,13 @@ for faster and easier web development.
 
 [blank.rocks](http://blank.rocks) or [GitHub](https://github.com/Bloggerschmidt/Blank)
 
-for Joomla!™
+For [Joomla!™](https://www.joomla.org/)
 
-from Alexander Schmidt
+From Alexander Schmidt
 
 Copyright © 2018
 
-BL4NK is Open Source software released under the GPL.
+BL4NK is Open Source Software released under the [GPL](https://www.gnu.org/licenses/gpl-3.0.en.html).
 
 Feel free to use it for your own commercial projects.
 
