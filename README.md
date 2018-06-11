@@ -1,5 +1,7 @@
 # BL4NK
 
+## Mastering templates for Joomla!™
+
 Light, powerful and free template for Joomla!™  
 for faster and easier web development.
 
