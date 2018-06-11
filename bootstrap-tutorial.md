@@ -747,5 +747,19 @@ Last but not least we will code the footer. A oneliner should be enough for the 
 
 This shows the copyright symbol, the current year and the site name.
 
+## Theme
+
+Congratulations! You finished your first site with BL4NK and Bootstrap and it looks really good. If you want to style your site with a different theme, that can be done.
+
+Go to [bootswatch.com](http://bootswatch.com/) and pick a theme you like. Maybe you prefer Sketchy, so let's take that one. Create a folder named bootswatch in the "scss" directory of your template. Download the files _variables.scss and _bootswatch.scss, copy them into the folder "scss/bootswatch/". Import both files after the bootstrap imports in file main.scss.
+
+```scss
+// bootswatch
+@import "bootswatch/variables";
+@import "bootswatch/bootswatch";
+```
+
+And that, my friends, is all you need to do... Simple, once you know it. And you do it now!
+
 \(to be continued\)
 
