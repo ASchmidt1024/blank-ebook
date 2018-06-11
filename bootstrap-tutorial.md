@@ -734,5 +734,18 @@ To avoid destroying the menu, delete or comment the two following lines at the b
 
 [Author's note: The implementation of bootstrap in the frontend is really a plague.] Save. Looks good.
 
+## Footer
+
+Last but not least we will code the footer. A oneliner should be enough for the first. In the file index.php we write following code.
+
+```html
+<div class="container footer">
+  <p><br />Copyright &copy; <?php echo date('Y'); ?> -
+      <?php echo $app->getCfg('sitename'); ?></p>
+</div>
+```
+
+This shows the copyright symbol, the current year and the site name.
+
 \(to be continued\)
 
