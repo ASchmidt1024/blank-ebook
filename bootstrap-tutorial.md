@@ -605,5 +605,36 @@ $output = '<input name="searchword" id="mod-search-searchword' . $module->id . '
 
 \(Note: With the dot you can attach other values to variables, here HTML. However, attach the first assignment of a value must be done without a dot.\) So, well done. The search looks responsive beautiful.
 
+## Breadcrumbs
+
+The visitor of your site should always know where he is. You help him by displaying the navigation path, also knows as breadcrumbs (from the fairy tale Hansel and Gretel, where Hansel drops his breadcrumbs to know the path home). In the file index.php you need to add few lines of code. Place it below the navbar.
+
+```html
+<!-- BREADCRUMBS -->
+<div class="container">
+  <jdoc:include type="modules" name="breadcrumbs" />
+</div>
+```
+
+The div class `.container` refers to the [grid system bootstrap](http://getbootstrap.com/docs/4.1/layout/grid/) we earlier discussed, so that the Breadcrumb module has the correct place in the template.
+
+The work in the index.php is done. Now it needs a module for the navigation path. So go to the module manager in the backend: Extensions > Modules. Create the breadcrumbs module by clicking on "New" and select the type "Breadcrumbs". The 'Title' can be anything you want, but keep it simple. Maybe just call it “Breadcrumbs" is a good idea? Set the position to `breadcrumbs`. Getting hungry from all those breadcrumbs? Take a short break. After refreshing yourself go to options in the breadcrumbs module and set 'Show "You are here"' to "No". Save & Close.
+
+If you now click on a sub-item in the front end, you see, that there is still a rather ugly arrow in orange. Muah! It's simply to beautiful to keep it. Time for an override for mod\_breadcrumbs (you know how it goes :-). open the file default.php.
+
+Search for:
+
+```php
+<?php echo $separator; ?>
+```
+
+comment out the `$separator` and write your own, maybe
+
+```php
+<?php //echo $separator; ?>&nbsp;&gt;&nbsp;
+```
+
+And that, ladies and gentlemen, makes our breadcrumbs shining bright.
+
 \(to be continued\)
 
