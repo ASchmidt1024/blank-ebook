@@ -567,7 +567,19 @@ To improve the user experience offering a search module is a good idea. You can 
 
 It still looks a little bit ugly. The label before the box can actually be removed. Therefore we create another override. You are strengthened by sandwiches and water? Then go to Extensions &gt; Template Manager&gt; Templates &gt; Frontend Details and Files &gt; Create Overrides &gt; Modules &gt; mod\_search. A click on mod\_search again creates the override in the template directory in the folder html. Go into the same directory, look for mod\_search open the file default.php.
 
-Comment out the following line:
+First delete the class `form-inline` from the form element. There is only one class, so you can delete the whole attribute. By deleting the class you keep shure, that the search input field takes the full width even in mobile view.
+
+```php
+<form action="<?php echo JRoute::_('index.php'); ?>" method="post" class="form-inline">
+```
+
+to
+
+```php
+<form action="<?php echo JRoute::_('index.php'); ?>" method="post">
+```
+
+Comment out the following line.
 
 ```php
 $output = '<label for="mod-search-searchword' . $module->id . '" class="element-invisible">' . $label . '</label> ';
@@ -579,7 +591,7 @@ to
 // $output = '<label for="mod-search-searchword' . $module->id . '" class="element-invisible">' . $label . '</label> ';
 ```
 
-and remove the dot `.` before the equal sign on line above and give the input element the additional classes `form-control mr-sm-2`:
+Remove the dot `.` before the equal sign on line above and give the input element the additional classes `form-control mr-sm-2`:
 
 ```php
 $output .= '<input name="searchword" id="mod-search-searchword' . $module->id . '" maxlength="' . $maxlength . '"  class="inputbox search-query input-medium" type="search"' . $width;
