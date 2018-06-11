@@ -689,7 +689,7 @@ You know now why the first line is there? Yes, only Joomla!™ is allowed to exe
 
 [https://schmidt.gitbook.io/bl4nk/bl4nk-1\#module-chrome](https://schmidt.gitbook.io/bl4nk/bl4nk-1#module-chrome)
 
-{% page-ref page="bl4nk-1.md#module-chrome" %}
+{% page-ref page="bl4nk-1.md" %}
 
 If you refresh the frontend you will see a ugly thing: The read more button. This button missed a class called `btn-primary`. This thing need this class to look good. And it would like to look good \(like you and me\). Create Overrides &gt; Layouts &gt; joomla &gt; content. Go to the folder html/layouts/joomla/content and open the file readmore.php. All other files could be deleted. You don't need them. Now catch all anchor elements with the class `btn` and add `btn-primary`.
 
