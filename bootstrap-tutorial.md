@@ -26,7 +26,7 @@ First download the latest version of [BL4NK Bootstrap Edition](https://github.co
 Unfortunatly, you have to install the template twice, to automate and enhance your workflow. First keep shure you have installed [Node.js®](http://nodejs.org/). If Node.js® is installed, install Gulp via command prompt. Just open a console or a terminal.
 
 ```text
-npm install -g gulp
+npm install -g gulp-cli
 ```
 
 Now change your path to the template directory. Install all dependencies.
