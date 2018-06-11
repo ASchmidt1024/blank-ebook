@@ -12,7 +12,7 @@ In this guide you will learn how to use BL4NK with Bootstrap in order to create 
 What you further need
 
 * [BL4NK Bootstrap Edition](https://github.com/Bloggerschmidt/Blank-Bootstrap-Edition/releases/latest)
-* [Journal](https://bootswatch.com/journal/) Bootstrap Theme
+* [Sketchy](https://bootswatch.com/sketchy/) Bootstrap Theme
 
 Good to know
 
@@ -751,12 +751,12 @@ This shows the copyright symbol, the current year and the site name.
 
 Congratulations! You finished your first site with BL4NK and Bootstrap and it looks really good. If you want to style your site with a different theme, that can be done.
 
-Go to [bootswatch.com](http://bootswatch.com/) and pick a theme you like. Maybe you prefer Sketchy, so let's take that one. Create a folder named bootswatch in the "scss" directory of your template. Download the files _variables.scss and _bootswatch.scss, copy them into the folder "scss/bootswatch/". Import both files after the bootstrap imports in file main.scss.
+Go to [bootswatch.com](http://bootswatch.com/) and pick a theme you like. Maybe you prefer Sketchy, so let's take that one. Create a folder named bootswatch in the "scss" directory of your template. Download the files _variables.scss and _bootswatch.scss, copy them into the folder "scss/bootswatch/". Import both files before the bootstrap variables import in file main.scss.
 
 ```scss
-// bootswatch
-@import "bootswatch/variables";
-@import "bootswatch/bootswatch";
+@import "bootswatch/variables";  // <-- new
+@import "bootswatch/bootswatch"; // <-- new
+@import "bootstrap/variables";
 ```
 
 And that, my friends, is all you need to do... Simple, once you know it. And you do it now!
