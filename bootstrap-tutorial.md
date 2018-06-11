@@ -382,7 +382,7 @@ This task runs the following tasks parallel: bootstrap, sass, js and serve.
 
 Back to index.php. Its time to code. For the menu and the search you use the [Bootstrap Navbar](http://getbootstrap.com/docs/4.0/components/navbar/) and apply them to Joomla!™. Copy the following lines and paste them after the body tag.
 
-```html
+```markup
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
@@ -485,10 +485,9 @@ Now we can build a two-level menu. Go to Menus &gt; Main Menu and create some ne
   * Euismod Vestibulum Sit \[3\]
   * Ligula \[3\]
 * Contact \[3\]
-
-1. Articles &gt; Featured Articles 'Link Class' \(Link Type\) `nav-link`
-2. System Links &gt; URL 'Link Class' \(Link Type\) `nav-link dropdown-toggle`
-3. Articles &gt; Single Article 'Link Class' \(Link Type\) `nav-link`
+* Articles &gt; Featured Articles 'Link Class' \(Link Type\) `nav-link`
+* System Links &gt; URL 'Link Class' \(Link Type\) `nav-link dropdown-toggle`
+* Articles &gt; Single Article 'Link Class' \(Link Type\) `nav-link`
 
 {% hint style="info" %}
 The parent element "About" should not \(!\) be assigned to an article. This is to be liable to the "Mobile First Strategy". Have you previously been accustomed under the parent element into view something, you can instead add below a summary page as the first element.
@@ -608,9 +607,9 @@ $output = '<input name="searchword" id="mod-search-searchword' . $module->id . '
 
 ## Breadcrumbs
 
-The visitor of your site should always know where he is. You help him by displaying the navigation path, also knows as breadcrumbs (from the fairy tale Hansel and Gretel, where Hansel drops his breadcrumbs to know the path home). In the file index.php you need to add few lines of code. Place it below the navbar.
+The visitor of your site should always know where he is. You help him by displaying the navigation path, also knows as breadcrumbs \(from the fairy tale Hansel and Gretel, where Hansel drops his breadcrumbs to know the path home\). In the file index.php you need to add few lines of code. Place it below the navbar.
 
-```html
+```markup
 <!-- BREADCRUMBS -->
 <div class="container mt-3">
   <jdoc:include type="modules" name="breadcrumbs" />
@@ -619,9 +618,9 @@ The visitor of your site should always know where he is. You help him by display
 
 The div class `.container` refers to the [grid system bootstrap](http://getbootstrap.com/docs/4.1/layout/grid/) we earlier discussed, so that the Breadcrumb module has the correct place in the template. Bootstrap offers us some [spacing utilities](https://getbootstrap.com/docs/4.1/utilities/spacing/). With the class `mt-3` we force a space with margin `m` to the top `t` of three rem `-3`.
 
-The work in the index.php is done. Now it needs a module for the navigation path. So go to the module manager in the backend: Extensions > Modules. Create the breadcrumbs module by clicking on "New" and select the type "Breadcrumbs". The 'Title' can be anything you want, but keep it simple. Maybe just call it “Breadcrumbs" is a good idea? Set the position to `breadcrumbs`. Getting hungry from all those breadcrumbs? Take a short break. After refreshing yourself go to options in the breadcrumbs module and set 'Show "You are here"' to "No". Save & Close.
+The work in the index.php is done. Now it needs a module for the navigation path. So go to the module manager in the backend: Extensions &gt; Modules. Create the breadcrumbs module by clicking on "New" and select the type "Breadcrumbs". The 'Title' can be anything you want, but keep it simple. Maybe just call it “Breadcrumbs" is a good idea? Set the position to `breadcrumbs`. Getting hungry from all those breadcrumbs? Take a short break. After refreshing yourself go to options in the breadcrumbs module and set 'Show "You are here"' to "No". Save & Close.
 
-If you now click on a sub-item in the front end, you see, that there is still a rather ugly arrow in orange. Muah! It's simply to beautiful to keep it. Time for an override for mod\_breadcrumbs (you know how it goes :-). open the file default.php.
+If you now click on a sub-item in the front end, you see, that there is still a rather ugly arrow in orange. Muah! It's simply to beautiful to keep it. Time for an override for mod\_breadcrumbs \(you know how it goes :-\). open the file default.php.
 
 Search for:
 
@@ -641,7 +640,7 @@ And that, ladies and gentlemen, makes our breadcrumbs shining bright.
 
 Now it gets time to work on the content and the sidebar. Place the following code in your index.php under the breadcrumbs:
 
-```html
+```markup
 <!-- CONTENT -->
 <div class="container">
   <div class="row">
@@ -663,7 +662,7 @@ Now it gets time to work on the content and the sidebar. Place the following cod
 
 In order to use the grid system of Bootstrap correctly, you need two divs from the classes: `container` and `row`. In it you place two columns: One for the money, two for the show. ... Uh! ... I mean: One for the content, two for the sidebar. Both columns get the full width on mobile with `col-12`. The content should be bigger on tabletts and desktops, so it get `col-md-8` for eight columns for medium devices and above. The sidebar should have half width of the content. Therefore it gets `col-md-4`.
 
-In out grid system we put some Joomla!™ stuff in there. With `<jdoc:include type="message" />` you spit the news of the Joomla!™ system and  `<jdoc:include type="component" />` the content (via component). In the sidebar comes the same module position with `style="card"`. This module chrome named "card" does not yet exist. We'll do that in the next step.
+In out grid system we put some Joomla!™ stuff in there. With `<jdoc:include type="message" />` you spit the news of the Joomla!™ system and `<jdoc:include type="component" />` the content \(via component\). In the sidebar comes the same module position with `style="card"`. This module chrome named "card" does not yet exist. We'll do that in the next step.
 
 To write your own module chrome, you need to create the file modules.php in the html folder. There you write following code:
 
@@ -686,19 +685,21 @@ function modChrome_card($module, &$params, &$attribs) {
 ?>
 ```
 
-You know now why the first line is there? Yes, only Joomla!™ is allowed to execute this file. Otherwise you will die. That's sounds hard, but it ondy works this way. What follows is a PHP function called "modChrome_card", in which the module is placed with the div class card. If you want to know exactly what it is about this module chrome, then read the Section "Module Chrome" (Blank > index.php (blank) > body > Module Chrome).
+You know now why the first line is there? Yes, only Joomla!™ is allowed to execute this file. Otherwise you will die. That's sounds hard, but it ondy works this way. What follows is a PHP function called "modChrome\_card", in which the module is placed with the div class card. If you want to know exactly what it is about this module chrome, then read the Section "Module Chrome" \(Blank &gt; index.php \(blank\) &gt; body &gt; Module Chrome\).
 
-https://schmidt.gitbook.io/bl4nk/bl4nk-1#module-chrome
+[https://schmidt.gitbook.io/bl4nk/bl4nk-1\#module-chrome](https://schmidt.gitbook.io/bl4nk/bl4nk-1#module-chrome)
 
-If you refresh the frontend you will see a ugly thing: The read more button. This button missed a class called `btn-primary`. This thing need this class to look good. And it would like to look good (like you and me). Create Overrides > Layouts > joomla > content. Go to the folder html/layouts/joomla/content and open the file readmore.php. All other files could be deleted. You don't need them. Now catch all anchor elements with the class `btn` and add `btn-primary`.
+{% page-ref page="bootstrap-tutorial.md" %}
 
-```html
+If you refresh the frontend you will see a ugly thing: The read more button. This button missed a class called `btn-primary`. This thing need this class to look good. And it would like to look good \(like you and me\). Create Overrides &gt; Layouts &gt; joomla &gt; content. Go to the folder html/layouts/joomla/content and open the file readmore.php. All other files could be deleted. You don't need them. Now catch all anchor elements with the class `btn` and add `btn-primary`.
+
+```markup
 <a class="btn" ...>
 ```
 
 becomes
 
-```html
+```markup
 <a class="btn btn-primary" ...>
 ```
 
