@@ -761,5 +761,5 @@ Go to [bootswatch.com](http://bootswatch.com/) and pick a theme you like. Maybe 
 
 And that, my friends, is all you need to do... Simple, once you know it. And you do it now!
 
-\(to be continued\)
+~ TUTORIAL END ~ 
 
