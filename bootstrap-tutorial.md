@@ -19,6 +19,10 @@ Good to know
 * [Bootstrap Documentation](http://getbootstrap.com/)
 * [Template Snippets](https://gist.github.com/Bloggerschmidt/2360208)
 
+## Preview
+
+![Alexander Schmidt](.gitbook/assets/blank-bootstrap-tutorial-sketchy.png)
+
 ## Installation
 
 First download the latest version of [BL4NK Bootstrap Edition](https://github.com/Bloggerschmidt/Blank-Bootstrap-Edition/releases/latest). Install it in the backend of Joomla!™ under Extensions &gt; Manage &gt; Install &gt; Upload Package File. After successful installation choose the template called _frontend_ as default template under Extensions &gt; Templates &gt; Styles. Now it is active and can be viewed in the front end. Just click on the preview link at the top right. It is recommended to use two tabs in your browser \(back end and front end\) to work with.
