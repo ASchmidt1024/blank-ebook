@@ -21,7 +21,7 @@ Good to know
 
 ## Preview
 
-![Alexander Schmidt](.gitbook/assets/blank-bootstrap-tutorial-sketchy.png)
+![BL4NK Boostrap Preview, Sketchy](.gitbook/assets/blank-bootstrap-tutorial-sketchy.png)
 
 ## Installation
 
