@@ -4,7 +4,7 @@ The whole project would be nothing without all the sponsors.
 
 ## Main
 
-For 1000 $ the book of BL4NK will be branded by your company, e.g. YOUR COMPANY presents BL4NK - Mastering template for Joomla!™
+For 500 $ the book of BL4NK will be branded by your company, e.g. YOUR COMPANY presents BL4NK - Mastering template for Joomla!™
 
 You get a own chapter right here, where you can describe yourself in unlimited characters, place your company logo, links etc. and I'll brand the Twitter account with your company name and tweet your support daily.
 
