@@ -2,10 +2,8 @@
 
 * [Mastering templates for Joomla!™](README.md)
 * [Preface](preface.md)
-* [About](about/README.md)
-  * [Sponsors](about/sponsors.md)
-  * [Patrons](about/patrons.md)
-  * [Author](about/author.md)
+* [Author](about/author.md)
+* [Patrons](about/patrons.md)
 * [Introduction](introduction.md)
 * [Getting Started](getting-started.md)
 * [Snippets](snippets.md)
