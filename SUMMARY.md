@@ -4,6 +4,7 @@
 * [Preface](preface.md)
 * [Author](author.md)
 * [Patrons](patrons.md)
+* [Sponsors](sponsors.md)
 * [Introduction](introduction.md)
 * [Getting Started](getting-started.md)
 * [Snippets](snippets.md)
