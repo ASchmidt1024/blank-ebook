@@ -1,6 +1,6 @@
 # Author
 
-![Alexander Schmidt](.gitbook/assets/alexander-schmidt.jpg)
+![Alexander Schmidt](../.gitbook/assets/alexander-schmidt.jpg)
 
 Alexander Schmidt was born 1978. In 2000 during his studies in Heidelberg / Germany he found a program named 'FrontPage', which was supposed to create websites \(for aesthetic reasons we refrain from giving the company name here\). It was a very popular WYSIWYG editor. The program was quite successful, but Alexander realized very quickly that the real action happens behind the WYSIWYG editor.
 

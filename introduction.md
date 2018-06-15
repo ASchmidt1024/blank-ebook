@@ -14,7 +14,7 @@ Are you in a hurry? In that case you can find a quick start into BL4NK in chapte
 
 In the chapter "Blank" the template is described in detail. It is a read only section and ideal for reading leisurely on the couch. However, it wasn't written as entertaining evening reading. For this chapter, you should be wide awake and focused. Read it in your best hours.
 
-{% page-ref page="bl4nk-1.md" %}
+{% page-ref page="bl4nk.md" %}
 
 A "Bootstrap Tutorial" is also on board.
 

@@ -18,7 +18,7 @@ For 200 $ you get a own chapter right here, where you can describe yourself in 2
 
 ## Silver
 
-For 100 $ you get a own chapter right here, where you can describe yourself in 1000 characters, place  your company logo, links etc. and I'll tweet your support once a week.
+For 100 $ you get a own chapter right here, where you can describe yourself in 1000 characters, place your company logo, links etc. and I'll tweet your support once a week.
 
 [Become a Silver sponsor](https://www.patreon.com/bePatron?c=1817417&rid=2681973)
 

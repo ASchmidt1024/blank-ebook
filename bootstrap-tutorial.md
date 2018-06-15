@@ -100,7 +100,7 @@ This file holds the variables and program logic of the template. It will be expl
 
 What follows is an HTML document. The declaration of `<!doctype html>`, `<html>` and `<head>`.
 
-```html
+```markup
 <!doctype html>
 <html lang="<?php echo $this->language; ?>">
 <head>
@@ -114,7 +114,7 @@ Yo, the first line is the document declaration, second line opens the html area 
 
 The body contains all the visible stuff of your site.
 
-```html
+```markup
 <body class="<?php echo $active->alias . ' ' . $pageclass; ?>">
 
     <!--
@@ -398,7 +398,7 @@ This task runs the following tasks parallel: bootstrap, sass, js and serve.
 
 Back to index.php. Its time to code. For the menu and the search you use the [Bootstrap Navbar](http://getbootstrap.com/docs/4.0/components/navbar/) and apply them to Joomla!™. Copy the following lines and paste them after the body tag.
 
-```html
+```markup
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
@@ -439,7 +439,7 @@ Look at the result in the frontend. Apart from the site name nothing to see. Bot
 
 In order to do it right you should define all module positions in the file templateDetails.xml. So the system has access to and the backend user can publish modules at this defined positions. Open the file in an editor of your choice and scoll to `<positions>`. There you'll find one predefined position called "debug". Add the following code:
 
-```html
+```markup
 <position>navbar</position>
 <position>breadcrumbs</position>
 <position>largebar</position>
@@ -452,7 +452,7 @@ What? These are already listed? Well the template seems to be well written, hehe
 
 Now it'is time to make some preparations in the backend. You create a blank article for building the menu. First create an item with some boiler plate text. Click in Content &gt; Articles &gt; New and set the title "HTML Ipsum Presents". You can copy the following text:
 
-```html
+```markup
 <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
 
 <h2>Header Level 2</h2>
@@ -558,7 +558,7 @@ jQuery(function($) {
 
 Ooo...kay. With the first line we open the jQuery function in generell and with the last line we close it. The inner code is for each dropdown menu. Before every single dropdown menu there is a button to trigger it. For example it look like this.
 
-```html
+```markup
 <a href="#" class="nav-link dropdown-toggle">...</a>
 <ul class="dropdown-menu" aria-labelledby="navbarDropdownXXX">
 ```
@@ -625,7 +625,7 @@ $output = '<input name="searchword" id="mod-search-searchword' . $module->id . '
 
 The visitor of your site should always know where he is. You help him by displaying the navigation path, also knows as breadcrumbs \(from the fairy tale Hansel and Gretel, where Hansel drops his breadcrumbs to know the path home\). In the file index.php you need to add few lines of code. Place it below the navbar.
 
-```html
+```markup
 <!-- BREADCRUMBS -->
 <div class="container mt-3">
   <jdoc:include type="modules" name="breadcrumbs" />
@@ -656,7 +656,7 @@ And that, ladies and gentlemen, makes our breadcrumbs shining bright.
 
 Now it gets time to work on the content and the sidebar. Place the following code in your index.php under the breadcrumbs:
 
-```html
+```markup
 <!-- CONTENT -->
 <div class="container">
   <div class="row">
@@ -701,17 +701,17 @@ function modChrome_card($module, &$params, &$attribs) {
 ?>
 ```
 
-You know now why the first line is there? Yes, only Joomla!™ is allowed to execute this file. Otherwise you will die. That's sounds hard, but it ondy works this way. What follows is a PHP function called "modChrome\_card", in which the module is placed with the div class card. If you want to know exactly what it is about this module chrome, then read the section [Module Chrome](https://schmidt.gitbook.io/bl4nk/bl4nk-1\#module-chrome).
+You know now why the first line is there? Yes, only Joomla!™ is allowed to execute this file. Otherwise you will die. That's sounds hard, but it ondy works this way. What follows is a PHP function called "modChrome\_card", in which the module is placed with the div class card. If you want to know exactly what it is about this module chrome, then read the section [Module Chrome](https://schmidt.gitbook.io/bl4nk/bl4nk-1#module-chrome).
 
 If you refresh the frontend you will see a ugly thing: The read more button. This button missed a class called `btn-primary`. This thing need this class to look good. And it would like to look good \(like you and me\). Create Overrides &gt; Layouts &gt; joomla &gt; content. Go to the folder html/layouts/joomla/content and open the file readmore.php. All other files could be deleted. You don't need them. Now catch all anchor elements with the class `btn` and add `btn-primary`.
 
-```html
+```markup
 <a class="btn" ...>
 ```
 
 becomes
 
-```html
+```markup
 <a class="btn btn-primary" ...>
 ```
 
@@ -719,25 +719,25 @@ Save and refresh the frontend. By now, the content looks good, but what's about 
 
 ## Login
 
-Ah, yes! The Login. The sidebar is ready for it. Now we'll create the login module. Go to the backend under Extensions > Modules, create it by clicking on "New" and choosing "Login". The 'title' can be called "Login". Publish it in the sidebar position. Save & Close.
+Ah, yes! The Login. The sidebar is ready for it. Now we'll create the login module. Go to the backend under Extensions &gt; Modules, create it by clicking on "New" and choosing "Login". The 'title' can be called "Login". Publish it in the sidebar position. Save & Close.
 
 This doesn't look as sexy as it could. You guess it right. An override with a few classes will remedy this problem. Create an override mod\_login in the html folder via backend and open the default.php.
 
 First remove the class `form-inline` from form element. You can remove the whole attribute.
 
-```html
+```markup
 <form action="<?php echo JRoute::_('index.php', true, $params->get('usesecure')); ?>" method="post" id="login-form" class="form-inline">
 ```
 
 to
 
-```html
+```markup
 <form action="<?php echo JRoute::_('index.php', true, $params->get('usesecure')); ?>" method="post" id="login-form">
 ```
 
-Next replace all classes `input-small` with `form-control` (search and replace is your friend). Continue to replace all classes named `control-group` with the class `form-group`. All `<label>` get the class `sr-only`. Looking for the `ul` with the class `unstyled` and rewrite it like the following.#
+Next replace all classes `input-small` with `form-control` \(search and replace is your friend\). Continue to replace all classes named `control-group` with the class `form-group`. All `<label>` get the class `sr-only`. Looking for the `ul` with the class `unstyled` and rewrite it like the following.\#
 
-```html
+```markup
 <ul class="list-unstyled">
 ```
 
@@ -748,13 +748,13 @@ To avoid destroying the menu, delete or comment the two following lines at the b
 // JHtml::_('bootstrap.tooltip');
 ```
 
-[Author's note: The implementation of bootstrap in the frontend is really a plague.] Save. Looks good.
+\[Author's note: The implementation of bootstrap in the frontend is really a plague.\] Save. Looks good.
 
 ## Footer
 
 Last but not least we will code the footer. A oneliner should be enough for the first. In the file index.php we write following code.
 
-```html
+```markup
 <div class="container footer">
   <p><br />Copyright &copy; <?php echo date('Y'); ?> -
       <?php echo $app->getCfg('sitename'); ?></p>
@@ -767,9 +767,9 @@ This shows the copyright symbol, the current year and the site name.
 
 Congratulations! You finished your first site with BL4NK and Bootstrap and it looks really good. If you want to style your site with a different theme, that can be done.
 
-Go to [bootswatch.com](http://bootswatch.com/) and pick a theme you like. Maybe you prefer Sketchy, so let's take that one. Create a folder named bootswatch in the "scss" directory of your template. Download the files _variables.scss and _bootswatch.scss, copy them into the folder "scss/bootswatch/". Import both files before the bootstrap variables import in file main.scss.
+Go to [bootswatch.com](http://bootswatch.com/) and pick a theme you like. Maybe you prefer Sketchy, so let's take that one. Create a folder named bootswatch in the "scss" directory of your template. Download the files \_variables.scss and \_bootswatch.scss, copy them into the folder "scss/bootswatch/". Import both files before the bootstrap variables import in file main.scss.
 
-```scss
+```css
 @import "bootswatch/variables";  // <-- new
 @import "bootswatch/bootswatch"; // <-- new
 @import "bootstrap/variables";
@@ -777,5 +777,5 @@ Go to [bootswatch.com](http://bootswatch.com/) and pick a theme you like. Maybe 
 
 And that, my friends, is all you need to do... Simple, once you know it. And you do it now!
 
-~ TUTORIAL END ~ 
+~ TUTORIAL END ~
 
