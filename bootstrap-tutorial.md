@@ -258,7 +258,13 @@ unset($doc->_scripts[$this->baseurl .'/media/system/js/tabs-state.js']);
 unset($doc->_scripts[$this->baseurl .'/media/system/js/validate.js']);
 ```
 
-Each line calls the unset function. This functions gets access to the document \($doc\), especially to the scripts \(\_scripts\). Then, only the path to each script is needed to execute the function correctly. And yes, not only scripts will be loaded in the head. Some plain JavaScript code appears there too. Muah! Lets unset this.
+Each line calls the unset function. This functions gets access to the document \($doc\), especially to the scripts \(\_scripts\). Then, only the path to each script is needed to execute the function correctly. Well, if you are lazy you can do it with a single line instead.
+
+```php
+$doc->_scripts = array();
+```
+
+This put an empty array with no script files in reference. And yes, not only scripts will be loaded in the head. Some plain JavaScript code appears there too. Muah! Lets unset this.
 
 ```php
 if (isset($doc->_script['text/javascript']))
@@ -272,11 +278,13 @@ if (isset($doc->_script['text/javascript']))
 }
 ```
 
-This JavaScript belongs to the image caption and the tooltip via jQuery. We don't need and and if we need it in the future, we will do it the Bootstrap way. Okay, here you need a little structure to control, if the unset is really needed. You do it with a simple if statement. So if some plain script \(text/javascript\) exists \(isset\), then there should be a replacement \(preg\_replace\). One replacement function is looking for some jQuery, that activate the JCaption function, a function for image captions. Another replacement is looking for the hasTooltip function, a function - you guess it right - to activate tooltips.
+This JavaScript belongs to the image caption and the tooltip via jQuery. We don't need and and if we need it in the future, we will do it the Bootstrap way. Okay, here you need a little structure to control, if the unset is really needed. You do it with a simple if statement. So if some plain script \(text/javascript\) exists \(isset\), then there should be a replacement \(preg\_replace\). One replacement function is looking for some jQuery, that activate the JCaption function, a function for image captions. Another replacement is looking for the hasTooltip function, a function - you guess it right - to activate tooltips. Well, if you are still lazy, you can do it with a oneliner like above.
 
-Keep in mind that some scripts belong in the head, e.g. modernizr. If this is the case you shouldn't unset them. Well done.
+```php
+$doc->_script = array();
+```
 
-You get it off. The head is cleaned from any script.
+Do you see the different to the one line above? Yes, well done, Dr. Watson. It is the `s`. Keep in mind that some scripts belong in the head, e.g. modernizr. If this is the case you shouldn't unset them. Now the head is cleaned from any script.
 
 ### Template CSS
 
