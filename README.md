@@ -7,7 +7,7 @@ For faster and easier web development
 
 For [Joomla!™](https://www.joomla.org/)
 
-From Alexander Schmidt
+From [Alexander Schmidt](https://alexanderschmidt.info/)
 
 Copyright © 2018
 
