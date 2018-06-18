@@ -19,6 +19,8 @@ Good to know
 * [Bootstrap Documentation](http://getbootstrap.com/)
 * [Template Snippets](https://gist.github.com/Bloggerschmidt/2360208)
 
+{% page-ref page="snippets.md" %}
+
 ## Preview
 
 ![BL4NK Bootstrap Preview, Theme Sketchy](.gitbook/assets/blank-bootstrap-tutorial-sketchy.png)
