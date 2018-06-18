@@ -3,7 +3,6 @@
 * [Mastering templates for Joomla!™](README.md)
 * [Preface](preface.md)
 * [Author](author.md)
-* [Patrons](patrons.md)
 * [Introduction](introduction.md)
 * [Getting Started](getting-started.md)
 * [Snippets](snippets.md)
