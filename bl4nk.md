@@ -961,7 +961,7 @@ Output:
 
 #### custom chrome
 
-As already mentioned, it is possible to define your own output, thus own chrome variables for the style attribute. The Blank contains the file modules.php found in the html folder of the template directory. As you may have noticed, in Blank there is neither the said folder \(html\), nor the said file \(modules.php\). Have you installed the template, you can safely create the folder and create the file inside this folder. If you stand before the installation, then the reference to the newly created folder belongs to the templateDetails.xml, so that the installation routine of Joomla!™ knows that this folder exists. Otherwise the folder wouldn't be installed. For details see the chapter templateDetails.xml.
+As already mentioned, it is possible to define your own output, thus own chrome variables for the style attribute. The BL4NK contains the file modules.php found in the html folder of the template directory. As you may have noticed, in BL4NK there is neither the said folder \(html\), nor the said file \(modules.php\). Have you installed the template, you can safely create the folder and create the file inside this folder. If you stand before the installation, then the reference to the newly created folder belongs to the templateDetails.xml, so that the installation routine of Joomla!™ knows that this folder exists. Otherwise the folder wouldn't be installed. For details see the chapter templateDetails.xml.
 
 If you create the modules.php file in also new created folder called html, the content could look like this:
 
@@ -999,7 +999,7 @@ To make sure that this file is called only in Joomla!™, this line is written.
 <?php defined( '_JEXEC' ) or die;
 ```
 
-This code prevents that the file can not be accessed from the address bar of your browser.
+This code prevents that the file can be accessed from the address bar of your browser.
 
 ### Declaring variables
 
@@ -1030,13 +1030,13 @@ Most of the variable names are quite self-explanatory. Not so for the contents o
 $app = JFactory::getApplication();
 ```
 
-Here the variable $app is first created, the content in the Joomla framework is called for by the JFactory. The application to which it refers to is Joomla itself, the CMS. The variable $app we will also need for the parameters.
+Here the variable $app is first created, the content in the Joomla!™ framework is called for by the JFactory. The application to which it refers to is Joomla!™ itself, the CMS. The variable $app we will also need for the parameters.
 
 ```php
 $doc = JFactory::getDocument();
 ```
 
-Similarly, the variable $doc. Again, we put about the Joomla framework to work with the JFactory class. This variable will take care of the RSS feeds within the page, site information, such as the title and description, references to the JavaScript and CSS files being loaded and will do a lot more. However, that is beyond the scope of this book.
+Similarly, the variable $doc. Again, we put about the Joomla!™ framework to work with the JFactory class. This variable will take care of the RSS feeds within the page, site information, such as the title and description, references to the JavaScript and CSS files being loaded and will do a lot more. However, that is beyond the scope of this book.
 
 ```php
 $menu = $app->getMenu();
@@ -1054,13 +1054,13 @@ This variable goes a step further: it looks for the active menu item within the 
 $params = $app->getParams();
 ```
 
-Using the variable $app we'll query Joomla for the parameters and store that in the variable $params. We will then use to query the page class:
+Using the variable $app we'll query Joomla!™ for the parameters and store that in the variable $params. We will then use to query the page class:
 
 ```php
 $pageclass = $params->get('pageclass_sfx');
 ```
 
-A rather aptly named variable, $pageclass. The Page Class Suffix is a parameter in Joomla Menu Items. It is set in the Menu Item: \[Edit\] screen under the "Parameters \(Advanced\)" section. This will order Joomla to either add a new CSS class or modify the existing CSS class for elements in this specific Menu Item layout.
+A rather aptly named variable, $pageclass. The Page Class Suffix is a parameter in Joomla!™ Menu Items. It is set in the Menu Item: \[Edit\] screen under the "Page Display" section. This will order Joomla!™ to either add a new CSS class or modify the existing CSS class for elements in this specific Menu Item layout.
 
 ```php
 $tpath = $this->baseurl.'/templates/'.$this->template;
@@ -1072,7 +1072,7 @@ These are all the variables used in Blank.
 
 ### generator tag
 
-The generator tag tells the world that we build this site with Joomla. Something nobody needs to know, least of all undesirables who want to hack your site. Do we want it? No, we most certainly do not!
+The generator tag tells the world that we build this site with Joomla!™. Something nobody needs to know, least of all undesirables who want to hack your site. Do we want it? No, we most certainly do not!
 
 ```php
 $this->setGenerator(null);
